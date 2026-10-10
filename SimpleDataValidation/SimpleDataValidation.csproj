@@ -4,6 +4,40 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version>0.1</Version>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.</Title>
+    <Company>Pierlam Project</Company>
+    <Description>The usage is very simple, you just need to call the static method of the V class, passing the name of the data and its value.
+There are many available features to validate data, by type, by length, and by format like: NotNull, Email, Length, Iban,...</Description>
+    <PackageProjectUrl>https://github.com/Pierlam/SimpleDataValidation</PackageProjectUrl>
+    <PackageIcon>logo_V_128_basic.jpg</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Pierlam/SimpleDataValidation</RepositoryUrl>
+    <PackageTags>dotnet;csharp;validation;validator;check;verification;field;property</PackageTags>
+    <Authors>Pierlam</Authors>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageReleaseNotes>First version of the library.</PackageReleaseNotes>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\logo_V_128_basic.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+	<Target Name="InjectPackageReleaseNotesFromFile" BeforeTargets="GenerateNuspec" Condition="Exists('CHANGELOG.md')">
+		<PropertyGroup>
+			<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/CHANGELOG.md"))</PackageReleaseNotes>
+		</PropertyGroup>
+	</Target>
 </Project>

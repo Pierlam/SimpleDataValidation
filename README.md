@@ -12,7 +12,8 @@ The usage is very simple, you just need to call the static method of the V class
 ```
 Syntax:
 string errMsg = V.Function(DataName, Value);
-If the validation fails, the error message is returned in the errMsg variable. If the validation passes, an empty string is returned.
+If the validation fails  -> The error message is returned in the errMsg variable. 
+If the validation passes -> An empty string is returned.
 ```
 
 The following example shows how to use the library to validate a string value to check if it's not null.
