@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Éléments de solution/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="DevApp/DevApp.csproj" />
+  <Project Path="SimpleDataValidation.Tests/SimpleDataValidation.Tests.csproj" />
+  <Project Path="SimpleDataValidation/SimpleDataValidation.csproj" />
+</Solution>
