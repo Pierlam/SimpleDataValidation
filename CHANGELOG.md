@@ -1,4 +1,12 @@
-﻿## 0.1.0 Release (2026-10-10)
+﻿## 0.2.0 Release (2026-XX-XX)
+
+New validation available:
+Text				     Check that the string contains a text, same as NotNullOrWhiteSpace.
+LettersDigitsUnderscore  Check that the string contains only letter, digit or underscore.
+
+-14 unit tests, all are green.
+
+## 0.1.0 Release (2026-10-10)
 
 First version of the library.
 Default language for error message is English.

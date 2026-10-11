@@ -91,4 +91,6 @@ public abstract class VBase
         return finalErrMsg.Trim();
     }
 
+    //public static bool Result { get; protected set; } = false;
+    
 }

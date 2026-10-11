@@ -18,10 +18,16 @@ string s = "";
 errMsg = V.Int("field", a);
 errMsg = V.Int("field", s);
 
+string text = "bonjour";
+errMsg = V.Text("Bienvenue", text);
+errMsg = V.NotNullOrWhiteSpace("Bienvenue", text);
+
 
 //===many check on a data
 errMsg = V.Define(null, "name").AddNotNull().AddMinLength(8).Validate();
-Console.WriteLine("3: " + errMsg);
+if (string.IsNullOrWhiteSpace(errMsg)) return;
+//if (V.Result) return;
+
 
 errMsg = V.Define("toto", "name").AddNotNull().AddMinLength(8).Validate();
 Console.WriteLine("2: " + errMsg);

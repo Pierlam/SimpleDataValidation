@@ -4,11 +4,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>0.1</Version>
+    <Version>0.2</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.</Title>
     <Company>Pierlam Project</Company>
-    <Description>The usage is very simple, you just need to call the static method of the V class, passing the name of the data and its value.
+    <Description>SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
+The usage is very simple, you just need to call the static method of the V class, passing the name of the data and its value.
 There are many available features to validate data, by type, by length, and by format like: NotNull, Email, Length, Iban,...</Description>
     <PackageProjectUrl>https://github.com/Pierlam/SimpleDataValidation</PackageProjectUrl>
     <PackageIcon>logo_V_128_basic.jpg</PackageIcon>

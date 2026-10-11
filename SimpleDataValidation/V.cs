@@ -21,7 +21,8 @@ public class V : VBase
     /// <returns></returns>
     public static string NotNull(string dataName, object value)
     {
-        return RuleValidator.NotNull(_errorMessageMgr, dataName, value);
+        string errMsg = RuleValidator.NotNull(_errorMessageMgr, dataName, value);
+        return errMsg;
     }
 
     /// <summary>
@@ -32,7 +33,8 @@ public class V : VBase
     /// <returns></returns>
     public static string NotNull(string dataName, object value, string errorMessage)
     {
-        return RuleValidator.NotNull(dataName, value, errorMessage);
+        string errMsg = RuleValidator.NotNull(dataName, value, errorMessage);
+        return errMsg;
     }
 
     /// <summary>
@@ -43,7 +45,8 @@ public class V : VBase
     /// <returns></returns>
     public static string NotNullOrEmpty(string dataName, string value)
     {
-        return RuleValidator.NotNullOrEmpty(_errorMessageMgr, dataName, value);
+        string errMsg = RuleValidator.NotNullOrEmpty(_errorMessageMgr, dataName, value);
+        return errMsg;
     }
 
     /// <summary>
@@ -54,8 +57,33 @@ public class V : VBase
     /// <returns></returns>
     public static string NotNullOrEmpty(string dataName, string value, string errorMessage)
     {
-        return RuleValidator.NotNullOrEmpty(dataName, value, errorMessage);
+        string errMsg = RuleValidator.NotNullOrEmpty(dataName, value, errorMessage);
+        return errMsg;
     }
+
+    /// <summary>
+    /// Same as NotNullOrWhiteSpace.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Text(string dataName, string value)
+    {
+        return NotNullOrWhiteSpace(dataName, value);
+    }
+
+    /// <summary>
+    /// Same as NotNullOrWhiteSpace.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <param name="errorMessage"></param>
+    /// <returns></returns>
+    public static string Text(string dataName, string value, string errorMessage)
+    {
+        return NotNullOrWhiteSpace(dataName, value, errorMessage);
+    }
+
 
     /// <summary>
     /// The value should be not null or empty. If it is, return an error message; otherwise, return an empty string.
@@ -65,7 +93,8 @@ public class V : VBase
     /// <returns></returns>
     public static string NotNullOrWhiteSpace(string dataName, string value)
     {
-        return RuleValidator.NotNullOrWhiteSpace(_errorMessageMgr, dataName, value);
+        string errMsg = RuleValidator.NotNullOrWhiteSpace(_errorMessageMgr, dataName, value);
+        return errMsg;
     }
 
     /// <summary>
@@ -76,18 +105,45 @@ public class V : VBase
     /// <returns></returns>
     public static string NotNullOrWhiteSpace(string dataName, string value, string errorMessage)
     {
-        return RuleValidator.NotNullOrWhiteSpace(dataName, value, errorMessage);
+        string errMsg = RuleValidator.NotNullOrWhiteSpace(dataName, value, errorMessage);
+        return errMsg;
     }
 
     /// <summary>
-    /// The value should be not null or empty. If it is, return an error message; otherwise, return an empty string.
+    /// The value should contains only letters, digits or underscore.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string LettersDigitsUnderscore(string dataName, string value)
+    {
+        string errMsg = RuleValidator.LettersDigitsUnderscore(_errorMessageMgr, dataName, value);
+        return errMsg;
+
+    }
+
+    /// <summary>
+    /// The value should contains only letters, digits or underscore.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string LettersDigitsUnderscore(string dataName, string value, string errorMessage)
+    {
+        string errMsg = RuleValidator.LettersDigitsUnderscore(dataName, value, errorMessage);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// Check that the length of string is between a min and a max value.
     /// </summary>
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
     public static string BetweenLength(string dataName, string value, int minLength, int maxLength)
     {
-        return RuleValidator.BetweenLength(_errorMessageMgr, dataName, value, minLength, maxLength);
+        string errMsg = RuleValidator.BetweenLength(_errorMessageMgr, dataName, value, minLength, maxLength);
+        return errMsg;
     }
 
     /// <summary>
@@ -98,7 +154,8 @@ public class V : VBase
     /// <returns></returns>
     public static string BetweenLength(string dataName, string value, int minLength, int maxLength, string errorMessage)
     {
-        return RuleValidator.BetweenLength(dataName, value, minLength, maxLength, errorMessage);
+        string errMsg = RuleValidator.BetweenLength(dataName, value, minLength, maxLength, errorMessage);
+        return errMsg;
     }
 
     /// <summary>
@@ -109,7 +166,8 @@ public class V : VBase
     /// <returns></returns>
     public static string MinLength(string dataName, string value, int minLength)
     {
-        return RuleValidator.MinLength(_errorMessageMgr, dataName, value, minLength);
+        string errMsg = RuleValidator.MinLength(_errorMessageMgr, dataName, value, minLength);
+        return errMsg;
     }
 
     /// <summary>
@@ -120,7 +178,8 @@ public class V : VBase
     /// <returns></returns>
     public static string MinLength(string dataName, string value, int minLength, string errorMessage)
     {
-        return RuleValidator.MinLength(dataName, value, minLength, errorMessage);
+        string errMsg = RuleValidator.MinLength(dataName, value, minLength, errorMessage);
+        return errMsg;
     }
 
     /// <summary>
@@ -131,7 +190,8 @@ public class V : VBase
     /// <returns></returns>
     public static string MaxLength(string dataName, string value, int maxLength)
     {
-        return RuleValidator.MaxLength(_errorMessageMgr, dataName, value, maxLength);
+        string errMsg = RuleValidator.MaxLength(_errorMessageMgr, dataName, value, maxLength);
+        return errMsg;
     }
 
     /// <summary>
@@ -142,7 +202,8 @@ public class V : VBase
     /// <returns></returns>
     public static string MaxLength(string dataName, string value, int maxLength, string errorMessage)
     {
-        return RuleValidator.MaxLength(dataName, value, maxLength, errorMessage);
+        string errMsg = RuleValidator.MaxLength(dataName, value, maxLength, errorMessage);
+        return errMsg;
     }
 
     /// <summary>
@@ -153,7 +214,8 @@ public class V : VBase
     /// <returns></returns>
     public static string ExactLength(string dataName, string value, int exactLength)
     {
-        return RuleValidator.ExactLength(_errorMessageMgr, dataName, value, exactLength);
+        string errMsg = RuleValidator.ExactLength(_errorMessageMgr, dataName, value, exactLength);
+        return errMsg;
     }
 
     /// <summary>
@@ -164,7 +226,8 @@ public class V : VBase
     /// <returns></returns>
     public static string ExactLength(string dataName, string value, int exactLength, string errorMessage)
     {
-        return RuleValidator.ExactLength(dataName, value, exactLength, errorMessage);
+        string errMsg = RuleValidator.ExactLength(dataName, value, exactLength, errorMessage);
+        return errMsg;
     }
 
     /// <summary>
@@ -175,7 +238,8 @@ public class V : VBase
     /// <returns></returns>
     public static string EmailFormat(string dataName, string value)
     {
-        return RuleValidator.EmailFormat(_errorMessageMgr, dataName, value);
+        string errMsg = RuleValidator.EmailFormat(_errorMessageMgr, dataName, value);
+        return errMsg;
     }
 
     /// <summary>
@@ -188,7 +252,8 @@ public class V : VBase
     /// <returns></returns>
     public static string EmailFormat(string dataName, string value, string errorMessage)
     {
-        return RuleValidator.EmailFormat(dataName, value, errorMessage);
+        string errMsg = RuleValidator.EmailFormat(dataName, value, errorMessage);
+        return errMsg;
     }
 
     /// <summary>
@@ -201,7 +266,8 @@ public class V : VBase
     /// <returns></returns>
     public static string Email(string dataName, string value, string errorMessage)
     {
-        return RuleValidator.Email(dataName, value, errorMessage);
+        string errMsg = RuleValidator.Email(dataName, value, errorMessage);
+        return errMsg;
     }
 
     /// <summary>
@@ -212,7 +278,8 @@ public class V : VBase
     /// <returns></returns>
     public static string Email(string dataName, string value)
     {
-        return RuleValidator.Email(_errorMessageMgr, dataName, value);
+        string errMsg = RuleValidator.Email(_errorMessageMgr, dataName, value);
+        return errMsg;
     }
 
     /// <summary>
@@ -223,7 +290,8 @@ public class V : VBase
     /// <returns></returns>
     public static string EmailStrict(string dataName, string value)
     {
-        return RuleValidator.EmailStrict(_errorMessageMgr, dataName, value);
+        string errMsg = RuleValidator.EmailStrict(_errorMessageMgr, dataName, value);
+        return errMsg;
     }
 
     /// <summary>
@@ -236,7 +304,8 @@ public class V : VBase
     /// <returns></returns>
     public static string EmailStrict(string dataName, string value, string errorMessage)
     {
-        return RuleValidator.EmailStrict(dataName, value, errorMessage);
+        string errMsg = RuleValidator.EmailStrict(dataName, value, errorMessage);
+        return errMsg;
     }
 
     /// <summary>
@@ -247,7 +316,8 @@ public class V : VBase
     /// <returns></returns>
     public static string Int(string dataName, object value)
     {
-        return RuleValidator.Int(_errorMessageMgr, dataName, value);
+        string errMsg = RuleValidator.Int(_errorMessageMgr, dataName, value);
+        return errMsg;
     }
 
     /// <summary>
@@ -259,17 +329,20 @@ public class V : VBase
     /// <returns></returns>
     public static string Int(string dataName, object value,string errorMessage)
     {
-        return RuleValidator.Int(dataName, value, errorMessage);
+        string errMsg = RuleValidator.Int(dataName, value, errorMessage);
+        return errMsg;
     }
 
     public static string Iban(string dataName, string value)
     {
-        return RuleValidator.Iban(_errorMessageMgr, dataName, value);
+        string errMsg = RuleValidator.Iban(_errorMessageMgr, dataName, value);
+        return errMsg;
     }
 
     public static string Iban(string dataName, string value, string errorMessage)
     {
-        return RuleValidator.Iban(dataName, value, errorMessage);
+        string errMsg = RuleValidator.Iban(dataName, value, errorMessage);
+        return errMsg;
     }
 
     #endregion

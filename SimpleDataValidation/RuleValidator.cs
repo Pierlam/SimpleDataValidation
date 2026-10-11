@@ -105,7 +105,25 @@ public class RuleValidator
     public static string NotNullOrWhiteSpace(string dataName, string value, string errorMessage)
     {
         if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        // ok
         return string.Empty;
+    }
+
+    public static string LettersDigitsUnderscore(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    {
+        return LettersDigitsUnderscore(dataName, value, errorMsgMgr.GetMessage(ErrorCode.LettersDigitsUnderscore, dataName));
+    }
+
+    public static string LettersDigitsUnderscore(string dataName, string value, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        foreach(char c in value)
+        {
+            if(!char.IsLetterOrDigit(c) && !(c == '_')) return errorMessage;
+        }
+        // ok
+        return string.Empty;
+
     }
 
     /// <summary>

@@ -40,13 +40,15 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.NotNull, "{0} is required" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} is required" },
             { lang + ErrorCode.NotNullOrWhiteSpace, "{0} is required" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} must contains only letter, digit or underscore" },
             { lang + ErrorCode.BetweenLength, "{0} must be between {1} and {2} characters long" },
             { lang + ErrorCode.MinLength, "{0} must be at least {1} characters long" },
             { lang + ErrorCode.MaxLength, "{0} must be no more than {1} characters long" },
             { lang + ErrorCode.ExactLength, "{0} must be exactly {1} characters long" },
             { lang + ErrorCode.Email, "{0} must be a valid email address" },
             { lang + ErrorCode.Int, "{0} must be an integer" },
-            { lang + ErrorCode.Iban, "{0} must be a valid IBAN" }
+            { lang + ErrorCode.Iban, "{0} must be a valid IBAN" },
+            
         };
 
         return tableErrorMsg;
@@ -60,6 +62,7 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.NotNull, "{0} est requis" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} est requis" },
             { lang + ErrorCode.NotNullOrWhiteSpace, "{0} est requis" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} doit contenir seulement des lettres, chiffres ou le caractère underscore" },
             { lang + ErrorCode.BetweenLength, "{0} doit contenir entre {1} et {2} caractères" },
             { lang + ErrorCode.MinLength, "{0} doit contenir au moins {1} caractères"  },
             { lang + ErrorCode.MaxLength, "{0} doit contenir au maximum {1} caractères" },
