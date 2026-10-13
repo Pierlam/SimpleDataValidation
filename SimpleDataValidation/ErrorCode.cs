@@ -13,6 +13,9 @@ public enum ErrorCode
 
     NotNullOrWhiteSpace,
 
+    Letters,
+
+    Digits,
     LettersDigitsUnderscore,
     BetweenLength,
 

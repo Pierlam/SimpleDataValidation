@@ -26,7 +26,7 @@ errMsg = V.NotNullOrWhiteSpace("Bienvenue", text);
 //===many check on a data
 errMsg = V.Define(null, "name").AddNotNull().AddMinLength(8).Validate();
 if (string.IsNullOrWhiteSpace(errMsg)) return;
-//if (V.Result) return;
+if (V.Error(errMsg)) return;
 
 
 errMsg = V.Define("toto", "name").AddNotNull().AddMinLength(8).Validate();

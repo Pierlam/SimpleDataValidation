@@ -15,7 +15,7 @@ There are many available features to validate data, by type, by length, and by f
     <PackageIcon>logo_V_128_basic.jpg</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/Pierlam/SimpleDataValidation</RepositoryUrl>
-    <PackageTags>dotnet;csharp;validation;validator;check;verification;field;property</PackageTags>
+    <PackageTags>dotnet;csharp;validation;validator;check;verification;iban;field;property</PackageTags>
     <Authors>Pierlam</Authors>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageReleaseNotes>First version of the library.</PackageReleaseNotes>

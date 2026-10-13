@@ -110,6 +110,56 @@ public class V : VBase
     }
 
     /// <summary>
+    /// The value should contains only letters.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Letters(string dataName, string value)
+    {
+        string errMsg = RuleValidator.Letters(_errorMessageMgr, dataName, value);
+        return errMsg;
+
+    }
+
+    /// <summary>
+    /// The value should contains only letters.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Letters(string dataName, string value, string errorMessage)
+    {
+        string errMsg = RuleValidator.Letters(dataName, value, errorMessage);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// The value should contains only digits (number).
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Digits(string dataName, string value)
+    {
+        string errMsg = RuleValidator.Digits(_errorMessageMgr, dataName, value);
+        return errMsg;
+
+    }
+
+    /// <summary>
+    /// The value should contains only letters.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Digits(string dataName, string value, string errorMessage)
+    {
+        string errMsg = RuleValidator.Digits(dataName, value, errorMessage);
+        return errMsg;
+    }
+
+    /// <summary>
     /// The value should contains only letters, digits or underscore.
     /// </summary>
     /// <param name="dataName"></param>

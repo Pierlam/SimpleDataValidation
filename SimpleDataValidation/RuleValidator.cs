@@ -109,6 +109,40 @@ public class RuleValidator
         return string.Empty;
     }
 
+    public static string Letters(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    {
+        return Letters(dataName, value, errorMsgMgr.GetMessage(ErrorCode.Letters, dataName));
+    }
+
+    public static string Letters(string dataName, string value, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        foreach (char c in value)
+        {
+            if (!char.IsLetter(c)) return errorMessage;
+        }
+        // ok
+        return string.Empty;
+
+    }
+
+    public static string Digits(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    {
+        return Digits(dataName, value, errorMsgMgr.GetMessage(ErrorCode.Digits, dataName));
+    }
+
+    public static string Digits(string dataName, string value, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        foreach (char c in value)
+        {
+            if (!char.IsDigit(c)) return errorMessage;
+        }
+        // ok
+        return string.Empty;
+
+    }
+
     public static string LettersDigitsUnderscore(ErrorMessageMgr errorMsgMgr, string dataName, string value)
     {
         return LettersDigitsUnderscore(dataName, value, errorMsgMgr.GetMessage(ErrorCode.LettersDigitsUnderscore, dataName));
