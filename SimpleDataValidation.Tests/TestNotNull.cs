@@ -35,6 +35,23 @@ public sealed class TestNotNull
     }
 
     [TestMethod]
+    public void Text()
+    {
+        string errMsg;
+        errMsg = V.Text("field", "john");
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.Text("field", null);
+        Assert.AreEqual("field is required", errMsg);
+
+        errMsg = V.Text("field", string.Empty);
+        Assert.AreEqual("field is required", errMsg);
+
+        errMsg = V.Text("field", "   ", "Custom error message");
+        Assert.AreEqual("Custom error message", errMsg);
+    }
+
+    [TestMethod]
     public void NotNullOrWhiteSpace()
     {
         string errMsg;

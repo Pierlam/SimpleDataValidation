@@ -21,11 +21,11 @@ public class RuleValidator
         if(rule is RuleNotNull)
             return NotNull(errorMsgMgr, dataName, value?.ToString());
 
-        //if (rule is RuleNotNullOrEmpty ruleNotNullOrEmpty)
-        //    return NotNullOrEmpty(errorMsgMgr, dataName, value?.ToString());
+        if (rule is RuleNotNullOrEmpty)
+            return NotNullOrEmpty(errorMsgMgr, dataName, value?.ToString());
 
-        //if(rule is RuleNotNullOrWhiteSpace)
-        //    return NotNullOrWhiteSpace(errorMsgMgr, dataName, value?.ToString());
+        if(rule is RuleNotNullOrWhiteSpace)
+            return NotNullOrWhiteSpace(errorMsgMgr, dataName, value?.ToString());
 
         //if(rule is RuleBetweenLength ruleBetweenLength)
         //    return BetweenLength(errorMsgMgr, dataName, value?.ToString(), ruleBetweenLength.MinLength, ruleBetweenLength.MaxLength);

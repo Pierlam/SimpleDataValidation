@@ -2,12 +2,13 @@
 
 SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
 
-It's written in C#/NET8 with VS2026. The code is covered by 13 unit tests to ensure the non-regression of incoming evolutions.
+It's written in C#/NET8 with VS2026. The code is covered by 20 unit tests to ensure the non-regression of incoming evolutions.
 
 
 # A quick example
 
-The usage is very simple, you just need to call the static method of the V class, passing the name of the data and its value.
+The usage is very simple, you just need to call one of validation static method of the V class, passing the name of the data and its value.
+Then if the validation failed, the function returns an error message or an empty string if validation finished successfully.
 
 ```
 Syntax:
@@ -16,17 +17,26 @@ If the validation fails  -> The error message is returned in the errMsg variable
 If the validation passes -> An empty string is returned.
 ```
 
-The following example shows how to use the library to validate a string value to check if it's not null.
-
+The following example shows some usual cases:
 
 ```
 using SimpleDataValidation;
 
 // Validate a string value to check if it's not null
-errMsg = V.MinLength("Name", "John", 8);
-Console.WriteLine($"-> errorMessage: {errMsg}");   
+errMsg = V.Text("Name", "John", 8);
+if(V.Error(errMsg)
+	Console.WriteLine($"-> errorMessage: {errMsg}");   <- Not diplayed
 
-// will display the following error message:
+if(V.Ok(errMsg)
+	Console.WriteLine($"The Name value is correct!");  <- Displayed
+
+// Validate that the value has 8 chars length minimum
+errMsg = V.MinLength("Name", "John", 8);
+if(V.Error(errMsg)
+	Console.WriteLine($"-> errorMessage: {errMsg}");   <- Displayed
+
+//###-will display:
+The Name value is correct!
 -> errorMessage: Name must be at least 8 characters long
 ```
 
@@ -39,7 +49,7 @@ You can also use the library in a more fluent way, by chaining the validation me
 errMsg = V.Define("Name", "John").AddNotNull().AddMinLength(8).Validate();
 ```
 
-Start by calling the static method Define of the V class, passing the name of the data and its value. 
+Start by calling the validation static method Define of the V class, passing the name of the data and its value. 
 Then, you can chain the validation methods to validate the data value many times. 
 Finally, call the Validate method to perform the validation and return the error message if any.
 
@@ -57,6 +67,8 @@ NotNull                  Check that the object value is not null.
 NotNullOrEmpty           Check that the string value is not null or empty.
 NotNullOrWhiteSpace      Check that the string value is not null or whitespace.
 Text				     Check that the string contains a text, same as NotNullOrWhiteSpace.
+Letters  				 Check that the string contains only letter.
+Digits  				 Check that the string contains only digit.
 LettersDigitsUnderscore  Check that the string contains only letter, digit or underscore.
 BetweenLength		     Check that the length of string is between a min and a max value.
 MinLength                Check that the string value has a minimum length.
@@ -69,7 +81,10 @@ Int                      Check that the object value is an integer.
 Iban                     Check that the string value is a valid IBAN number.
 
 // List of available chained validation methods:
-AddNotNull  
+AddNotNull
+AddNotNullOrEmpty
+AddNotNullOrWhiteSpace
+AddText
 AddMinLength
 AddMaxLength
 ```

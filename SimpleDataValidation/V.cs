@@ -185,7 +185,7 @@ public class V : VBase
     }
 
     /// <summary>
-    /// Check that the length of string is between a min and a max value.
+    /// Check that the length of string is between a min (included) and a max (included) value.
     /// </summary>
     /// <param name="dataName"></param>
     /// <param name="value"></param>
@@ -413,6 +413,23 @@ public class V : VBase
     public V AddNotNull()
     {
         _ruleBases.Add(new RuleNotNull());
+        return this;
+    }
+
+    public V AddNotNullOrEmpty()
+    {
+        _ruleBases.Add(new RuleNotNullOrEmpty());
+        return this;
+    }
+    public V AddNotNullOrWhiteSpace()
+    {
+        _ruleBases.Add(new RuleNotNullOrWhiteSpace());
+        return this;
+    }
+
+    public V AddText()
+    {
+        _ruleBases.Add(new RuleNotNullOrWhiteSpace());
         return this;
     }
 

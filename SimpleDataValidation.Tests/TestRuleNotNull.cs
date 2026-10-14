@@ -21,6 +21,40 @@ public class TestRuleNotNull
     }
 
     [TestMethod]
+    public void NotNullOrEmpty()
+    {
+        string errMsg;
+        errMsg = V.Define("field", "john").AddNotNullOrEmpty().Validate();
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.Define("field", null).AddNotNullOrEmpty().Validate();
+        Assert.AreEqual("field is required", errMsg);
+    }
+
+
+    [TestMethod]
+    public void NotNullOrWhiteSpace()
+    {
+        string errMsg;
+        errMsg = V.Define("field", "john").AddNotNullOrWhiteSpace().Validate();
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.Define("field", null).AddNotNullOrWhiteSpace().Validate();
+        Assert.AreEqual("field is required", errMsg);
+    }
+
+    [TestMethod]
+    public void Text()
+    {
+        string errMsg;
+        errMsg = V.Define("field", "john").AddText().Validate();
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.Define("field", null).AddText().Validate();
+        Assert.AreEqual("field is required", errMsg);
+    }
+
+    [TestMethod]
     public void NotNullMinLength()
     {
         string errMsg;

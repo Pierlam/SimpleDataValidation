@@ -10,7 +10,7 @@ Other functions:
 V.Error(errMsg)			return true if the errMsg contains a text.
 V.Ok(errMsg)			return true if the errMsg is empty, it's not an error.
 
--16 unit tests, all are green.
+-20 unit tests, all are green.
 
 ## 0.1.0 Release (2026-10-10)
 
