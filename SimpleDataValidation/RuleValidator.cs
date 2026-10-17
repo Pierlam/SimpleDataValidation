@@ -28,10 +28,19 @@ public class RuleValidator
         if(rule is RuleNotNullOrWhiteSpace)
             return NotNullOrWhiteSpace(errorMessageMgr, dataName, value?.ToString());
 
+        if (rule is RuleStartsWith ruleStartsWith)
+            return StartsWith(errorMessageMgr, dataName, value?.ToString(), ruleStartsWith.Start);
+
+        if (rule is RuleFirstCharIn ruleFirstCharIn)
+            return FirstCharIn(errorMessageMgr, dataName, value?.ToString(), ruleFirstCharIn.Chars);
+
+        if (rule is RuleFirstCharNotIn ruleFirstCharNotIn)
+            return FirstCharNotIn(errorMessageMgr, dataName, value?.ToString(), ruleFirstCharNotIn.Chars);
+
         //if(rule is RuleBetweenLength ruleBetweenLength)
         //    return BetweenLength(errorMsgMgr, dataName, value?.ToString(), ruleBetweenLength.MinLength, ruleBetweenLength.MaxLength);
 
-        if(rule is RuleMinLength ruleMinLength)
+        if (rule is RuleMinLength ruleMinLength)
             return MinLength(errorMessageMgr, dataName, value?.ToString(), ruleMinLength.MinLength);
 
         if(rule is RuleMaxLength ruleMaxLength)

@@ -549,6 +549,24 @@ public class V : VBase
         return this;
     }
 
+    public V AddStartsWith(string start)
+    {
+        _ruleBases.Add(new RuleStartsWith(start));
+        return this;
+    }
+
+    public V AddFirstCharIn(string chars)
+    {
+        _ruleBases.Add(new RuleFirstCharIn(chars));
+        return this;
+    }
+
+    public V AddFirstCharNotIn(string chars)
+    {
+        _ruleBases.Add(new RuleFirstCharNotIn(chars));
+        return this;
+    }
+
     public V AddMinLength(int length)
     {
         _ruleBases.Add(new RuleMinLength(length));

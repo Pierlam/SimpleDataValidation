@@ -5,9 +5,9 @@ Text				     Check that the string contains a text, same as NotNullOrWhiteSpace.
 Letters  				 Check that the string contains only letter.
 Digits  				 Check that the string contains only digit.
 LettersDigitsUnderscore  Check that the string contains only letter, digit or underscore.
-StartsWith				Check that the string starts with the provided string.
-FirstCharIn				Check that the first char of the string is one of provided chars.
-FirstCharNotIn			Check that the first char of the string is not one of provided chars.
+StartsWith				 Check that the string starts with the provided string.
+FirstCharIn				 Check that the first char of the string is one of provided chars.
+FirstCharNotIn			 Check that the first char of the string is not one of provided chars.
 Number					 Check that the object value is a number: integer, dou ble float or BigInteger.
 String 					 Check that the object value is a string.
 CardNumber				 Check that the string is a valid card number.
@@ -16,13 +16,16 @@ CardNumber				 Check that the string is a valid card number.
 AddNotNullOrEmpty
 AddNotNullOrWhiteSpace
 AddText
+AddStartsWith
+AddFirstCharIn
+AddFirstCharNotIn
 AddCardNumber
 
 -Other functions:
 V.Error(errMsg)			return true if the errMsg contains a text.
 V.Ok(errMsg)			return true if the errMsg is empty, it's not an error.
 
--37 unit tests, all are green.
+-40 unit tests, all are green.
 
 ## 0.1.0 Release (2026-10-10)
 

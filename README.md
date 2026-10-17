@@ -2,7 +2,7 @@
 
 SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
 
-It's written in C#/NET8 with VS2026. The code is covered by 37 unit tests to ensure the non-regression of incoming evolutions.
+It's written in C#/NET8 with VS2026. The code is covered by 40 unit tests to ensure the non-regression of incoming evolutions.
 
 
 # A quick example
@@ -24,15 +24,15 @@ using SimpleDataValidation;
 
 // Validate a string value to check if it's not null
 errMsg = V.Text("Name", "John", 8);
-if(V.Error(errMsg)
+if(V.Error(errMsg))
 	Console.WriteLine($"-> errorMessage: {errMsg}");   <- Not diplayed
 
-if(V.Ok(errMsg)
+if(V.Ok(errMsg))
 	Console.WriteLine($"The Name value is correct!");  <- Displayed
 
 // Validate that the value has 8 chars length minimum
 errMsg = V.MinLength("Name", "John", 8);
-if(V.Error(errMsg)
+if(V.Error(errMsg))
 	Console.WriteLine($"-> errorMessage: {errMsg}");   <- Displayed
 
 //###-will display:
@@ -60,7 +60,6 @@ There are many available features to validate data, by type, by length, and by f
 
 ## Available validation methods
 
-
 ```
 // List of available direct validation methods:
 NotNull                  Check that the object value is not null.
@@ -73,7 +72,7 @@ Digits  				 Check that the string contains only digit.
 LettersDigitsUnderscore  Check that the string contains only letter, digit or underscore.
 
 StartsWith				Check that the string starts with the provided string.
-FirstCharIn				Check that the first char of the string is one of provided chars.
+AddFirstCharIn				Check that the first char of the string is one of provided chars.
 FirstCharNotIn			Check that the first char of the string is not one of provided chars.
 
 BetweenLength		     Check that the length of string is between a min and a max value.
@@ -98,6 +97,9 @@ AddNotNull
 AddNotNullOrEmpty
 AddNotNullOrWhiteSpace
 AddText
+AddStartsWith
+AddFirstCharIn
+AddFirstCharNotIn
 AddMinLength
 AddMaxLength
 AddCardNumber
@@ -139,17 +141,34 @@ V.SetEndMessage("!");
 exp: The name is required!
 ```
 
-# Check Iban and card Number
+# Some samples
+
+## Check string content
+
+Do some checks on a string value.
+
+
+```
+// Check that the value starts with the provided string.
+string a="hello";
+errMsg = V.StartsWith("field", a, "h");  -> ok, errMsg will be empty
+
+// Check that the value first char is one of 'xyz'.
+string a="hello";
+errMsg = V.FirstCharIn("field", a, "xyz");  -> error! 
+```
+
+## Check Iban and card Number
 
 Check if an Iban number is valid:
 With or without space chars.
 
 ```
 string iban = "GB82 WEST 1234 5698 7654 32";
-errMsg = V.Iban("field", iban);
+errMsg = V.Iban("field", iban);  -> ok
 
 iban = "GB82WEST12345698765432";
-errMsg = V.Iban("field", iban);
+errMsg = V.Iban("field", iban);  -> ok
 ```
 
 Check if a card number is valid:
