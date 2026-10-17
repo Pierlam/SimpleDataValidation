@@ -67,18 +67,25 @@ NotNull                  Check that the object value is not null.
 NotNullOrEmpty           Check that the string value is not null or empty.
 NotNullOrWhiteSpace      Check that the string value is not null or whitespace.
 Text				     Check that the string contains a text, same as NotNullOrWhiteSpace.
+
 Letters  				 Check that the string contains only letter.
 Digits  				 Check that the string contains only digit.
 LettersDigitsUnderscore  Check that the string contains only letter, digit or underscore.
+
 BetweenLength		     Check that the length of string is between a min and a max value.
 MinLength                Check that the string value has a minimum length.
 MaxLength                Check that the string value has a maximum length.
 ExactLength              Check that the string value has an exact length.
+
 EmailFormat              Check that the email format is valid: a@b.c
 Email                    Check that the string value is a valid email address.
 EmailStrict              Check that the email format is valid , more strict but more time consuming.
+
 Int                      Check that the object value is an integer.
+
 Iban                     Check that the string value is a valid IBAN number.
+CardNumber				 Check that the string is a valid card number.
+
 
 // List of available chained validation methods:
 AddNotNull
@@ -87,6 +94,7 @@ AddNotNullOrWhiteSpace
 AddText
 AddMinLength
 AddMaxLength
+AddCardNumber
 ```
 
 ## Error Messages

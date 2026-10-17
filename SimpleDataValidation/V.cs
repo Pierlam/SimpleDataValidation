@@ -458,5 +458,11 @@ public class V : VBase
         return this;
     }
 
+    public V AddCardNumber(CardBank cardBank)
+    {
+        _ruleBases.Add(new RuleCardNumber(cardBank));
+        return this;
+    }
+
     #endregion
 }
