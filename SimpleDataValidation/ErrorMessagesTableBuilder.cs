@@ -50,7 +50,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Email, "{0} must be a valid email address" },
             { lang + ErrorCode.Int, "{0} must be an integer" },
             { lang + ErrorCode.Iban, "{0} must be a valid IBAN" },
-            
+            { lang + ErrorCode.CardNumber, "{0} must be a valid Card Number" },
+
         };
 
         return tableErrorMsg;
@@ -73,7 +74,9 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.ExactLength, "{0} doit contenir exactement {1} caractères"  },
             { lang + ErrorCode.Email, "{0} doit être une adresse email valide" },
             { lang + ErrorCode.Int, "{0} doit être un entier" },
-            { lang + ErrorCode.Iban, "{0} doit être un IBAN valide" }
+            { lang + ErrorCode.Iban, "{0} doit être un IBAN valide" },
+            { lang + ErrorCode.CardNumber, "{0} doit être un numéro de carte valide" },
+
         };
 
         return tableErrorMsg;

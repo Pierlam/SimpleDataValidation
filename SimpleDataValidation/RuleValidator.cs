@@ -14,27 +14,30 @@ namespace SimpleDataValidation;
 /// </summary>
 public class RuleValidator
 {
-    public static string Validate(ErrorMessageMgr errorMsgMgr, RuleBase rule, string dataName, object value)
+    public static string Validate(ErrorMessageMgr errorMessageMgr, RuleBase rule, string dataName, object value)
     {
         if(rule == null) throw new ArgumentNullException(nameof(rule));
 
         if(rule is RuleNotNull)
-            return NotNull(errorMsgMgr, dataName, value?.ToString());
+            return NotNull(errorMessageMgr, dataName, value?.ToString());
 
         if (rule is RuleNotNullOrEmpty)
-            return NotNullOrEmpty(errorMsgMgr, dataName, value?.ToString());
+            return NotNullOrEmpty(errorMessageMgr, dataName, value?.ToString());
 
         if(rule is RuleNotNullOrWhiteSpace)
-            return NotNullOrWhiteSpace(errorMsgMgr, dataName, value?.ToString());
+            return NotNullOrWhiteSpace(errorMessageMgr, dataName, value?.ToString());
 
         //if(rule is RuleBetweenLength ruleBetweenLength)
         //    return BetweenLength(errorMsgMgr, dataName, value?.ToString(), ruleBetweenLength.MinLength, ruleBetweenLength.MaxLength);
 
         if(rule is RuleMinLength ruleMinLength)
-            return MinLength(errorMsgMgr, dataName, value?.ToString(), ruleMinLength.MinLength);
+            return MinLength(errorMessageMgr, dataName, value?.ToString(), ruleMinLength.MinLength);
 
         if(rule is RuleMaxLength ruleMaxLength)
-            return MaxLength(errorMsgMgr, dataName, value?.ToString(), ruleMaxLength.MaxLength);
+            return MaxLength(errorMessageMgr, dataName, value?.ToString(), ruleMaxLength.MaxLength);
+
+        if (rule is RuleCardNumber cardNumber)
+            return CardNumber(errorMessageMgr, dataName, value?.ToString(), cardNumber.CardBank);
 
         throw new NotImplementedException(nameof(rule));
     }
@@ -45,9 +48,9 @@ public class RuleValidator
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string NotNull(ErrorMessageMgr errorMsgMgr, string dataName, object value)
+    public static string NotNull(ErrorMessageMgr errorMessageMgr, string dataName, object value)
     {
-        return NotNull(dataName, value, errorMsgMgr.GetMessage(ErrorCode.NotNull, dataName));
+        return NotNull(dataName, value, errorMessageMgr.GetMessage(ErrorCode.NotNull, dataName));
     }
 
     /// <summary>
@@ -68,9 +71,9 @@ public class RuleValidator
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string NotNullOrEmpty(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    public static string NotNullOrEmpty(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
-        return NotNullOrEmpty(dataName, value, errorMsgMgr.GetMessage(ErrorCode.NotNullOrEmpty, dataName));
+        return NotNullOrEmpty(dataName, value, errorMessageMgr.GetMessage(ErrorCode.NotNullOrEmpty, dataName));
     }
 
     /// <summary>
@@ -91,9 +94,9 @@ public class RuleValidator
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string NotNullOrWhiteSpace(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    public static string NotNullOrWhiteSpace(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
-        return NotNullOrWhiteSpace(dataName, value, errorMsgMgr.GetMessage(ErrorCode.NotNullOrWhiteSpace, dataName));
+        return NotNullOrWhiteSpace(dataName, value, errorMessageMgr.GetMessage(ErrorCode.NotNullOrWhiteSpace, dataName));
     }
 
     /// <summary>
@@ -109,9 +112,9 @@ public class RuleValidator
         return string.Empty;
     }
 
-    public static string Letters(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    public static string Letters(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
-        return Letters(dataName, value, errorMsgMgr.GetMessage(ErrorCode.Letters, dataName));
+        return Letters(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Letters, dataName));
     }
 
     public static string Letters(string dataName, string value, string errorMessage)
@@ -126,9 +129,9 @@ public class RuleValidator
 
     }
 
-    public static string Digits(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    public static string Digits(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
-        return Digits(dataName, value, errorMsgMgr.GetMessage(ErrorCode.Digits, dataName));
+        return Digits(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Digits, dataName));
     }
 
     public static string Digits(string dataName, string value, string errorMessage)
@@ -143,9 +146,9 @@ public class RuleValidator
 
     }
 
-    public static string LettersDigitsUnderscore(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    public static string LettersDigitsUnderscore(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
-        return LettersDigitsUnderscore(dataName, value, errorMsgMgr.GetMessage(ErrorCode.LettersDigitsUnderscore, dataName));
+        return LettersDigitsUnderscore(dataName, value, errorMessageMgr.GetMessage(ErrorCode.LettersDigitsUnderscore, dataName));
     }
 
     public static string LettersDigitsUnderscore(string dataName, string value, string errorMessage)
@@ -166,9 +169,9 @@ public class RuleValidator
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string BetweenLength(ErrorMessageMgr errorMsgMgr, string dataName, string value, int minLength, int maxLength)
+    public static string BetweenLength(ErrorMessageMgr errorMessageMgr, string dataName, string value, int minLength, int maxLength)
     {
-        return BetweenLength(dataName, value, minLength, maxLength, errorMsgMgr.GetMessage(ErrorCode.BetweenLength, dataName, minLength.ToString(), maxLength.ToString()));
+        return BetweenLength(dataName, value, minLength, maxLength, errorMessageMgr.GetMessage(ErrorCode.BetweenLength, dataName, minLength.ToString(), maxLength.ToString()));
     }
 
     /// <summary>
@@ -190,9 +193,9 @@ public class RuleValidator
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string MinLength(ErrorMessageMgr errorMsgMgr, string dataName, string value, int minLength)
+    public static string MinLength(ErrorMessageMgr errorMessageMgr, string dataName, string value, int minLength)
     {
-        return MinLength(dataName, value, minLength, errorMsgMgr.GetMessage(ErrorCode.MinLength, dataName, minLength.ToString()));
+        return MinLength(dataName, value, minLength, errorMessageMgr.GetMessage(ErrorCode.MinLength, dataName, minLength.ToString()));
     }
 
     /// <summary>
@@ -214,9 +217,9 @@ public class RuleValidator
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string MaxLength(ErrorMessageMgr errorMsgMgr, string dataName, string value, int maxLength)
+    public static string MaxLength(ErrorMessageMgr errorMessageMgr, string dataName, string value, int maxLength)
     {
-        return MaxLength(dataName, value, maxLength, errorMsgMgr.GetMessage(ErrorCode.MaxLength, dataName, maxLength.ToString()));
+        return MaxLength(dataName, value, maxLength, errorMessageMgr.GetMessage(ErrorCode.MaxLength, dataName, maxLength.ToString()));
     }
 
     /// <summary>
@@ -240,9 +243,9 @@ public class RuleValidator
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string ExactLength(ErrorMessageMgr errorMsgMgr, string dataName, string value, int exactLength)
+    public static string ExactLength(ErrorMessageMgr errorMessageMgr, string dataName, string value, int exactLength)
     {
-        return ExactLength(dataName, value, exactLength, errorMsgMgr.GetMessage(ErrorCode.ExactLength, dataName, exactLength.ToString()));
+        return ExactLength(dataName, value, exactLength, errorMessageMgr.GetMessage(ErrorCode.ExactLength, dataName, exactLength.ToString()));
     }
 
     /// <summary>
@@ -264,9 +267,9 @@ public class RuleValidator
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string EmailFormat(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    public static string EmailFormat(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
-        return EmailFormat(dataName, value, errorMsgMgr.GetMessage(ErrorCode.Email, dataName));
+        return EmailFormat(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Email, dataName));
     }
 
     /// <summary>
@@ -297,9 +300,9 @@ public class RuleValidator
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string Email(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    public static string Email(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
-        return Email(dataName, value, errorMsgMgr.GetMessage(ErrorCode.Email, dataName));
+        return Email(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Email, dataName));
     }
 
     /// <summary>
@@ -331,9 +334,9 @@ public class RuleValidator
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string EmailStrict(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    public static string EmailStrict(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
-        return EmailStrict(dataName, value, errorMsgMgr.GetMessage(ErrorCode.Email, dataName));
+        return EmailStrict(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Email, dataName));
     }
 
     /// <summary>
@@ -365,9 +368,9 @@ public class RuleValidator
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string Int(ErrorMessageMgr errorMsgMgr, string dataName, object value)
+    public static string Int(ErrorMessageMgr errorMessageMgr, string dataName, object value)
     {
-        return Int(dataName, value, errorMsgMgr.GetMessage(ErrorCode.Int, dataName));
+        return Int(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Int, dataName));
     }
 
     /// <summary>
@@ -386,14 +389,27 @@ public class RuleValidator
         return string.Empty;
     }
 
-    public static string Iban(ErrorMessageMgr errorMsgMgr, string dataName, string value)
+    public static string Iban(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
-        return Iban(dataName, value, errorMsgMgr.GetMessage(ErrorCode.Iban, dataName));
+        return Iban(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Iban, dataName));
     }
 
     public static string Iban(string dataName, string value, string errorMessage)
     {
         return IbanValidator.CheckIban(value) ? string.Empty : errorMessage;
+    }
+
+    public static string CardNumber(ErrorMessageMgr errorMessageMgr, string dataName, string value, CardBank cardBank)
+    {
+        return CardNumber(dataName, value, cardBank, errorMessageMgr.GetMessage(ErrorCode.CardNumber, dataName));
+    }
+
+    public static string CardNumber(string dataName, string value, CardBank cardBank, string errorMessage)
+    {
+        int res = CardValidator.CheckCardNumber(cardBank, value);
+        if (res == 0) return string.Empty;
+        return errorMessage;
+
     }
 
 }

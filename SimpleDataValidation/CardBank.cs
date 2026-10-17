@@ -17,6 +17,9 @@ public enum CardBank
     AmericanExpress = 4,
     Discover = 8,
 
-    DinersClub = 16
+    DinersClub = 16,
 
+    ChinaUnionPay=32,
+
+    JCB=64,
 }

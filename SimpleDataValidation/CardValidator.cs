@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SimpleDataValidation;
 
@@ -21,7 +22,7 @@ public class CardValidator
     /// 2: Only digits allowed.
     /// 3: Number length is wrong.
     /// 4: The number is invalid.
-    /// 5: The number doesn't match the bank
+    /// 5: The number doesn't match the bank.
     /// </summary>
     /// <param name="dataName"></param>
     /// <param name="CardBanks"></param>
@@ -82,9 +83,85 @@ public class CardValidator
         }
 
         //--Mastercard BIN2, Start with 2.  2221 à 2720
-        // todo:
+        if(cardStr.StartsWith("2"))
+        {
+            string prefix = cardStr.Substring(0, 4);
+            if(int.TryParse(prefix, out int prefixInt))
+            {
+                if(prefixInt >= 2221 && prefixInt <= 2720)
+                {
+                    cardBankRes = CardBank.Mastercard;
+                    return true;
+                }
+            }
+        }
 
-        //--other banks: Discover, Dinner Clubs, ...
+        //--Discover: Begins with 6011, 644 to 649, or 65.
+        // length: 16 digits
+        if(cardStr.StartsWith("6011") || cardStr.StartsWith("65"))
+        {
+            cardBankRes = CardBank.Discover;
+            return true;
+        }
+        if (cardStr.StartsWith("64"))
+        {
+            string prefix = cardStr.Substring(0, 3);
+            if (int.TryParse(prefix, out int prefixInt))
+            {
+                if (prefixInt >= 644 && prefixInt <= 649)
+                {
+                    cardBankRes = CardBank.Discover;
+                    return true;
+                }
+            }
+        }
+
+        //--Dinners club
+        // begins with 300 to 305, or 36 or 38.
+        //length: 14
+        if (cardStr.StartsWith("36") || cardStr.StartsWith("38"))
+        {
+            cardBankRes = CardBank.DinersClub;
+            return true;
+        }
+        if (cardStr.StartsWith("30"))
+        {
+            string prefix = cardStr.Substring(0, 3);
+            if (int.TryParse(prefix, out int prefixInt))
+            {
+                if (prefixInt >= 300 && prefixInt <= 305)
+                {
+                    cardBankRes = CardBank.DinersClub;
+                    return true;
+                }
+            }
+        }
+
+        //--China UnionPay:
+        // begins with 62 or 81
+        // length: 16 - 19
+        if(cardStr.StartsWith("62") || cardStr.StartsWith("81"))
+        {
+            cardBankRes = CardBank.ChinaUnionPay;
+            return true;
+        }
+
+        // JCB: begins with 35, specifically from 3528 through 3589
+        if(cardStr.StartsWith("35"))
+        {
+            string prefix = cardStr.Substring(0, 4);
+            if (int.TryParse(prefix, out int prefixInt))
+            {
+                if (prefixInt >= 3528 && prefixInt <= 3589)
+                {
+                    cardBankRes = CardBank.JCB;
+                    return true;
+                }
+            }
+
+        }
+
+        //--other banks: 
 
         cardBankRes = new CardBank();
         return false;
@@ -92,7 +169,13 @@ public class CardValidator
     }
 
 
-    // final check: length and Luhn calculation
+    /// <summary>
+    /// Final checks: length and Luhn calculation
+    /// </summary>
+    /// <param name="cardStr"></param>
+    /// <param name="cardBanks"></param>
+    /// <param name="cardBankRes"></param>
+    /// <returns></returns>
     static int FinalCheckLengthAndLuhnCalc(string cardStr, CardBank cardBanks, CardBank cardBankRes)
     {
         //--is it a Visa card?
@@ -117,6 +200,42 @@ public class CardValidator
         if (CheckCardBank(CardBank.Mastercard, cardBanks, cardBankRes))
         {
             if (cardStr.Length != 16) return 3;
+            if (!LuhnValidation(cardStr)) return 4;
+            // card number is good
+            return 0;
+        }
+
+        //--is it a Discover?
+        if (CheckCardBank(CardBank.Discover, cardBanks, cardBankRes))
+        {
+            if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
+            if (!LuhnValidation(cardStr)) return 4;
+            // card number is good
+            return 0;
+        }
+
+        //--is it a DinnersClub?
+        if (CheckCardBank(CardBank.DinersClub, cardBanks, cardBankRes))
+        {
+            if (cardStr.Length != 14) return 3;
+            if (!LuhnValidation(cardStr)) return 4;
+            // card number is good
+            return 0;
+        }
+
+        //--is it a China UnionPay?
+        if (CheckCardBank(CardBank.ChinaUnionPay, cardBanks, cardBankRes))
+        {
+            if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
+            if (!LuhnValidation(cardStr)) return 4;
+            // card number is good
+            return 0;
+        }
+
+        //--is it a JCB?
+        if (CheckCardBank(CardBank.JCB, cardBanks, cardBankRes))
+        {
+            if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
             if (!LuhnValidation(cardStr)) return 4;
             // card number is good
             return 0;

@@ -395,6 +395,19 @@ public class V : VBase
         return errMsg;
     }
 
+
+    public static string CardNumber(string dataName, string value, CardBank cardbank)
+    {
+        string errMsg = RuleValidator.CardNumber(_errorMessageMgr, dataName, value, cardbank);
+        return errMsg;
+    }
+
+    public static string CardNumber(string dataName, string value, CardBank cardbank, string errorMessage)
+    {
+        string errMsg = RuleValidator.CardNumber(dataName, value, cardbank, errorMessage);
+        return errMsg;
+    }
+
     #endregion
 
     /// <summary>

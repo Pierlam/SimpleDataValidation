@@ -29,5 +29,7 @@ public enum ErrorCode
 
     Int,
 
-    Iban
+    Iban,
+
+    CardNumber
 }
