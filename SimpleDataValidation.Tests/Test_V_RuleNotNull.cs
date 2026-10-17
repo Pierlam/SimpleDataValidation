@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public class TestRuleNotNull
+public class Test_V_RuleNotNull
 {
     [TestMethod]
     public void NotNull()
@@ -17,6 +17,40 @@ public class TestRuleNotNull
         Assert.AreEqual(string.Empty, errMsg);
 
         errMsg = V.Define("field", null).AddNotNull().Validate();
+        Assert.AreEqual("field is required", errMsg);
+    }
+
+    [TestMethod]
+    public void NotNullOrEmpty()
+    {
+        string errMsg;
+        errMsg = V.Define("field", "john").AddNotNullOrEmpty().Validate();
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.Define("field", null).AddNotNullOrEmpty().Validate();
+        Assert.AreEqual("field is required", errMsg);
+    }
+
+
+    [TestMethod]
+    public void NotNullOrWhiteSpace()
+    {
+        string errMsg;
+        errMsg = V.Define("field", "john").AddNotNullOrWhiteSpace().Validate();
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.Define("field", null).AddNotNullOrWhiteSpace().Validate();
+        Assert.AreEqual("field is required", errMsg);
+    }
+
+    [TestMethod]
+    public void Text()
+    {
+        string errMsg;
+        errMsg = V.Define("field", "john").AddText().Validate();
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.Define("field", null).AddText().Validate();
         Assert.AreEqual("field is required", errMsg);
     }
 

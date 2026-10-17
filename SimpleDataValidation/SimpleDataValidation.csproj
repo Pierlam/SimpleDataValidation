@@ -4,20 +4,22 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>0.1</Version>
+    <Version>0.2</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.</Title>
     <Company>Pierlam Project</Company>
-    <Description>The usage is very simple, you just need to call the static method of the V class, passing the name of the data and its value.
-There are many available features to validate data, by type, by length, and by format like: NotNull, Email, Length, Iban,...</Description>
+    <Description>
+		SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
+		You just need to call one of validation static method of the V class, passing the name of the data and its value.
+		Then if the validation failed, the function returns an error message or an empty string if validation finished successfully.
+		There are many available features to validate data, by type, by length, and by format like: NotNull, Length, StartsWith, Email, Iban, Card Number,...</Description>
     <PackageProjectUrl>https://github.com/Pierlam/SimpleDataValidation</PackageProjectUrl>
     <PackageIcon>logo_V_128_basic.jpg</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/Pierlam/SimpleDataValidation</RepositoryUrl>
-    <PackageTags>dotnet;csharp;validation;validator;check;verification;field;property</PackageTags>
+    <PackageTags>dotnet;csharp;validation;validator;check;verification;email;mail;iban;card;visa;cardnumber;field;property</PackageTags>
     <Authors>Pierlam</Authors>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <PackageReleaseNotes>First version of the library.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

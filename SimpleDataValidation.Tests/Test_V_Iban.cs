@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public class TestIban
+public class Test_V_Iban
 {
     [TestMethod]
     public void IbanOkAndWrong()

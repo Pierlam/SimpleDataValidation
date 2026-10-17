@@ -58,6 +58,28 @@ public abstract class VBase
     }
 
     /// <summary>
+    /// If the error message contains a text, it's an error, so return true.
+    /// </summary>
+    /// <param name="errMsg"></param>
+    /// <returns></returns>
+    public static bool Error(string errMsg)
+    {
+        if (string.IsNullOrWhiteSpace(errMsg)) return false;
+        return true;
+    }
+
+    /// <summary>
+    /// If the error message is empty, it's not an error but a success so return true.
+    /// </summary>
+    /// <param name="errMsg"></param>
+    /// <returns></returns>
+    public static bool Ok(string errMsg)
+    {
+        if (!string.IsNullOrWhiteSpace(errMsg)) return false;
+        return true;
+    }
+
+    /// <summary>
     /// Defines a new validation context for a given data field, allowing the chaining of validation rules.
     /// </summary>
     /// <param name="dataName"></param>
@@ -89,6 +111,5 @@ public abstract class VBase
             }
         }
         return finalErrMsg.Trim();
-    }
-
+    }    
 }

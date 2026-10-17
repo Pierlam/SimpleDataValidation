@@ -13,6 +13,17 @@ public enum ErrorCode
 
     NotNullOrWhiteSpace,
 
+    Letters,
+
+    Digits,
+    LettersDigitsUnderscore,
+
+    StarsWith,
+
+    FirstCharIn,
+
+    FirstCharNotIn,
+
     BetweenLength,
 
     MinLength,
@@ -25,5 +36,11 @@ public enum ErrorCode
 
     Int,
 
-    Iban
+    Number,
+
+    String,
+
+    Iban,
+
+    CardNumber
 }
