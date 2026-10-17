@@ -22,8 +22,8 @@ The following example shows some usual cases:
 ```
 using SimpleDataValidation;
 
-// Validate a string value to check if it's not null
-errMsg = V.Text("Name", "John", 8);
+// Validate that the string value contains a text, it is not null, not empty and without any whitespace.
+errMsg = V.Text("Name", "John");
 if(V.Error(errMsg))
 	Console.WriteLine($"-> errorMessage: {errMsg}");   <- Not diplayed
 
@@ -35,7 +35,7 @@ errMsg = V.MinLength("Name", "John", 8);
 if(V.Error(errMsg))
 	Console.WriteLine($"-> errorMessage: {errMsg}");   <- Displayed
 
-//###-will display:
+> Output:
 The Name value is correct!
 -> errorMessage: Name must be at least 8 characters long
 ```
@@ -47,12 +47,18 @@ You can also use the library in a more fluent way, by chaining the validation me
 ```
 // Validate a string value to check if it's not null and has a minimum length of 8 characters
 errMsg = V.Define("Name", "John").AddNotNull().AddMinLength(8).Validate();
+
+errMsg = V.Define("Name", "john").AddNotNull().AddStartsWith("jo").Validate();
+
+errMsg = V.Define("Card Number", "4111 1111 4555 1142").AddNotNull().AddCardNumber(CardBank.Visa).Validate();
+
 ```
 
 Start by calling the validation static method Define of the V class, passing the name of the data and its value. 
 Then, you can chain the validation methods to validate the data value many times. 
 Finally, call the Validate method to perform the validation and return the error message if any.
 
+All validation rules will be executed. Error messages will be concatened.
 
 # Features
 
@@ -65,17 +71,17 @@ There are many available features to validate data, by type, by length, and by f
 NotNull                  Check that the object value is not null.
 NotNullOrEmpty           Check that the string value is not null or empty.
 NotNullOrWhiteSpace      Check that the string value is not null or whitespace.
-Text				     Check that the string contains a text, same as NotNullOrWhiteSpace.
+Text                     Check that the string contains a text, same as NotNullOrWhiteSpace.
 
-Letters  				 Check that the string contains only letter.
-Digits  				 Check that the string contains only digit.
+Letters                  Check that the string contains only letter.
+Digits                   Check that the string contains only digit.
 LettersDigitsUnderscore  Check that the string contains only letter, digit or underscore.
 
-StartsWith				Check that the string starts with the provided string.
-AddFirstCharIn				Check that the first char of the string is one of provided chars.
-FirstCharNotIn			Check that the first char of the string is not one of provided chars.
+StartsWith               Check that the string starts with the provided string.
+AddFirstCharIn           Check that the first char of the string is one of provided chars.
+FirstCharNotIn           Check that the first char of the string is not one of provided chars.
 
-BetweenLength		     Check that the length of string is between a min and a max value.
+BetweenLength            Check that the length of string is between a min and a max value.
 MinLength                Check that the string value has a minimum length.
 MaxLength                Check that the string value has a maximum length.
 ExactLength              Check that the string value has an exact length.
@@ -85,11 +91,11 @@ Email                    Check that the string value is a valid email address.
 EmailStrict              Check that the email format is valid , more strict but more time consuming.
 
 Int                      Check that the object value is an integer.
-Number					 Check that the object value is a number: integer, dou ble float or BigInteger.
-String 					 Check that the object value is a string.
+Number                   Check that the object value is a number: integer, dou ble float or BigInteger.
+String                   Check that the object value is a string.
 
 Iban                     Check that the string value is a valid IBAN number.
-CardNumber				 Check that the string is a valid card number.
+CardNumber               Check that the string is a valid card number.
 
 
 // List of available chained validation methods:
@@ -184,7 +190,6 @@ errMsg = V.CardNumber("field", "4111111145551142", CardBank.Visa);
 
 // the card number bank should be Visa or Mastercard
 errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard);
-
 
 // the card number bank should be Visa or Mastercard or American Express
 errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard | CardBank.AmericanExpress);

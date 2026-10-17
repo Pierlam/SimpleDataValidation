@@ -1,4 +1,4 @@
-﻿## 0.2.0 Release (2026-XX-XX)
+﻿## 0.2.0 Release (2026-10-17)
 
 -New validation available:
 Text				     Check that the string contains a text, same as NotNullOrWhiteSpace.
