@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public class TestEmail
+public class Test_V_Email
 {
     [TestMethod]
     public void EmailBasic()

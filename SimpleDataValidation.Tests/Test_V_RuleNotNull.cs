@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public class TestRuleNotNull
+public class Test_V_RuleNotNull
 {
     [TestMethod]
     public void NotNull()

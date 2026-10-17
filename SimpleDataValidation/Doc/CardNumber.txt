@@ -1,0 +1,66 @@
+﻿
+Card number validation:
+
+all described here:
+https://en.wikipedia.org/wiki/Payment_card_number
+      
+Check the number:
+  Luhn algorithm (Mod-10 checksum) 
+https://medium.com/@michael.harges/implementing-the-luhn-algorithm-in-c-9232c414da3a
+  
+       
+Network : 
+      
+1 ou un 2, alors votre carte provient d’une compagnie aérienne. 
+Le chiffre 3 indique que la carte appartient à la catégorie des organismes de voyages et de loisirs (dont American Express ou Diners Club)
+4 et 5 symbolisent les établissements bancaires et financiers. 
+6:  Major Industry Identifier for merchandising and banking.
+le 7 est lié au pétrole. 
+le 8 symbolise les télécommunications 
+le 9 désigne les supports nationaux.
+
+     
+-Visa: 
+Always begins with 4.
+length: 16 digits
+cvv:3 digits.
+      
+-Mastercard:
+Start with 51 to 55.
+Mastercard BIN2, Start with 2.  2221 à 2720 
+length: 16 digits
+cvv: 3 digits.
+ 
+-American Express:
+Begins with 34 or 37.
+length: 15 digits
+cvv: 4 digits.
+
+-Discover: 
+Begins with 6011, 622, 644 to 649, or 65.   
+length: 15 digits
+cvv: 3 digits.
+       
+-Diners Club:
+begins with 300 to 305, or by 309, 36, 38 or 39.
+length: 14
+cvv: 3 digits.
+  
+-Eftpos: 
+Begins with 5077, 5816, 5818 or 5889, 6086, 6368
+length 16
+ 
+-JCB: 
+begins with 35, specifically from 3528 through 3589
+length: 16
+15 digits for older cards starting with 2131 or 1800
+ 
+-China UnionPay:
+ begins with 62, 81?
+  
+ -BC Global:
+ begins with 65
+ 
+
+ Check card number:
+ https://docs.adyen.com/development-resources/test-cards-and-credentials/test-card-numbers

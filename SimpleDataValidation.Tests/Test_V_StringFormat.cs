@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public class TestStringFormat
+public class Test_V_StringFormat
 {
     [TestMethod]
     public void Letters()

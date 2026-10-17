@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public class TestLength
+public class Test_V_Length
 {
     [TestMethod]
     public void BetweenLength()
