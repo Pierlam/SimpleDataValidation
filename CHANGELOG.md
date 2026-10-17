@@ -1,4 +1,15 @@
-﻿## 0.2.0 Release (2026-10-17)
+﻿## 0.3.0 Release (2026-XX-XX)
+
+-New validation available:
+todo
+
+-New chain validation available:
+todo
+
+-40 unit tests, all are green.
+
+
+## 0.2.0 Release (2026-10-17)
 
 -New validation available:
 Text				     Check that the string contains a text, same as NotNullOrWhiteSpace.
@@ -8,7 +19,7 @@ LettersDigitsUnderscore  Check that the string contains only letter, digit or un
 StartsWith				 Check that the string starts with the provided string.
 FirstCharIn				 Check that the first char of the string is one of provided chars.
 FirstCharNotIn			 Check that the first char of the string is not one of provided chars.
-Number					 Check that the object value is a number: integer, dou ble float or BigInteger.
+Number					 Check that the object value is a number: integer, double float or BigInteger.
 String 					 Check that the object value is a string.
 CardNumber				 Check that the string is a valid card number.
 

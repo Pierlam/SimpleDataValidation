@@ -91,7 +91,7 @@ Email                    Check that the string value is a valid email address.
 EmailStrict              Check that the email format is valid , more strict but more time consuming.
 
 Int                      Check that the object value is an integer.
-Number                   Check that the object value is a number: integer, dou ble float or BigInteger.
+Number                   Check that the object value is a number: integer, double float or BigInteger.
 String                   Check that the object value is a string.
 
 Iban                     Check that the string value is a valid IBAN number.
