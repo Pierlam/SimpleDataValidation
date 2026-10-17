@@ -2,7 +2,7 @@
 
 SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
 
-It's written in C#/NET8 with VS2026. The code is covered by 20 unit tests to ensure the non-regression of incoming evolutions.
+It's written in C#/NET8 with VS2026. The code is covered by 37 unit tests to ensure the non-regression of incoming evolutions.
 
 
 # A quick example
@@ -72,6 +72,10 @@ Letters  				 Check that the string contains only letter.
 Digits  				 Check that the string contains only digit.
 LettersDigitsUnderscore  Check that the string contains only letter, digit or underscore.
 
+StartsWith				Check that the string starts with the provided string.
+FirstCharIn				Check that the first char of the string is one of provided chars.
+FirstCharNotIn			Check that the first char of the string is not one of provided chars.
+
 BetweenLength		     Check that the length of string is between a min and a max value.
 MinLength                Check that the string value has a minimum length.
 MaxLength                Check that the string value has a maximum length.
@@ -82,6 +86,8 @@ Email                    Check that the string value is a valid email address.
 EmailStrict              Check that the email format is valid , more strict but more time consuming.
 
 Int                      Check that the object value is an integer.
+Number					 Check that the object value is a number: integer, dou ble float or BigInteger.
+String 					 Check that the object value is a string.
 
 Iban                     Check that the string value is a valid IBAN number.
 CardNumber				 Check that the string is a valid card number.
@@ -127,10 +133,46 @@ exp: The name is required.
 ```
 
 Or put something else:
+
 ```
 V.SetEndMessage("!");
 exp: The name is required!
 ```
+
+# Check Iban and card Number
+
+Check if an Iban number is valid:
+With or without space chars.
+
+```
+string iban = "GB82 WEST 1234 5698 7654 32";
+errMsg = V.Iban("field", iban);
+
+iban = "GB82WEST12345698765432";
+errMsg = V.Iban("field", iban);
+```
+
+Check if a card number is valid:
+
+Should contains only digits and char space.
+Verify the length and the check sum, apply the Luhn algo.
+
+```
+// the card number bank should be Visa
+errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa);
+
+errMsg = V.CardNumber("field", "4111111145551142", CardBank.Visa);
+
+// the card number bank should be Visa or Mastercard
+errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard);
+
+
+// the card number bank should be Visa or Mastercard or American Express
+errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard | CardBank.AmericanExpress);
+```
+
+Bank validation implemented: Visa, Mastercard, American Express, Dinners Club, Discover JCB and China UnionPay.
+ 
 
 # Source code, documentation and nuget
 

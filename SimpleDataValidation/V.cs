@@ -184,6 +184,59 @@ public class V : VBase
         return errMsg;
     }
 
+    public static string StartsWith(string dataName, string value, string start)
+    {
+        string errMsg = RuleValidator.StartsWith(_errorMessageMgr, dataName, value, start);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string StartsWith(string dataName, string value, string start, string errorMessage)
+    {
+        string errMsg = RuleValidator.StartsWith(dataName, value, start, errorMessage);
+        return errMsg;
+    }
+
+    public static string FirstCharIn(string dataName, string value, string chars)
+    {
+        string errMsg = RuleValidator.FirstCharIn(_errorMessageMgr, dataName, value, chars);
+        return errMsg;
+
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string FirstCharIn(string dataName, string value, string chars, string errorMessage)
+    {
+        string errMsg = RuleValidator.FirstCharIn(dataName, value, chars,errorMessage);
+        return errMsg;
+    }
+
+    public static string FirstCharNotIn(string dataName, string value, string chars)
+    {
+        string errMsg = RuleValidator.FirstCharNotIn(_errorMessageMgr, dataName, value, chars);
+        return errMsg;
+
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string FirstCharNotIn(string dataName, string value, string chars, string errorMessage)
+    {
+        string errMsg = RuleValidator.FirstCharNotIn(dataName, value, chars,errorMessage);
+        return errMsg;
+    }
+
     /// <summary>
     /// Check that the length of string is between a min (included) and a max (included) value.
     /// </summary>
@@ -380,6 +433,56 @@ public class V : VBase
     public static string Int(string dataName, object value,string errorMessage)
     {
         string errMsg = RuleValidator.Int(dataName, value, errorMessage);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// Validates that the provided value is a number: int or double or real.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Number(string dataName, object value)
+    {
+        string errMsg = RuleValidator.Number(_errorMessageMgr, dataName, value);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// Validates that the provided value is a number: int or double.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <param name="errorMessage"></param>
+    /// <returns></returns>
+    public static string Number(string dataName, object value, string errorMessage)
+    {
+        string errMsg = RuleValidator.Number(dataName, value, errorMessage);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// Validates that the provided value is a string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string String(string dataName, object value)
+    {
+        string errMsg = RuleValidator.String(_errorMessageMgr, dataName, value);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// Validates that the provided value is a string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <param name="errorMessage"></param>
+    /// <returns></returns>
+    public static string String(string dataName, object value, string errorMessage)
+    {
+        string errMsg = RuleValidator.String(dataName, value, errorMessage);
         return errMsg;
     }
 

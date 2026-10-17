@@ -3,6 +3,7 @@ using SimpleDataValidation.Rule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -143,7 +144,6 @@ public class RuleValidator
         }
         // ok
         return string.Empty;
-
     }
 
     public static string LettersDigitsUnderscore(ErrorMessageMgr errorMessageMgr, string dataName, string value)
@@ -160,7 +160,53 @@ public class RuleValidator
         }
         // ok
         return string.Empty;
+    }
 
+    public static string StartsWith(ErrorMessageMgr errorMessageMgr, string dataName, string value, string start)
+    {
+        return StartsWith(dataName, value, start, errorMessageMgr.GetMessage(ErrorCode.StarsWith, dataName, start));
+    }
+
+    public static string StartsWith(string dataName, string value, string start, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        if (string.IsNullOrWhiteSpace(start)) return errorMessage;
+
+        if (value.StartsWith(start)) return string.Empty;
+
+        return errorMessage;
+    }
+
+    //FirstCharIn
+    public static string FirstCharIn(ErrorMessageMgr errorMessageMgr, string dataName, string value, string chars)
+    {
+        return FirstCharIn(dataName, value, chars, errorMessageMgr.GetMessage(ErrorCode.FirstCharIn, dataName, chars));
+    }
+
+    public static string FirstCharIn(string dataName, string value, string chars, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        if (string.IsNullOrWhiteSpace(chars)) return errorMessage;
+
+        if (chars.Contains(value[0])) return string.Empty;
+ 
+        return errorMessage;
+    }
+
+    //FirstCharNotsIn
+    public static string FirstCharNotIn(ErrorMessageMgr errorMessageMgr, string dataName, string value, string chars)
+    {
+        return FirstCharNotIn(dataName, value, chars, errorMessageMgr.GetMessage(ErrorCode.FirstCharNotIn, dataName, chars));
+    }
+
+    public static string FirstCharNotIn(string dataName, string value, string chars, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        if (string.IsNullOrWhiteSpace(chars)) return errorMessage;
+
+        if (!chars.Contains(value[0])) return string.Empty;
+
+        return errorMessage;
     }
 
     /// <summary>
@@ -385,6 +431,60 @@ public class RuleValidator
         if (value == null) return errorMessage;
 
         if (value.GetType() != typeof(int)) return errorMessage;
+
+        return string.Empty;
+    }
+
+    /// <summary>
+    /// Validates that the provided value is a number: integer or double or float or BigInteger.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Number(ErrorMessageMgr errorMessageMgr, string dataName, object value)
+    {
+        return Number(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Number, dataName));
+    }
+
+    /// <summary>
+    /// Validates that the provided value is an integer or float or BigInteger..
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <param name="errorMessage"></param>
+    /// <returns></returns>
+    public static string Number(string dataName, object value, string errorMessage)
+    {
+        if (value == null) return errorMessage;
+
+        if (value.GetType() != typeof(int) && value.GetType() != typeof(double) && value.GetType() != typeof(float) && value.GetType() != typeof(BigInteger)) return errorMessage;
+
+        return string.Empty;
+    }
+
+    /// <summary>
+    /// Validates that the provided value is a string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string String(ErrorMessageMgr errorMessageMgr, string dataName, object value)
+    {
+        return String(dataName, value, errorMessageMgr.GetMessage(ErrorCode.String, dataName));
+    }
+
+    /// <summary>
+    /// Validates that the provided value is a string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <param name="errorMessage"></param>
+    /// <returns></returns>
+    public static string String(string dataName, object value, string errorMessage)
+    {
+        if (value == null) return errorMessage;
+
+        if (value.GetType() != typeof(string)) return errorMessage;
 
         return string.Empty;
     }

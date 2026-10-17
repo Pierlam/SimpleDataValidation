@@ -17,6 +17,13 @@ public enum ErrorCode
 
     Digits,
     LettersDigitsUnderscore,
+
+    StarsWith,
+
+    FirstCharIn,
+
+    FirstCharNotIn,
+
     BetweenLength,
 
     MinLength,
@@ -28,6 +35,10 @@ public enum ErrorCode
     Email,
 
     Int,
+
+    Number,
+
+    String,
 
     Iban,
 

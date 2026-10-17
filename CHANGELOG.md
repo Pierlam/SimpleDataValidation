@@ -1,17 +1,28 @@
 ﻿## 0.2.0 Release (2026-XX-XX)
 
-New validation available:
+-New validation available:
 Text				     Check that the string contains a text, same as NotNullOrWhiteSpace.
 Letters  				 Check that the string contains only letter.
 Digits  				 Check that the string contains only digit.
 LettersDigitsUnderscore  Check that the string contains only letter, digit or underscore.
+StartsWith				Check that the string starts with the provided string.
+FirstCharIn				Check that the first char of the string is one of provided chars.
+FirstCharNotIn			Check that the first char of the string is not one of provided chars.
+Number					 Check that the object value is a number: integer, dou ble float or BigInteger.
+String 					 Check that the object value is a string.
 CardNumber				 Check that the string is a valid card number.
 
-Other functions:
+-New chain validation available:
+AddNotNullOrEmpty
+AddNotNullOrWhiteSpace
+AddText
+AddCardNumber
+
+-Other functions:
 V.Error(errMsg)			return true if the errMsg contains a text.
 V.Ok(errMsg)			return true if the errMsg is empty, it's not an error.
 
--31 unit tests, all are green.
+-37 unit tests, all are green.
 
 ## 0.1.0 Release (2026-10-10)
 
