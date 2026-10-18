@@ -78,7 +78,7 @@ Digits                   Check that the string contains only digit.
 LettersDigitsUnderscore  Check that the string contains only letter, digit or underscore.
 
 StartsWith               Check that the string starts with the provided string.
-AddFirstCharIn           Check that the first char of the string is one of provided chars.
+FirstCharIn              Check that the first char of the string is one of provided chars.
 FirstCharNotIn           Check that the first char of the string is not one of provided chars.
 
 BetweenLength            Check that the length of string is between a min and a max value.
@@ -156,12 +156,10 @@ Do some checks on a string value.
 
 ```
 // Check that the value starts with the provided string.
-string a="hello";
-errMsg = V.StartsWith("field", a, "h");  -> ok, errMsg will be empty
+errMsg = V.StartsWith("field", "hello", "hgj");  -> ok, errMsg will be empty
 
 // Check that the value first char is one of 'xyz'.
-string a="hello";
-errMsg = V.FirstCharIn("field", a, "xyz");  -> error! 
+errMsg = V.FirstCharIn("field", "hello", "xyz");  -> error! 
 ```
 
 ## Check Iban and card Number
@@ -195,7 +193,7 @@ errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.M
 errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard | CardBank.AmericanExpress);
 ```
 
-Bank validation implemented: Visa, Mastercard, American Express, Dinners Club, Discover JCB and China UnionPay.
+Bank validation implemented: Visa, Mastercard, American Express, Dinners Club, Discover, JCB and China UnionPay.
  
 
 # Source code, documentation and nuget
