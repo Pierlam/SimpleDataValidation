@@ -6,6 +6,8 @@ todo
 -New chain validation available:
 todo
 
+Added new language for messages: Spain, German and Italian.  
+
 -40 unit tests, all are green.
 
 

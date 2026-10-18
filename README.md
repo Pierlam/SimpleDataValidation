@@ -113,7 +113,8 @@ AddCardNumber
 
 ## Error Messages
 
-Today only english and french are supported for error messages, but other languages will be added in the future.
+English, French Spain, German and Italian languages are supported for error messages, but other languages will be added in the future.
+
 
 But you can also set your own error messages for each validation method, by passing the error message as a parameter to the validation method.
 

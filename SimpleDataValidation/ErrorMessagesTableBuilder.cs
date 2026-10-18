@@ -29,6 +29,21 @@ internal class ErrorMessagesTableBuilder
             return Build_fr_fr();
         }
 
+        if (lang.Equals("es-es", StringComparison.OrdinalIgnoreCase))
+        {
+            return Build_es_es();
+        }
+
+        if (lang.Equals("de-de", StringComparison.OrdinalIgnoreCase))
+        {
+            return Build_de_de();
+        }
+
+        if (lang.Equals("it-it", StringComparison.OrdinalIgnoreCase))
+        {
+            return Build_it_it();
+        }
+
         throw new NotImplementedException("Language not implemented: " + lang);
     }
 
@@ -58,7 +73,100 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.String, "{0} must be a string" },
             { lang + ErrorCode.Iban, "{0} must be a valid IBAN" },
             { lang + ErrorCode.CardNumber, "{0} must be a valid Card Number" },
+        };
 
+        return tableErrorMsg;
+    }
+
+    static Dictionary<string, string> Build_it_it()
+    {
+        string lang = "it-it.";
+        Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
+        {
+            { lang + ErrorCode.NotNull, "{0} è obbligatorio" },
+            { lang + ErrorCode.NotNullOrEmpty, "{0} è obbligatorio" },
+            { lang + ErrorCode.NotNullOrWhiteSpace, "{0} è obbligatorio" },
+            { lang + ErrorCode.Letters, "{0} deve contenere solo lettere" },
+            { lang + ErrorCode.Digits, "{0} deve contenere solo cifre" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} deve contenere solo lettere, cifre o il carattere underscore" },
+
+            { lang + ErrorCode.StarsWith, "{0} deve iniziare con: {1}" },
+            { lang + ErrorCode.FirstCharIn, "{0}: il primo carattere deve essere uno dei seguenti: {1}" },
+            { lang + ErrorCode.FirstCharNotIn, "{0}: il primo carattere non deve essere uno dei seguenti: {1}" },
+
+            { lang + ErrorCode.BetweenLength, "{0} deve avere una lunghezza compresa tra {1} e {2} caratteri" },
+            { lang + ErrorCode.MinLength, "{0} deve avere almeno {1} caratteri"  },
+            { lang + ErrorCode.MaxLength, "{0} non deve avere più di {1} caratteri" },
+            { lang + ErrorCode.ExactLength, "{0} deve avere esattamente {1} caratteri"  },
+            { lang + ErrorCode.Email, "{0} deve essere un indirizzo email valido" },
+            { lang + ErrorCode.Int, "{0} deve essere un numero intero" },
+            { lang + ErrorCode.Number, "{0} deve essere un numero" },
+            { lang + ErrorCode.String, "{0} deve essere una stringa" },
+            { lang + ErrorCode.Iban, "{0} deve essere un IBAN valido" },
+            { lang + ErrorCode.CardNumber, "{0} deve essere un numero di carta valido" },
+
+        };
+
+        return tableErrorMsg;
+    }
+
+    static Dictionary<string, string> Build_de_de()
+    {
+        string lang = "de-de.";
+        Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
+        {
+            { lang + ErrorCode.NotNull, "{0} ist erforderlich" },
+            { lang + ErrorCode.NotNullOrEmpty, "{0} ist erforderlich" },
+            { lang + ErrorCode.NotNullOrWhiteSpace, "{0} ist erforderlich" },
+            { lang + ErrorCode.Letters, "{0} darf nur Buchstaben enthalten" },
+            { lang + ErrorCode.Digits, "{0} darf nur Ziffern enthalten" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} darf nur Buchstaben, Ziffern oder Unterstriche enthalten" },
+
+            { lang + ErrorCode.StarsWith, "{0} muss mit folgendem beginnen: {1}" },
+            { lang + ErrorCode.FirstCharIn, "{0}: das erste Zeichen muss eines der folgenden sein: {1}" },
+            { lang + ErrorCode.FirstCharNotIn, "{0}: das erste Zeichen darf nicht eines der folgenden sein: {1}" },
+
+            { lang + ErrorCode.BetweenLength, "{0} muss zwischen {1} und {2} Zeichen lang sein" },
+            { lang + ErrorCode.MinLength, "{0} muss mindestens {1} Zeichen lang sein"  },
+            { lang + ErrorCode.MaxLength, "{0} darf höchstens {1} Zeichen lang sein" },
+            { lang + ErrorCode.ExactLength, "{0} muss genau {1} Zeichen lang sein"  },
+            { lang + ErrorCode.Email, "{0} muss eine gültige E-Mail-Adresse sein" },
+            { lang + ErrorCode.Int, "{0} muss eine ganze Zahl sein" },
+            { lang + ErrorCode.Number, "{0} muss eine Zahl sein" },
+            { lang + ErrorCode.String, "{0} muss eine Zeichenkette sein" },
+            { lang + ErrorCode.Iban, "{0} muss eine gültige IBAN sein" },
+            { lang + ErrorCode.CardNumber, "{0} muss eine gültige Kartennummer sein" },
+        };
+
+        return tableErrorMsg;
+    }
+
+    static Dictionary<string, string> Build_es_es()
+    {
+        string lang = "es-es.";
+        Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
+        {
+            { lang + ErrorCode.NotNull, "{0} es obligatorio" },
+            { lang + ErrorCode.NotNullOrEmpty, "{0} es obligatorio" },
+            { lang + ErrorCode.NotNullOrWhiteSpace, "{0} es obligatorio" },
+            { lang + ErrorCode.Letters, "{0} debe contener solo letras" },
+            { lang + ErrorCode.Digits, "{0} debe contener solo dígitos" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} debe contener solo letras, dígitos o el carácter carácter de subrayado (guion bajo)" },
+
+            { lang + ErrorCode.StarsWith, "{0} debe comenzar por: {1}" },
+            { lang + ErrorCode.FirstCharIn, "{0} debe tener como primer carácter uno de los siguientes: {1}" },
+            { lang + ErrorCode.FirstCharNotIn, "{0} no debe tener como primer carácter uno de los siguientes: {1}" },
+
+            { lang + ErrorCode.BetweenLength, "{0} debe tener entre {1} y {2} caracteres" },
+            { lang + ErrorCode.MinLength, "{0} debe tener al menos {1} caracteres"  },
+            { lang + ErrorCode.MaxLength, "{0} no debe tener más de {1} caracteres" },
+            { lang + ErrorCode.ExactLength, "{0} debe tener exactamente {1} caracteres"  },
+            { lang + ErrorCode.Email, "{0} debe ser una dirección de correo electrónico válida" },
+            { lang + ErrorCode.Int, "{0} debe ser un número entero" },
+            { lang + ErrorCode.Number, "{0} debe ser un número" },
+            { lang + ErrorCode.String, "{0} debe ser una cadena de texto" },
+            { lang + ErrorCode.Iban, "{0} debe ser un IBAN válido" },
+            { lang + ErrorCode.CardNumber, "{0} debe ser un número de tarjeta válido" },
         };
 
         return tableErrorMsg;
