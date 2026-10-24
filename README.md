@@ -127,21 +127,17 @@ Console.WriteLine($"-> errorMessage: {errMsg}");
 -> errorMessage: The name is mandatory!
 ```
 
-The default language for error messages is English, but you can change it to French by calling the SetLanguage method of the V class, passing the language code as a parameter.
+The default language for error messages is English, but you can change it to another one by calling the SetLanguage method of the V class, passing the language code as a parameter.
 
 ```
 // Set the language for error messages to French
 V.SetLanguage("fr-fr");
 
-// or spanish
-V.SetLanguage("es-es");
-
-// or german
-V.SetLanguage("de-de");
-
-// or italian
-V.SetLanguage("it-it");
-
+// list of 	available languages:
+"en-en"  English   default
+"es-es"  Spanish
+"de-de"  German
+"it-it"  Italian
 ```
 
 You can also set the end of the error message with a dot or not, by calling the SetEndMessageDot method of the V class, passing a boolean value as a parameter.
