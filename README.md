@@ -17,6 +17,19 @@ If the validation fails  -> The error message is returned in the errMsg variable
 If the validation passes -> An empty string is returned.
 ```
 
+Check easily if an error occurs:
+
+```
+Syntax:
+string errMsg = V.Function(DataName, Value);
+
+// if an error occurs, there is a message
+if(V.Error(errMsg)) DoSomethingError();
+
+// no error, no message
+if(V.Ok(errMsg)) DoSomethingOk(); 
+```
+
 The following example shows some usual cases:
 
 ```
@@ -40,9 +53,9 @@ The Name value is correct!
 -> errorMessage: Name must be at least 8 characters long
 ```
 
-# Another way to use the library
+# Another way to validate data
 
-You can also use the library in a more fluent way, by chaining the validation methods to validate a data value many times.
+You can also do several checks in a more fluent way, by chaining the validation methods to validate a data value many times.
 
 ```
 // Validate a string value to check if it's not null and has a minimum length of 8 characters
@@ -113,10 +126,9 @@ AddCardNumber
 
 ## Error Messages
 
-English, French Spanish, German and Italian languages are supported for error messages, but other languages will be added in the future.
+English, French Spanish, German and Italian languages are supported for error messages, other languages will be added in the future.
 
-
-But you can also set your own error messages for each validation method, by passing the error message as a parameter to the validation method.
+You can also set your own error messages for each validation method, by passing the error message as a parameter to the validation method.
 
 ```
 string nameValue = null;
@@ -133,7 +145,7 @@ The default language for error messages is English, but you can change it to ano
 // Set the language for error messages to French
 V.SetLanguage("fr-fr");
 
-// list of 	available languages:
+// list of available languages:
 "en-en"  English   default
 "es-es"  Spanish
 "de-de"  German
@@ -142,16 +154,26 @@ V.SetLanguage("fr-fr");
 
 You can also set the end of the error message with a dot or not, by calling the SetEndMessageDot method of the V class, passing a boolean value as a parameter.
 
+Below are results of the error message: The name is required.
+
+
+``` 
+// by default:
+The name is required
 ```
+
+```
+// put a . char at the end of the error message:
 V.SetEndMessageDot();
-exp: The name is required.
+The name is required.
 ```
 
 Or put something else:
 
 ```
+// put a ! char at the end of the error message:
 V.SetEndMessage("!");
-exp: The name is required!
+The name is required!
 ```
 
 # Some samples
@@ -175,6 +197,7 @@ Check if an Iban number is valid:
 With or without space chars.
 
 ```
+// with whitespaces:
 string iban = "GB82 WEST 1234 5698 7654 32";
 errMsg = V.Iban("field", iban);  -> ok
 
@@ -188,7 +211,7 @@ Should contains only digits and char space.
 Verify the length and the check sum, apply the Luhn algo.
 
 ```
-// the card number bank should be Visa
+// the card number bank should be Visa, with whitespaces:
 errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa);
 
 errMsg = V.CardNumber("field", "4111111145551142", CardBank.Visa);
