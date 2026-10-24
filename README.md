@@ -13,6 +13,7 @@ Then if the validation failed, the function returns an error message or an empty
 ```
 Syntax:
 string errMsg = V.Function(DataName, Value);
+
 If the validation fails  -> The error message is returned in the errMsg variable. 
 If the validation passes -> An empty string is returned.
 ```
@@ -35,18 +36,21 @@ The following example shows some usual cases:
 ```
 using SimpleDataValidation;
 
-// Validate that the string value contains a text, it is not null, not empty and without any whitespace.
+//--Validate that the string value contains a text, it is not null, not empty and without any whitespace.
 errMsg = V.Text("Name", "John");
+
 if(V.Error(errMsg))
 	Console.WriteLine($"-> errorMessage: {errMsg}");   <- Not diplayed
 
 if(V.Ok(errMsg))
 	Console.WriteLine($"The Name value is correct!");  <- Displayed
 
-// Validate that the value has 8 chars length minimum
+//--Validate that the value has 8 chars length minimum
 errMsg = V.MinLength("Name", "John", 8);
+
 if(V.Error(errMsg))
 	Console.WriteLine($"-> errorMessage: {errMsg}");   <- Displayed
+
 
 > Output:
 The Name value is correct!
