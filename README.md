@@ -79,7 +79,7 @@ All validation rules will be executed. Error messages will be concatened.
 
 # Features
 
-There are many available features to validate data, by type, by length, and by format.
+There are many available features to validate data, by type, by length, by format and more.
 
 ## Available validation methods
 
