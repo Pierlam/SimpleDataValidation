@@ -76,6 +76,30 @@ public class V : VImmediateBase
         return this;
     }
 
+    public V AddContains(string substring)
+    {
+        _ruleBases.Add(new RuleContains(substring));
+        return this;
+    }
+
+    public V AddContainsCaseInsensitive(string substring)
+    {
+        _ruleBases.Add(new RuleContainsCaseInsensitive(substring));
+        return this;
+    }
+
+    public V AddNotContains(string substring)
+    {
+        _ruleBases.Add(new RuleNotContains(substring));
+        return this;
+    }
+
+    public V AddNotContainsCaseInsensitive(string substring)
+    {
+        _ruleBases.Add(new RuleNotContainsCaseInsensitive(substring));
+        return this;
+    }
+
     public V AddFirstCharIn(string chars)
     {
         _ruleBases.Add(new RuleFirstCharIn(chars));

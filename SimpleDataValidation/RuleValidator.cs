@@ -46,8 +46,14 @@ public class RuleValidator
         if(rule is RuleContains ruleContains)
             return Contains(errorMessageMgr, dataName, value?.ToString(), ruleContains.Contains);
 
+        if (rule is RuleContainsCaseInsensitive ruleContainsCaseInsensitive)
+            return ContainsCaseInsensitive(errorMessageMgr, dataName, value?.ToString(), ruleContainsCaseInsensitive.Contains);
+
         if (rule is RuleNotContains ruleNotContains)
             return NotContains(errorMessageMgr, dataName, value?.ToString(), ruleNotContains.NotContains);
+
+        if (rule is RuleNotContainsCaseInsensitive ruleNotContainsCaseInsensitive)
+            return NotContainsCaseInsensitive(errorMessageMgr, dataName, value?.ToString(), ruleNotContainsCaseInsensitive.NotContains);
 
         if (rule is RuleFirstCharIn ruleFirstCharIn)
             return FirstCharIn(errorMessageMgr, dataName, value?.ToString(), ruleFirstCharIn.Chars);
@@ -314,7 +320,9 @@ public class RuleValidator
 
     public static string NotContains(string dataName, string value, string start, string errorMessage)
     {
-        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        // value is null, so it's ok
+        if (string.IsNullOrWhiteSpace(value)) return string.Empty;
+
         if (string.IsNullOrWhiteSpace(start)) return errorMessage;
 
         if (!value.Contains(start)) return string.Empty;
@@ -329,7 +337,8 @@ public class RuleValidator
 
     public static string NotContainsCaseInsensitive(string dataName, string value, string start, string errorMessage)
     {
-        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        // value is null, so it's ok
+        if (string.IsNullOrWhiteSpace(value)) return string.Empty;
         if (string.IsNullOrWhiteSpace(start)) return errorMessage;
 
         if (!value.Contains(start, StringComparison.InvariantCultureIgnoreCase)) return string.Empty;

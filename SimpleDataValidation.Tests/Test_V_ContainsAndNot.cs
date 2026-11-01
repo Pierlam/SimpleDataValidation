@@ -44,10 +44,13 @@ public class Test_V_ContainsAndNot
         errMsg = V.NotContains("field", "john", "abc");
         Assert.AreEqual(string.Empty, errMsg);
 
-        errMsg = V.NotContains("field", null, "ieh");
-        Assert.AreEqual("field must not contain: ieh", errMsg);
+        errMsg = V.NotContains("field", "john", "oh");
+        Assert.AreEqual("field must not contain: oh", errMsg);
 
-        errMsg = V.NotContains("field", null, "oh", "Custom error message");
+        errMsg = V.NotContains("field", null, "ieh");
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.NotContains("field", "john", "oh", "Custom error message");
         Assert.AreEqual("Custom error message", errMsg);
     }
 
@@ -58,10 +61,13 @@ public class Test_V_ContainsAndNot
         errMsg = V.NotContainsCaseInsensitive("field", "john", "ABC");
         Assert.AreEqual(string.Empty, errMsg);
 
-        errMsg = V.NotContainsCaseInsensitive("field", null, "IEH");
-        Assert.AreEqual("field must not contain: IEH", errMsg);
+        errMsg = V.NotContainsCaseInsensitive("field", null, "ABC");
+        Assert.AreEqual(string.Empty, errMsg);
 
-        errMsg = V.NotContainsCaseInsensitive("field", null, "OH", "Custom error message");
+        errMsg = V.NotContainsCaseInsensitive("field", "john", "OH");
+        Assert.AreEqual("field must not contain: OH", errMsg);
+
+        errMsg = V.NotContainsCaseInsensitive("field", "john", "OH", "Custom error message");
         Assert.AreEqual("Custom error message", errMsg);
     }
 

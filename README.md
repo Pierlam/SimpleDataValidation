@@ -136,6 +136,10 @@ AddStartsWith
 AddStartsWithCaseInsensitive
 AddEndsWith
 AddEndsWithCaseInsensitive
+AddContains                    
+AddContainsCaseInsensitive     
+AddNotContains                
+AddNotContainsCaseInsensitive 
 
 AddFirstCharIn
 AddFirstCharNotIn

@@ -7,8 +7,8 @@ StartsWithCaseInsensitive  Check that the string starts with the provided string
 EndsWith                   Check that the string ends with the provided string, case sensitive. 
 EndsWithCaseInsensitive    Check that the string ends with the provided string, case insensitive.
 Contains                   Check that the string contains the provided string, case sensitive. 
-NotContains                Check that the string does not contain the provided string, case sensitive.
 ContainsCaseInsensitive    Check that the string contains the provided string, case insensitive. 
+NotContains                Check that the string does not contain the provided string, case sensitive.
 NotContainsCaseInsensitive Check that the string does not contain the provided string, case insensitive.
 
 
@@ -19,6 +19,10 @@ AddExactLength
 AddStartsWithCaseInsensitive
 AddEndsWith
 AddEndsWithCaseInsensitive
+AddContains                    
+AddContainsCaseInsensitive     
+AddNotContains                
+AddNotContainsCaseInsensitive 
 
 -Rework:
 CardNumber     Function renamed by BankCardNumber
