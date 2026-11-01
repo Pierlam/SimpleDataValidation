@@ -1,7 +1,7 @@
 ﻿namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public sealed class Test_V_NotNull
+public sealed class Test_V_NullAndNotNull
 {
     [TestMethod]
     public void Null()
