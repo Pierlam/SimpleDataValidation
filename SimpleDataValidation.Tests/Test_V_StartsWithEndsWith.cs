@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public class Test_V_StartsWithAndFirstChar
+public class Test_V_StartsWithEndsWith
 {
     [TestMethod]
     public void StartsWith()

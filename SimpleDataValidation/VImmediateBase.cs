@@ -223,11 +223,6 @@ public class VImmediateBase: VBase
         return errMsg;
     }
 
-    /// <summary>
-    /// </summary>
-    /// <param name="dataName"></param>
-    /// <param name="value"></param>
-    /// <returns></returns>
     public static string EndsWith(string dataName, string value, string start, string errorMessage)
     {
         string errMsg = RuleValidator.EndsWith(dataName, value, start, errorMessage);
@@ -273,6 +268,55 @@ public class VImmediateBase: VBase
         string errMsg = RuleValidator.EndsWithCaseInsensitive(_errorMessageMgr, dataName, value, start);
         return errMsg;
     }
+
+    public static string Contains(string dataName, string value, string start, string errorMessage)
+    {
+        string errMsg = RuleValidator.Contains(dataName, value, start, errorMessage);
+        return errMsg;
+    }
+
+    public static string Contains(string dataName, string value, string start)
+    {
+        string errMsg = RuleValidator.Contains(_errorMessageMgr, dataName, value, start);
+        return errMsg;
+    }
+
+    public static string ContainsCaseInsensitive(string dataName, string value, string start, string errorMessage)
+    {
+        string errMsg = RuleValidator.ContainsCaseInsensitive(dataName, value, start, errorMessage);
+        return errMsg;
+    }
+
+    public static string ContainsCaseInsensitive(string dataName, string value, string start)
+    {
+        string errMsg = RuleValidator.ContainsCaseInsensitive(_errorMessageMgr, dataName, value, start);
+        return errMsg;
+    }
+
+    public static string NotContains(string dataName, string value, string start, string errorMessage)
+    {
+        string errMsg = RuleValidator.NotContains(dataName, value, start, errorMessage);
+        return errMsg;
+    }
+
+    public static string NotContains(string dataName, string value, string start)
+    {
+        string errMsg = RuleValidator.NotContains(_errorMessageMgr, dataName, value, start);
+        return errMsg;
+    }
+
+    public static string NotContainsCaseInsensitive(string dataName, string value, string start, string errorMessage)
+    {
+        string errMsg = RuleValidator.NotContainsCaseInsensitive(dataName, value, start, errorMessage);
+        return errMsg;
+    }
+
+    public static string NotContainsCaseInsensitive(string dataName, string value, string start)
+    {
+        string errMsg = RuleValidator.NotContainsCaseInsensitive(_errorMessageMgr, dataName, value, start);
+        return errMsg;
+    }
+
 
     public static string FirstCharIn(string dataName, string value, string chars)
     {

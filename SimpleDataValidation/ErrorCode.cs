@@ -21,6 +21,9 @@ public enum ErrorCode
 
     StartsWith,
     EndsWith,
+    Contains,
+
+    NotContains,
 
     FirstCharIn,
 

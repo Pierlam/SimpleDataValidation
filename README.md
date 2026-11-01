@@ -2,7 +2,7 @@
 
 SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
 
-It's written in C#/NET8 with VS2026. The code is covered by 46 unit tests to ensure the non-regression of incoming evolutions.
+It's written in C#/NET8 with VS2026. The code is covered by 53 unit tests to ensure the non-regression of incoming evolutions.
 
 
 # A quick example
@@ -85,39 +85,44 @@ There are many available features to validate data, by type, by length, by forma
 
 ```
 // List of available direct validation methods:
-Null                      Check that the object value is null.
-NotNull                   Check that the object value is not null.
-NotNullOrEmpty            Check that the string value is not null or empty.
-NotNullOrWhiteSpace       Check that the string value is not null or whitespace.
-Text                      Check that the string contains a text, same as NotNullOrWhiteSpace.
+Null                       Check that the object value is null.
+NotNull                    Check that the object value is not null.
+NotNullOrEmpty             Check that the string value is not null or empty.
+NotNullOrWhiteSpace        Check that the string value is not null or whitespace.
+Text                       Check that the string contains a text, same as NotNullOrWhiteSpace.
 
-Letters                   Check that the string contains only letter.
-Digits                    Check that the string contains only digit.
-LettersDigitsUnderscore   Check that the string contains only letter, digit or underscore.
+Letters                    Check that the string contains only letter.
+Digits                     Check that the string contains only digit.
+LettersDigitsUnderscore    Check that the string contains only letter, digit or underscore.
 
-StartsWith                Check that the string starts with the provided string, case sensitive. 
-StartsWithCaseInsensitive Check that the string starts with the provided string, case insensitive.
-EndsWith                  Check that the string ends with the provided string, case sensitive. 
-EndsWithCaseInsensitive   Check that the string ends with the provided string, case insensitive.
-FirstCharIn               Check that the first char of the string is one of provided chars.
-FirstCharNotIn            Check that the first char of the string is not one of provided chars.
+StartsWith                 Check that the string starts with the provided string, case sensitive. 
+StartsWithCaseInsensitive  Check that the string starts with the provided string, case insensitive.
+EndsWith                   Check that the string ends with the provided string, case sensitive. 
+EndsWithCaseInsensitive    Check that the string ends with the provided string, case insensitive.
+Contains                   Check that the string contains the provided string, case sensitive. 
+ContainsCaseInsensitive    Check that the string contains the provided string, case insensitive. 
+NotContains                Check that the string does not contain the provided string, case sensitive.
+NotContainsCaseInsensitive Check that the string does not contain the provided string, case insensitive.
 
-MinLength                 Check that the string value has a minimum length.
-MaxLength                 Check that the string value has a maximum length.
-BetweenLength             Check that the length of string is between a min and a max value.
-ExactLength               Check that the string value has an exact length.
+FirstCharIn                Check that the first char of the string is one of provided chars.
+FirstCharNotIn             Check that the first char of the string is not one of provided chars.
 
-EmailFormat               Check that the email format is valid: a@b.c
-Email                     Check that the string value is a valid email address.
-EmailStrict               Check that the email format is valid , more strict but more time consuming.
+MinLength                  Check that the string value has a minimum length.
+MaxLength                  Check that the string value has a maximum length.
+BetweenLength              Check that the length of string is between a min and a max value.
+ExactLength                Check that the string value has an exact length.
+
+EmailFormat                Check that the email format is valid: a@b.c
+Email                      Check that the string value is a valid email address.
+EmailStrict                Check that the email format is valid , more strict but more time consuming.
  
-Bool                      Check that the object value is a boolean.
-Int                       Check that the object value is an integer.
-Number                    Check that the object value is a number: integer, double, float or BigInteger.
-String                    Check that the object value is a string.
+Bool                       Check that the object value is a boolean.
+Int                        Check that the object value is an integer.
+Number                     Check that the object value is a number: integer, double, float or BigInteger.
+String                     Check that the object value is a string.
 
-BankIban                  Check that the string value is a valid bank IBAN number.
-BankCardNumber            Check that the string is a valid bank card number.
+BankIban                   Check that the string value is a valid bank IBAN number.
+BankCardNumber             Check that the string is a valid bank card number.
 
 
 // List of available chained validation methods:

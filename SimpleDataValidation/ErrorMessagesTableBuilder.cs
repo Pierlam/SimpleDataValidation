@@ -65,6 +65,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.EndsWith, "{0} must ends with: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0} first char must be in: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0} first char must be not in: {1}" },
+            { lang + ErrorCode.Contains, "{0} must contain: {1}" },
+            { lang + ErrorCode.NotContains, "{0} must not contain: {1}" },
 
             { lang + ErrorCode.BetweenLength, "{0} must be between {1} and {2} characters long" },
             { lang + ErrorCode.MinLength, "{0} must be at least {1} characters long" },
@@ -103,6 +105,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.EndsWith, "{0} deve terminare con: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0}: il primo carattere deve essere uno dei seguenti: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0}: il primo carattere non deve essere uno dei seguenti: {1}" },
+            { lang + ErrorCode.Contains, "{0} deve contenere: {1}" },
+            { lang + ErrorCode.NotContains, "{0} non deve contenere: {1}" },
 
             { lang + ErrorCode.BetweenLength, "{0} deve avere una lunghezza compresa tra {1} e {2} caratteri" },
             { lang + ErrorCode.MinLength, "{0} deve avere almeno {1} caratteri"  },
@@ -142,6 +146,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.EndsWith, "{0} muss mit folgendem enden: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0}: das erste Zeichen muss eines der folgenden sein: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0}: das erste Zeichen darf nicht eines der folgenden sein: {1}" },
+            { lang + ErrorCode.Contains, "{0} muss Folgendes enthalten: {1}" },
+            { lang + ErrorCode.NotContains, "{0} darf Folgendes nicht enthalten: {1}" },
 
             { lang + ErrorCode.BetweenLength, "{0} muss zwischen {1} und {2} Zeichen lang sein" },
             { lang + ErrorCode.MinLength, "{0} muss mindestens {1} Zeichen lang sein"  },
@@ -180,6 +186,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.EndsWith, "{0} debe terminar en: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0} debe tener como primer carácter uno de los siguientes: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0} no debe tener como primer carácter uno de los siguientes: {1}" },
+            { lang + ErrorCode.Contains, "{0} debe contener: {1}" },
+            { lang + ErrorCode.NotContains, "{0} no debe contener: {1}" },
 
             { lang + ErrorCode.BetweenLength, "{0} debe tener entre {1} y {2} caracteres" },
             { lang + ErrorCode.MinLength, "{0} debe tener al menos {1} caracteres"  },
@@ -217,6 +225,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.EndsWith, "{0} doit se terminer par: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0} doit avoir en premier un de ces caractère(s): {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0} ne doit pas avoir en premier un de ces caractère(s): {1}" },
+            { lang + ErrorCode.Contains, "{0} doit contenir: {1}" },
+            { lang + ErrorCode.NotContains, "{0} ne doit pas contenir: {1}" },
 
             { lang + ErrorCode.BetweenLength, "{0} doit contenir entre {1} et {2} caractères" },
             { lang + ErrorCode.MinLength, "{0} doit contenir au moins {1} caractères"  },

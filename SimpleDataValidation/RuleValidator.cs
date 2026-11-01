@@ -43,6 +43,12 @@ public class RuleValidator
         if (rule is RuleEndsWithCaseInsensitive ruleEndsWithCaseInsensitive)
             return EndsWithCaseInsensitive(errorMessageMgr, dataName, value?.ToString(), ruleEndsWithCaseInsensitive.End);
 
+        if(rule is RuleContains ruleContains)
+            return Contains(errorMessageMgr, dataName, value?.ToString(), ruleContains.Contains);
+
+        if (rule is RuleNotContains ruleNotContains)
+            return NotContains(errorMessageMgr, dataName, value?.ToString(), ruleNotContains.NotContains);
+
         if (rule is RuleFirstCharIn ruleFirstCharIn)
             return FirstCharIn(errorMessageMgr, dataName, value?.ToString(), ruleFirstCharIn.Chars);
 
@@ -271,6 +277,65 @@ public class RuleValidator
         return errorMessage;
     }
 
+    public static string Contains(ErrorMessageMgr errorMessageMgr, string dataName, string value, string start)
+    {
+        return Contains(dataName, value, start, errorMessageMgr.GetMessage(ErrorCode.Contains, dataName, start));
+    }
+
+    public static string Contains(string dataName, string value, string start, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        if (string.IsNullOrWhiteSpace(start)) return errorMessage;
+
+        if (value.Contains(start)) return string.Empty;
+
+        return errorMessage;
+    }
+
+    public static string ContainsCaseInsensitive(ErrorMessageMgr errorMessageMgr, string dataName, string value, string start)
+    {
+        return ContainsCaseInsensitive(dataName, value, start, errorMessageMgr.GetMessage(ErrorCode.Contains, dataName, start));
+    }
+
+    public static string ContainsCaseInsensitive(string dataName, string value, string start, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        if (string.IsNullOrWhiteSpace(start)) return errorMessage;
+
+        if (value.Contains(start, StringComparison.InvariantCultureIgnoreCase)) return string.Empty;
+
+        return errorMessage;
+    }
+
+    public static string NotContains(ErrorMessageMgr errorMessageMgr, string dataName, string value, string start)
+    {
+        return NotContains(dataName, value, start, errorMessageMgr.GetMessage(ErrorCode.NotContains, dataName, start));
+    }
+
+    public static string NotContains(string dataName, string value, string start, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        if (string.IsNullOrWhiteSpace(start)) return errorMessage;
+
+        if (!value.Contains(start)) return string.Empty;
+
+        return errorMessage;
+    }
+
+    public static string NotContainsCaseInsensitive(ErrorMessageMgr errorMessageMgr, string dataName, string value, string start)
+    {
+        return NotContainsCaseInsensitive(dataName, value, start, errorMessageMgr.GetMessage(ErrorCode.NotContains, dataName, start));
+    }
+
+    public static string NotContainsCaseInsensitive(string dataName, string value, string start, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        if (string.IsNullOrWhiteSpace(start)) return errorMessage;
+
+        if (!value.Contains(start, StringComparison.InvariantCultureIgnoreCase)) return string.Empty;
+
+        return errorMessage;
+    }
 
     //FirstCharIn
     public static string FirstCharIn(ErrorMessageMgr errorMessageMgr, string dataName, string value, string chars)

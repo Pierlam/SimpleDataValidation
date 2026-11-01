@@ -1,11 +1,16 @@
 ﻿## 0.3.0 Release (2026-XX-XX)
 
 -New validation available:
-Null                      Check that the object value is null.
-Bool                      Check that the object value is a boolean.
-StartsWithCaseInsensitive Check that the string starts with the provided string, case insensitive.
-EndsWith                  Check that the string ends with the provided string, case sensitive. 
-EndsWithCaseInsensitive   Check that the string ends with the provided string, case insensitive.
+Null                       Check that the object value is null.
+Bool                       Check that the object value is a boolean.
+StartsWithCaseInsensitive  Check that the string starts with the provided string, case insensitive.
+EndsWith                   Check that the string ends with the provided string, case sensitive. 
+EndsWithCaseInsensitive    Check that the string ends with the provided string, case insensitive.
+Contains                   Check that the string contains the provided string, case sensitive. 
+NotContains                Check that the string does not contain the provided string, case sensitive.
+ContainsCaseInsensitive    Check that the string contains the provided string, case insensitive. 
+NotContainsCaseInsensitive Check that the string does not contain the provided string, case insensitive.
+
 
 -New chain validation available:
 AddNull
@@ -25,7 +30,7 @@ BankCardNumber Now possible to check with all banks
 Added new language for error messages: Spanish, German and Italian.  
 
 
--46 unit tests, all are green.
+-53 unit tests, all are green.
 
 
 ## 0.2.0 Release (2026-10-17)
