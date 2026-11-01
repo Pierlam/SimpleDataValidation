@@ -534,27 +534,44 @@ public class VImmediateBase: VBase
         return errMsg;
     }
 
-    public static string Iban(string dataName, string value)
+    public static string BankIban(string dataName, string value)
     {
         string errMsg = RuleValidator.Iban(_errorMessageMgr, dataName, value);
         return errMsg;
     }
 
-    public static string Iban(string dataName, string value, string errorMessage)
+    public static string BankIban(string dataName, string value, string errorMessage)
     {
-        string errMsg = RuleValidator.Iban(dataName, value, errorMessage);
+        string errMsg = RuleValidator.BankIban(dataName, value, errorMessage);
         return errMsg;
     }
 
-    public static string CardNumber(string dataName, string value, BankCardBank cardbank)
+    public static string BankCardNumber(string dataName, string value, BankCardBank cardbank)
     {
-        string errMsg = RuleValidator.CardNumber(_errorMessageMgr, dataName, value, cardbank);
+        string errMsg = RuleValidator.BankCardNumber(_errorMessageMgr, dataName, value, cardbank);
         return errMsg;
     }
 
-    public static string CardNumber(string dataName, string value, BankCardBank cardbank, string errorMessage)
+    public static string BankCardNumber(string dataName, string value, BankCardBank cardbank, string errorMessage)
     {
-        string errMsg = RuleValidator.CardNumber(dataName, value, cardbank, errorMessage);
+        string errMsg = RuleValidator.BankCardNumber(dataName, value, cardbank, errorMessage);
+        return errMsg;
+    }
+
+    public static string BankCardNumber(string dataName, string value)
+    {
+        // all banks
+        BankCardBank cardbank = BankCardBank.Visa | BankCardBank.Mastercard | BankCardBank.AmericanExpress | BankCardBank.Discover | BankCardBank.DinersClub | BankCardBank.JCB | BankCardBank.ChinaUnionPay;
+
+        string errMsg = RuleValidator.BankCardNumber(_errorMessageMgr, dataName, value, cardbank);
+        return errMsg;
+    }
+
+    public static string BankCardNumber(string dataName, string value, string errorMessage)
+    {
+        // all banks
+        BankCardBank cardbank = BankCardBank.Visa | BankCardBank.Mastercard | BankCardBank.AmericanExpress | BankCardBank.Discover | BankCardBank.DinersClub | BankCardBank.JCB | BankCardBank.ChinaUnionPay;
+        string errMsg = RuleValidator.BankCardNumber(dataName, value, cardbank, errorMessage);
         return errMsg;
     }
 

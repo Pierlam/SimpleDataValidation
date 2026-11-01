@@ -53,7 +53,7 @@ public class RuleValidator
             return ExactLength(errorMessageMgr, dataName, value?.ToString(), ruleExactLength.Length);
 
         if (rule is RuleBankCardNumber cardNumber)
-            return CardNumber(errorMessageMgr, dataName, value?.ToString(), cardNumber.CardBank);
+            return BankCardNumber(errorMessageMgr, dataName, value?.ToString(), cardNumber.CardBank);
 
         throw new NotImplementedException(nameof(rule));
     }
@@ -556,20 +556,20 @@ public class RuleValidator
 
     public static string Iban(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
-        return Iban(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Iban, dataName));
+        return BankIban(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Iban, dataName));
     }
 
-    public static string Iban(string dataName, string value, string errorMessage)
+    public static string BankIban(string dataName, string value, string errorMessage)
     {
         return IbanValidator.CheckIban(value) ? string.Empty : errorMessage;
     }
 
-    public static string CardNumber(ErrorMessageMgr errorMessageMgr, string dataName, string value, BankCardBank cardBank)
+    public static string BankCardNumber(ErrorMessageMgr errorMessageMgr, string dataName, string value, BankCardBank cardBank)
     {
-        return CardNumber(dataName, value, cardBank, errorMessageMgr.GetMessage(ErrorCode.CardNumber, dataName));
+        return BankCardNumber(dataName, value, cardBank, errorMessageMgr.GetMessage(ErrorCode.CardNumber, dataName));
     }
 
-    public static string CardNumber(string dataName, string value, BankCardBank cardBank, string errorMessage)
+    public static string BankCardNumber(string dataName, string value, BankCardBank cardBank, string errorMessage)
     {
         int res = CardValidator.CheckCardNumber(cardBank, value);
         if (res == 0) return string.Empty;

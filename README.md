@@ -208,28 +208,31 @@ With or without space chars.
 ```
 // with whitespaces:
 string iban = "GB82 WEST 1234 5698 7654 32";
-errMsg = V.Iban("field", iban);  -> ok
+errMsg = V.BankIban("field", iban);  -> ok
 
 iban = "GB82WEST12345698765432";
-errMsg = V.Iban("field", iban);  -> ok
+errMsg = V.BankIban("field", iban);  -> ok
 ```
 
-Check if a card number is valid:
+Check if a bank card number is valid:
 
 Should contains only digits and char space.
 Verify the length and the check sum, apply the Luhn algo.
 
 ```
-// the card number bank should be Visa, with whitespaces:
-errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa);
+// the card number bank should be vaild voer all banks, with whitespaces:
+errMsg = V.BankCardNumber("field", "4111 1111 4555 1142");
 
-errMsg = V.CardNumber("field", "4111111145551142", CardBank.Visa);
+// the card number bank should be Visa, with whitespaces:
+errMsg = V.BankCardNumber("field", "4111 1111 4555 1142", CardBank.Visa);
+
+errMsg = V.BankCardNumber("field", "4111111145551142", CardBank.Visa);
 
 // the card number bank should be Visa or Mastercard
-errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard);
+errMsg = V.BankCardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard);
 
 // the card number bank should be Visa or Mastercard or American Express
-errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard | CardBank.AmericanExpress);
+errMsg = V.BankCardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard | CardBank.AmericanExpress);
 ```
 
 Bank validation implemented: Visa, Mastercard, American Express, Dinners Club, Discover, JCB and China UnionPay.

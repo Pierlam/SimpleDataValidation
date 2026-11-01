@@ -10,9 +10,10 @@ AddBetweenLength
 AddExactLength
 
 -Rework:
-CardNumber renamed by BankCardNumber
-AddCardNumber renamed by AddBankCardNumber
-Iban renamed by BankIban 
+CardNumber     Function renamed by BankCardNumber
+AddCardNumber  Function renamed by AddBankCardNumber
+Iban           Function renamed by BankIban 
+BankCardNumber Now possible to check with all banks   
 
 -Languages:
 Added new language for messages: Spanish, German and Italian.  
