@@ -85,6 +85,7 @@ There are many available features to validate data, by type, by length, by forma
 
 ```
 // List of available direct validation methods:
+Null                     Check that the object value is null.
 NotNull                  Check that the object value is not null.
 NotNullOrEmpty           Check that the string value is not null or empty.
 NotNullOrWhiteSpace      Check that the string value is not null or whitespace.
@@ -98,9 +99,9 @@ StartsWith               Check that the string starts with the provided string.
 FirstCharIn              Check that the first char of the string is one of provided chars.
 FirstCharNotIn           Check that the first char of the string is not one of provided chars.
 
-BetweenLength            Check that the length of string is between a min and a max value.
 MinLength                Check that the string value has a minimum length.
 MaxLength                Check that the string value has a maximum length.
+BetweenLength            Check that the length of string is between a min and a max value.
 ExactLength              Check that the string value has an exact length.
 
 EmailFormat              Check that the email format is valid: a@b.c
@@ -116,6 +117,7 @@ CardNumber               Check that the string is a valid card number.
 
 
 // List of available chained validation methods:
+AddNull
 AddNotNull
 AddNotNullOrEmpty
 AddNotNullOrWhiteSpace

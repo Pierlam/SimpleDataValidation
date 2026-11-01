@@ -52,6 +52,7 @@ internal class ErrorMessagesTableBuilder
         string lang = "en-gb.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.Null, "{0} must be null" },
             { lang + ErrorCode.NotNull, "{0} is required" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} is required" },
             { lang + ErrorCode.NotNullOrWhiteSpace, "{0} is required" },
@@ -83,6 +84,7 @@ internal class ErrorMessagesTableBuilder
         string lang = "it-it.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.Null, "{0} deve essere null" },
             { lang + ErrorCode.NotNull, "{0} è obbligatorio" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} è obbligatorio" },
             { lang + ErrorCode.NotNullOrWhiteSpace, "{0} è obbligatorio" },
@@ -115,6 +117,7 @@ internal class ErrorMessagesTableBuilder
         string lang = "de-de.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.Null, "{0} muss null sein" },
             { lang + ErrorCode.NotNull, "{0} ist erforderlich" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} ist erforderlich" },
             { lang + ErrorCode.NotNullOrWhiteSpace, "{0} ist erforderlich" },
@@ -146,6 +149,7 @@ internal class ErrorMessagesTableBuilder
         string lang = "es-es.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.Null, "{0} debe ser nulo" },
             { lang + ErrorCode.NotNull, "{0} es obligatorio" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} es obligatorio" },
             { lang + ErrorCode.NotNullOrWhiteSpace, "{0} es obligatorio" },
@@ -177,6 +181,7 @@ internal class ErrorMessagesTableBuilder
         string lang = "fr-fr.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.Null, "{0} doit être null" },
             { lang + ErrorCode.NotNull, "{0} est requis" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} est requis" },
             { lang + ErrorCode.NotNullOrWhiteSpace, "{0} est requis" },

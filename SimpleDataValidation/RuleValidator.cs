@@ -19,7 +19,10 @@ public class RuleValidator
     {
         if(rule == null) throw new ArgumentNullException(nameof(rule));
 
-        if(rule is RuleNotNull)
+        if (rule is RuleNull)
+            return Null(errorMessageMgr, dataName, value?.ToString());
+
+        if (rule is RuleNotNull)
             return NotNull(errorMessageMgr, dataName, value?.ToString());
 
         if (rule is RuleNotNullOrEmpty)
@@ -50,6 +53,29 @@ public class RuleValidator
             return CardNumber(errorMessageMgr, dataName, value?.ToString(), cardNumber.CardBank);
 
         throw new NotImplementedException(nameof(rule));
+    }
+
+    /// <summary>
+    /// The value should be not null. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Null(ErrorMessageMgr errorMessageMgr, string dataName, object value)
+    {
+        return Null(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Null, dataName));
+    }
+
+    /// <summary>
+    /// The value should be not null. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Null(string dataName, object value, string errorMessage)
+    {
+        if (value == null) return string.Empty;
+        return errorMessage;
     }
 
     /// <summary>

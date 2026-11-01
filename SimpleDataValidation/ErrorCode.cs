@@ -8,6 +8,7 @@ namespace SimpleDataValidation;
 
 public enum ErrorCode
 {
+    Null,
     NotNull,
     NotNullOrEmpty,
 

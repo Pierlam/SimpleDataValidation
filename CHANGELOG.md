@@ -1,14 +1,14 @@
 ﻿## 0.3.0 Release (2026-XX-XX)
 
 -New validation available:
-todo
+Null                   Check that the object value is null.
 
 -New chain validation available:
-todo
+AddNull
 
 Added new language for messages: Spanish, German and Italian.  
 
--40 unit tests, all are green.
+-41 unit tests, all are green.
 
 
 ## 0.2.0 Release (2026-10-17)

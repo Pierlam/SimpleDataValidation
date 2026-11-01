@@ -14,7 +14,31 @@ public class V : VBase
     #region -- Immediate validation --
 
     /// <summary>
-    /// The value should be not null. If it is, return an error message; otherwise, return an empty string.
+    /// The value should be null. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Null(string dataName, object value)
+    {
+        string errMsg = RuleValidator.Null(_errorMessageMgr, dataName, value);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// The value should be null. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Null(string dataName, object value, string errorMessage)
+    {
+        string errMsg = RuleValidator.Null(dataName, value, errorMessage);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// The value should be NOT null. If it is, return an error message; otherwise, return an empty string.
     /// </summary>
     /// <param name="dataName"></param>
     /// <param name="value"></param>
@@ -26,7 +50,7 @@ public class V : VBase
     }
 
     /// <summary>
-    /// The value should be not null. If it is, return an error message; otherwise, return an empty string.
+    /// The value should be Not null. If it is, return an error message; otherwise, return an empty string.
     /// </summary>
     /// <param name="dataName"></param>
     /// <param name="value"></param>
@@ -525,6 +549,12 @@ public class V : VBase
     }
 
     #region -- Add validation --
+
+    public V AddNull()
+    {
+        _ruleBases.Add(new RuleNull());
+        return this;
+    }
 
     public V AddNotNull()
     {
