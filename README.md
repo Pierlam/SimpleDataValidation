@@ -2,7 +2,7 @@
 
 SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
 
-It's written in C#/NET8 with VS2026. The code is covered by 53 unit tests to ensure the non-regression of incoming evolutions.
+It's written in C#/NET8 with VS2026. The code is covered by 59 unit tests to ensure the non-regression of incoming evolutions.
 
 
 # A quick example
