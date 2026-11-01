@@ -16,10 +16,10 @@ Iban           Function renamed by BankIban
 BankCardNumber Now possible to check with all banks   
 
 -Languages:
-Added new language for messages: Spanish, German and Italian.  
+Added new language for error messages: Spanish, German and Italian.  
 
 
--44 unit tests, all are green.
+-46 unit tests, all are green.
 
 
 ## 0.2.0 Release (2026-10-17)

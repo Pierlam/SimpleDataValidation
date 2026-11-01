@@ -2,7 +2,7 @@
 
 SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
 
-It's written in C#/NET8 with VS2026. The code is covered by 42 unit tests to ensure the non-regression of incoming evolutions.
+It's written in C#/NET8 with VS2026. The code is covered by 46 unit tests to ensure the non-regression of incoming evolutions.
 
 
 # A quick example
@@ -110,7 +110,7 @@ EmailStrict              Check that the email format is valid , more strict but 
 
 Bool                     Check that the object value is a boolean.
 Int                      Check that the object value is an integer.
-Number                   Check that the object value is a number: integer, double float or BigInteger.
+Number                   Check that the object value is a number: integer, double, float or BigInteger.
 String                   Check that the object value is a string.
 
 BankIban                 Check that the string value is a valid bank IBAN number.

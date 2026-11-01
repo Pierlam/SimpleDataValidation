@@ -19,7 +19,7 @@ public enum ErrorCode
     Digits,
     LettersDigitsUnderscore,
 
-    StarsWith,
+    StartsWith,
 
     FirstCharIn,
 

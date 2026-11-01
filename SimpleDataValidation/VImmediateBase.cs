@@ -224,6 +224,23 @@ public class VImmediateBase: VBase
         return errMsg;
     }
 
+    public static string StartsWithCaseInsensitive(string dataName, string value, string start)
+    {
+        string errMsg = RuleValidator.StartsWithCaseInsensitive(_errorMessageMgr, dataName, value, start);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string StartsWithCaseInsensitive(string dataName, string value, string start, string errorMessage)
+    {
+        string errMsg = RuleValidator.StartsWithCaseInsensitive(dataName, value, start, errorMessage);
+        return errMsg;
+    }
+
     public static string FirstCharIn(string dataName, string value, string chars)
     {
         string errMsg = RuleValidator.FirstCharIn(_errorMessageMgr, dataName, value, chars);

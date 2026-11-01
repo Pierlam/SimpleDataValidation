@@ -202,7 +202,7 @@ public class RuleValidator
 
     public static string StartsWith(ErrorMessageMgr errorMessageMgr, string dataName, string value, string start)
     {
-        return StartsWith(dataName, value, start, errorMessageMgr.GetMessage(ErrorCode.StarsWith, dataName, start));
+        return StartsWith(dataName, value, start, errorMessageMgr.GetMessage(ErrorCode.StartsWith, dataName, start));
     }
 
     public static string StartsWith(string dataName, string value, string start, string errorMessage)
@@ -211,6 +211,21 @@ public class RuleValidator
         if (string.IsNullOrWhiteSpace(start)) return errorMessage;
 
         if (value.StartsWith(start)) return string.Empty;
+
+        return errorMessage;
+    }
+
+    public static string StartsWithCaseInsensitive(ErrorMessageMgr errorMessageMgr, string dataName, string value, string start)
+    {
+        return StartsWithCaseInsensitive(dataName, value, start, errorMessageMgr.GetMessage(ErrorCode.StartsWith, dataName, start));
+    }
+
+    public static string StartsWithCaseInsensitive(string dataName, string value, string start, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        if (string.IsNullOrWhiteSpace(start)) return errorMessage;
+
+        if (value.StartsWith(start, StringComparison.InvariantCultureIgnoreCase)) return string.Empty;
 
         return errorMessage;
     }

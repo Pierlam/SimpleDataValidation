@@ -60,7 +60,7 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Digits, "{0} must contains only digit" },
             { lang + ErrorCode.LettersDigitsUnderscore, "{0} must contains only letter, digit or underscore" },
 
-            { lang + ErrorCode.StarsWith, "{0} must starts with: {1}" },
+            { lang + ErrorCode.StartsWith, "{0} must starts with: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0} first char must be in: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0} first char must be not in: {1}" },
 
@@ -93,7 +93,7 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Digits, "{0} deve contenere solo cifre" },
             { lang + ErrorCode.LettersDigitsUnderscore, "{0} deve contenere solo lettere, cifre o il carattere underscore" },
 
-            { lang + ErrorCode.StarsWith, "{0} deve iniziare con: {1}" },
+            { lang + ErrorCode.StartsWith, "{0} deve iniziare con: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0}: il primo carattere deve essere uno dei seguenti: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0}: il primo carattere non deve essere uno dei seguenti: {1}" },
 
@@ -127,7 +127,7 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Digits, "{0} darf nur Ziffern enthalten" },
             { lang + ErrorCode.LettersDigitsUnderscore, "{0} darf nur Buchstaben, Ziffern oder Unterstriche enthalten" },
 
-            { lang + ErrorCode.StarsWith, "{0} muss mit folgendem beginnen: {1}" },
+            { lang + ErrorCode.StartsWith, "{0} muss mit folgendem beginnen: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0}: das erste Zeichen muss eines der folgenden sein: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0}: das erste Zeichen darf nicht eines der folgenden sein: {1}" },
 
@@ -160,7 +160,7 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Digits, "{0} debe contener solo dígitos" },
             { lang + ErrorCode.LettersDigitsUnderscore, "{0} debe contener solo letras, dígitos o el carácter carácter de subrayado (guion bajo)" },
 
-            { lang + ErrorCode.StarsWith, "{0} debe comenzar por: {1}" },
+            { lang + ErrorCode.StartsWith, "{0} debe comenzar por: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0} debe tener como primer carácter uno de los siguientes: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0} no debe tener como primer carácter uno de los siguientes: {1}" },
 
@@ -193,7 +193,7 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Digits, "{0} doit contenir seulement des chiffres" },
             { lang + ErrorCode.LettersDigitsUnderscore, "{0} doit contenir seulement des lettres, chiffres ou le caractère underscore" },
 
-            { lang + ErrorCode.StarsWith, "{0} doit commencer par: {1}" },
+            { lang + ErrorCode.StartsWith, "{0} doit commencer par: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0} doit avoir en premier un de ces caractère(s): {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0} ne doit pas avoir en premier un de ces caractère(s): {1}" },
 

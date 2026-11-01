@@ -22,7 +22,7 @@ public class Test_V_BankCardNumber
         errMsg = V.BankCardNumber("field", null, BankCardBank.Visa);
         Assert.AreEqual("field must be a valid Card Number", errMsg);
 
-        errMsg = V.CardNumber("field", null, BankCardBank.Visa, "Custom error message");
+        errMsg = V.BankCardNumber("field", null, BankCardBank.Visa, "Custom error message");
         Assert.AreEqual("Custom error message", errMsg);
     }
 
