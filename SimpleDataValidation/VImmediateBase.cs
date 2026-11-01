@@ -192,7 +192,6 @@ public class VImmediateBase: VBase
     {
         string errMsg = RuleValidator.LettersDigitsUnderscore(_errorMessageMgr, dataName, value);
         return errMsg;
-
     }
 
     /// <summary>
@@ -224,6 +223,23 @@ public class VImmediateBase: VBase
         return errMsg;
     }
 
+    /// <summary>
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string EndsWith(string dataName, string value, string start, string errorMessage)
+    {
+        string errMsg = RuleValidator.EndsWith(dataName, value, start, errorMessage);
+        return errMsg;
+    }
+
+    public static string EndsWith(string dataName, string value, string start)
+    {
+        string errMsg = RuleValidator.EndsWith(_errorMessageMgr, dataName, value, start);
+        return errMsg;
+    }
+
     public static string StartsWithCaseInsensitive(string dataName, string value, string start)
     {
         string errMsg = RuleValidator.StartsWithCaseInsensitive(_errorMessageMgr, dataName, value, start);
@@ -238,6 +254,23 @@ public class VImmediateBase: VBase
     public static string StartsWithCaseInsensitive(string dataName, string value, string start, string errorMessage)
     {
         string errMsg = RuleValidator.StartsWithCaseInsensitive(dataName, value, start, errorMessage);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string EndsWithCaseInsensitive(string dataName, string value, string start, string errorMessage)
+    {
+        string errMsg = RuleValidator.EndsWithCaseInsensitive(dataName, value, start, errorMessage);
+        return errMsg;
+    }
+
+    public static string EndsWithCaseInsensitive(string dataName, string value, string start)
+    {
+        string errMsg = RuleValidator.EndsWithCaseInsensitive(_errorMessageMgr, dataName, value, start);
         return errMsg;
     }
 

@@ -58,6 +58,24 @@ public class V : VImmediateBase
         return this;
     }
 
+    public V AddStartsWithCaseInsensitive(string start)
+    {
+        _ruleBases.Add(new RuleStartsWithCaseInsensitive(start));
+        return this;
+    }
+
+    public V AddEndsWith(string end)
+    {
+        _ruleBases.Add(new RuleEndsWith(end));
+        return this;
+    }
+
+    public V AddEndsWithCaseInsensitive(string end)
+    {
+        _ruleBases.Add(new RuleEndsWithCaseInsensitive(end));
+        return this;
+    }
+
     public V AddFirstCharIn(string chars)
     {
         _ruleBases.Add(new RuleFirstCharIn(chars));

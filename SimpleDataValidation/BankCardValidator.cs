@@ -12,7 +12,7 @@ namespace SimpleDataValidation;
 /// <summary>
 /// To check debit, prepaid card numbers.
 /// </summary>
-public class CardValidator
+public class BankCardValidator
 {
     /// <summary>
     /// Check that the card number match the bank and also that the number is correct.

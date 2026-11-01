@@ -34,6 +34,15 @@ public class RuleValidator
         if (rule is RuleStartsWith ruleStartsWith)
             return StartsWith(errorMessageMgr, dataName, value?.ToString(), ruleStartsWith.Start);
 
+        if(rule is RuleStartsWithCaseInsensitive ruleStartsWithCaseInsensitive)
+            return StartsWithCaseInsensitive(errorMessageMgr, dataName, value?.ToString(), ruleStartsWithCaseInsensitive.Start);
+
+        if (rule is RuleEndsWith ruleEndsWith)
+            return EndsWith(errorMessageMgr, dataName, value?.ToString(), ruleEndsWith.End);
+
+        if (rule is RuleEndsWithCaseInsensitive ruleEndsWithCaseInsensitive)
+            return EndsWithCaseInsensitive(errorMessageMgr, dataName, value?.ToString(), ruleEndsWithCaseInsensitive.End);
+
         if (rule is RuleFirstCharIn ruleFirstCharIn)
             return FirstCharIn(errorMessageMgr, dataName, value?.ToString(), ruleFirstCharIn.Chars);
 
@@ -52,8 +61,8 @@ public class RuleValidator
         if (rule is RuleExactLength ruleExactLength)
             return ExactLength(errorMessageMgr, dataName, value?.ToString(), ruleExactLength.Length);
 
-        if (rule is RuleBankCardNumber cardNumber)
-            return BankCardNumber(errorMessageMgr, dataName, value?.ToString(), cardNumber.CardBank);
+        if (rule is RuleBankCardNumber bankCardNumber)
+            return BankCardNumber(errorMessageMgr, dataName, value?.ToString(), bankCardNumber.CardBank);
 
         throw new NotImplementedException(nameof(rule));
     }
@@ -215,6 +224,23 @@ public class RuleValidator
         return errorMessage;
     }
 
+
+    public static string EndsWith(ErrorMessageMgr errorMessageMgr, string dataName, string value, string start)
+    {
+        return EndsWith(dataName, value, start, errorMessageMgr.GetMessage(ErrorCode.EndsWith, dataName, start));
+    }
+
+    public static string EndsWith(string dataName, string value, string start, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        if (string.IsNullOrWhiteSpace(start)) return errorMessage;
+
+        if (value.EndsWith(start)) return string.Empty;
+
+        return errorMessage;
+    }
+
+
     public static string StartsWithCaseInsensitive(ErrorMessageMgr errorMessageMgr, string dataName, string value, string start)
     {
         return StartsWithCaseInsensitive(dataName, value, start, errorMessageMgr.GetMessage(ErrorCode.StartsWith, dataName, start));
@@ -229,6 +255,22 @@ public class RuleValidator
 
         return errorMessage;
     }
+
+    public static string EndsWithCaseInsensitive(ErrorMessageMgr errorMessageMgr, string dataName, string value, string start)
+    {
+        return EndsWithCaseInsensitive(dataName, value, start, errorMessageMgr.GetMessage(ErrorCode.EndsWith, dataName, start));
+    }
+
+    public static string EndsWithCaseInsensitive(string dataName, string value, string start, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        if (string.IsNullOrWhiteSpace(start)) return errorMessage;
+
+        if (value.EndsWith(start, StringComparison.InvariantCultureIgnoreCase)) return string.Empty;
+
+        return errorMessage;
+    }
+
 
     //FirstCharIn
     public static string FirstCharIn(ErrorMessageMgr errorMessageMgr, string dataName, string value, string chars)
@@ -571,7 +613,7 @@ public class RuleValidator
 
     public static string Iban(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
-        return BankIban(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Iban, dataName));
+        return BankIban(dataName, value, errorMessageMgr.GetMessage(ErrorCode.BankIban, dataName));
     }
 
     public static string BankIban(string dataName, string value, string errorMessage)
@@ -581,12 +623,12 @@ public class RuleValidator
 
     public static string BankCardNumber(ErrorMessageMgr errorMessageMgr, string dataName, string value, BankCardBank cardBank)
     {
-        return BankCardNumber(dataName, value, cardBank, errorMessageMgr.GetMessage(ErrorCode.CardNumber, dataName));
+        return BankCardNumber(dataName, value, cardBank, errorMessageMgr.GetMessage(ErrorCode.BankCardNumber, dataName));
     }
 
     public static string BankCardNumber(string dataName, string value, BankCardBank cardBank, string errorMessage)
     {
-        int res = CardValidator.CheckCardNumber(cardBank, value);
+        int res = BankCardValidator.CheckCardNumber(cardBank, value);
         if (res == 0) return string.Empty;
         return errorMessage;
 

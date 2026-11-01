@@ -38,6 +38,34 @@ public class Test_V_StartsWithAndFirstChar
     }
 
     [TestMethod]
+    public void EndsWith()
+    {
+        string errMsg;
+        errMsg = V.EndsWith("field", "john", "hn");
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.EndsWith("field", null, "hn");
+        Assert.AreEqual("field must ends with: hn", errMsg);
+
+        errMsg = V.EndsWith("field", null, "hn", "Custom error message");
+        Assert.AreEqual("Custom error message", errMsg);
+    }
+
+    [TestMethod]
+    public void EndsWithCaseInsensitive()
+    {
+        string errMsg;
+        errMsg = V.EndsWithCaseInsensitive("field", "john", "HN");
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.EndsWithCaseInsensitive("field", null, "hn");
+        Assert.AreEqual("field must ends with: hn", errMsg);
+
+        errMsg = V.EndsWithCaseInsensitive("field", null, "hn", "Custom error message");
+        Assert.AreEqual("Custom error message", errMsg);
+    }
+
+    [TestMethod]
     public void FirstCharIn()
     {
         string errMsg;

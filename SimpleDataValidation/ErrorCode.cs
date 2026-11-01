@@ -20,6 +20,7 @@ public enum ErrorCode
     LettersDigitsUnderscore,
 
     StartsWith,
+    EndsWith,
 
     FirstCharIn,
 
@@ -43,7 +44,7 @@ public enum ErrorCode
 
     String,
 
-    Iban,
+    BankIban,
 
-    CardNumber
+    BankCardNumber
 }

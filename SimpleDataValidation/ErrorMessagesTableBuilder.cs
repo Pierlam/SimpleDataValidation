@@ -56,11 +56,13 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.NotNull, "{0} is required" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} is required" },
             { lang + ErrorCode.NotNullOrWhiteSpace, "{0} is required" },
+
             { lang + ErrorCode.Letters, "{0} must contains only letter" },
             { lang + ErrorCode.Digits, "{0} must contains only digit" },
             { lang + ErrorCode.LettersDigitsUnderscore, "{0} must contains only letter, digit or underscore" },
 
             { lang + ErrorCode.StartsWith, "{0} must starts with: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} must ends with: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0} first char must be in: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0} first char must be not in: {1}" },
 
@@ -68,13 +70,16 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.MinLength, "{0} must be at least {1} characters long" },
             { lang + ErrorCode.MaxLength, "{0} must be no more than {1} characters long" },
             { lang + ErrorCode.ExactLength, "{0} must be exactly {1} characters long" },
-            { lang + ErrorCode.Email, "{0} must be a valid email address" },
+
             { lang + ErrorCode.Bool, "{0} must be a boolean" },
             { lang + ErrorCode.Int, "{0} must be an integer" },
             { lang + ErrorCode.Number, "{0} must be a number" },
             { lang + ErrorCode.String, "{0} must be a string" },
-            { lang + ErrorCode.Iban, "{0} must be a valid IBAN" },
-            { lang + ErrorCode.CardNumber, "{0} must be a valid Card Number" },
+
+            { lang + ErrorCode.Email, "{0} must be a valid email address" },
+
+            { lang + ErrorCode.BankIban, "{0} must be a valid IBAN" },
+            { lang + ErrorCode.BankCardNumber, "{0} must be a valid Card Number" },
         };
 
         return tableErrorMsg;
@@ -89,11 +94,13 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.NotNull, "{0} è obbligatorio" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} è obbligatorio" },
             { lang + ErrorCode.NotNullOrWhiteSpace, "{0} è obbligatorio" },
+
             { lang + ErrorCode.Letters, "{0} deve contenere solo lettere" },
             { lang + ErrorCode.Digits, "{0} deve contenere solo cifre" },
             { lang + ErrorCode.LettersDigitsUnderscore, "{0} deve contenere solo lettere, cifre o il carattere underscore" },
 
             { lang + ErrorCode.StartsWith, "{0} deve iniziare con: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} deve terminare con: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0}: il primo carattere deve essere uno dei seguenti: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0}: il primo carattere non deve essere uno dei seguenti: {1}" },
 
@@ -101,13 +108,16 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.MinLength, "{0} deve avere almeno {1} caratteri"  },
             { lang + ErrorCode.MaxLength, "{0} non deve avere più di {1} caratteri" },
             { lang + ErrorCode.ExactLength, "{0} deve avere esattamente {1} caratteri"  },
-            { lang + ErrorCode.Email, "{0} deve essere un indirizzo email valido" },
+
             { lang + ErrorCode.Bool, "{0} deve essere un valore booleano" },
             { lang + ErrorCode.Int, "{0} deve essere un numero intero" },
             { lang + ErrorCode.Number, "{0} deve essere un numero" },
             { lang + ErrorCode.String, "{0} deve essere una stringa" },
-            { lang + ErrorCode.Iban, "{0} deve essere un IBAN valido" },
-            { lang + ErrorCode.CardNumber, "{0} deve essere un numero di carta valido" },
+
+            { lang + ErrorCode.Email, "{0} deve essere un indirizzo email valido" },
+
+            { lang + ErrorCode.BankIban, "{0} deve essere un IBAN valido" },
+            { lang + ErrorCode.BankCardNumber, "{0} deve essere un numero di carta valido" },
 
         };
 
@@ -123,11 +133,13 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.NotNull, "{0} ist erforderlich" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} ist erforderlich" },
             { lang + ErrorCode.NotNullOrWhiteSpace, "{0} ist erforderlich" },
+
             { lang + ErrorCode.Letters, "{0} darf nur Buchstaben enthalten" },
             { lang + ErrorCode.Digits, "{0} darf nur Ziffern enthalten" },
             { lang + ErrorCode.LettersDigitsUnderscore, "{0} darf nur Buchstaben, Ziffern oder Unterstriche enthalten" },
 
             { lang + ErrorCode.StartsWith, "{0} muss mit folgendem beginnen: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} muss mit folgendem enden: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0}: das erste Zeichen muss eines der folgenden sein: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0}: das erste Zeichen darf nicht eines der folgenden sein: {1}" },
 
@@ -135,13 +147,16 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.MinLength, "{0} muss mindestens {1} Zeichen lang sein"  },
             { lang + ErrorCode.MaxLength, "{0} darf höchstens {1} Zeichen lang sein" },
             { lang + ErrorCode.ExactLength, "{0} muss genau {1} Zeichen lang sein"  },
-            { lang + ErrorCode.Email, "{0} muss eine gültige E-Mail-Adresse sein" },
+
             { lang + ErrorCode.Bool, "{0} muss ein boolescher Wert sein" },
             { lang + ErrorCode.Int, "{0} muss eine ganze Zahl sein" },
             { lang + ErrorCode.Number, "{0} muss eine Zahl sein" },
             { lang + ErrorCode.String, "{0} muss eine Zeichenkette sein" },
-            { lang + ErrorCode.Iban, "{0} muss eine gültige IBAN sein" },
-            { lang + ErrorCode.CardNumber, "{0} muss eine gültige Kartennummer sein" },
+
+            { lang + ErrorCode.Email, "{0} muss eine gültige E-Mail-Adresse sein" },
+
+            { lang + ErrorCode.BankIban, "{0} muss eine gültige IBAN sein" },
+            { lang + ErrorCode.BankCardNumber, "{0} muss eine gültige Kartennummer sein" },
         };
 
         return tableErrorMsg;
@@ -156,11 +171,13 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.NotNull, "{0} es obligatorio" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} es obligatorio" },
             { lang + ErrorCode.NotNullOrWhiteSpace, "{0} es obligatorio" },
+
             { lang + ErrorCode.Letters, "{0} debe contener solo letras" },
             { lang + ErrorCode.Digits, "{0} debe contener solo dígitos" },
             { lang + ErrorCode.LettersDigitsUnderscore, "{0} debe contener solo letras, dígitos o el carácter carácter de subrayado (guion bajo)" },
 
             { lang + ErrorCode.StartsWith, "{0} debe comenzar por: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} debe terminar en: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0} debe tener como primer carácter uno de los siguientes: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0} no debe tener como primer carácter uno de los siguientes: {1}" },
 
@@ -168,13 +185,16 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.MinLength, "{0} debe tener al menos {1} caracteres"  },
             { lang + ErrorCode.MaxLength, "{0} no debe tener más de {1} caracteres" },
             { lang + ErrorCode.ExactLength, "{0} debe tener exactamente {1} caracteres"  },
-            { lang + ErrorCode.Email, "{0} debe ser una dirección de correo electrónico válida" },
+
             { lang + ErrorCode.Bool, "{0} debe ser un valor booleano" },
             { lang + ErrorCode.Int, "{0} debe ser un número entero" },
             { lang + ErrorCode.Number, "{0} debe ser un número" },
             { lang + ErrorCode.String, "{0} debe ser una cadena de texto" },
-            { lang + ErrorCode.Iban, "{0} debe ser un IBAN válido" },
-            { lang + ErrorCode.CardNumber, "{0} debe ser un número de tarjeta válido" },
+
+            { lang + ErrorCode.Email, "{0} debe ser una dirección de correo electrónico válida" },
+
+            { lang + ErrorCode.BankIban, "{0} debe ser un IBAN válido" },
+            { lang + ErrorCode.BankCardNumber, "{0} debe ser un número de tarjeta válido" },
         };
 
         return tableErrorMsg;
@@ -194,6 +214,7 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.LettersDigitsUnderscore, "{0} doit contenir seulement des lettres, chiffres ou le caractère underscore" },
 
             { lang + ErrorCode.StartsWith, "{0} doit commencer par: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} doit se terminer par: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0} doit avoir en premier un de ces caractère(s): {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0} ne doit pas avoir en premier un de ces caractère(s): {1}" },
 
@@ -206,8 +227,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} doit être un entier" },
             { lang + ErrorCode.Number, "{0} doit être un nombre" },
             { lang + ErrorCode.String, "{0} doit être une chaîne de caractères" },
-            { lang + ErrorCode.Iban, "{0} doit être un IBAN valide" },
-            { lang + ErrorCode.CardNumber, "{0} doit être un numéro de carte valide" },
+            { lang + ErrorCode.BankIban, "{0} doit être un IBAN valide" },
+            { lang + ErrorCode.BankCardNumber, "{0} doit être un numéro de carte valide" },
 
         };
 

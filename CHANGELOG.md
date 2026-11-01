@@ -1,13 +1,19 @@
 ﻿## 0.3.0 Release (2026-XX-XX)
 
 -New validation available:
-Null                   Check that the object value is null.
-Bool                   Check that the object value is a boolean.
+Null                      Check that the object value is null.
+Bool                      Check that the object value is a boolean.
+StartsWithCaseInsensitive Check that the string starts with the provided string, case insensitive.
+EndsWith                  Check that the string ends with the provided string, case sensitive. 
+EndsWithCaseInsensitive   Check that the string ends with the provided string, case insensitive.
 
 -New chain validation available:
 AddNull
 AddBetweenLength
 AddExactLength
+AddStartsWithCaseInsensitive
+AddEndsWith
+AddEndsWithCaseInsensitive
 
 -Rework:
 CardNumber     Function renamed by BankCardNumber
