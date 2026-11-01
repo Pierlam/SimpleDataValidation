@@ -10,6 +10,23 @@ namespace SimpleDataValidation.Tests;
 public class Test_V_IntNumberString
 {
     [TestMethod]
+    public void Bool()
+    {
+        string errMsg;
+        errMsg = V.Bool("field", true);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.Bool("field", false);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.Bool("field", null);
+        Assert.AreEqual("field must be a boolean", errMsg);
+
+        errMsg = V.Bool("field", null, "Custom error message");
+        Assert.AreEqual("Custom error message", errMsg);
+    }
+
+    [TestMethod]
     public void Int()
     {
         string errMsg;

@@ -8,5 +8,8 @@ namespace SimpleDataValidation.Rule;
 
 public abstract class RuleBase
 {
-
+    /// <summary>
+    /// User defined message, override the default one.
+    /// </summary>
+    public string ErrorMessage { get; }
 }

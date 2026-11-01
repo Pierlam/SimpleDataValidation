@@ -28,7 +28,7 @@ public class CardValidator
     /// <param name="CardBanks"></param>
     /// <param name="cardNumber"></param>
     /// <returns></returns>
-    public static int CheckCardNumber(CardBank cardBanks, string cardNumber)
+    public static int CheckCardNumber(BankCardBank cardBanks, string cardNumber)
     {
         if (string.IsNullOrWhiteSpace(cardNumber)) return 1;
 
@@ -42,7 +42,7 @@ public class CardValidator
         string cardStr = card.ToString();
 
         //--get the bank of the card number
-        CardBank cardBankRes = new CardBank();
+        BankCardBank cardBankRes = new BankCardBank();
 
         //--find the bank
         if(!FindBank(cardStr, out cardBankRes))
@@ -59,26 +59,26 @@ public class CardValidator
     /// <param name="cardStr"></param>
     /// <param name="cardBankRes"></param>
     /// <returns></returns>
-    static bool FindBank(string cardStr, out CardBank cardBankRes)
+    static bool FindBank(string cardStr, out BankCardBank cardBankRes)
     {
         //--visa
         if (cardStr.StartsWith("4"))
         {
-            cardBankRes = CardBank.Visa;
+            cardBankRes = BankCardBank.Visa;
             return true;
         }
 
         //--American Express
         if (cardStr.StartsWith("34") || cardStr.StartsWith("37"))
         {
-            cardBankRes = CardBank.AmericanExpress;
+            cardBankRes = BankCardBank.AmericanExpress;
             return true;
         }
 
         //--Mastercard: Start with 51 to 55.
         if (cardStr.StartsWith("51") || cardStr.StartsWith("52") || cardStr.StartsWith("53") || cardStr.StartsWith("54") || cardStr.StartsWith("55"))
         {
-            cardBankRes = CardBank.Mastercard;
+            cardBankRes = BankCardBank.Mastercard;
             return true;
         }
 
@@ -90,7 +90,7 @@ public class CardValidator
             {
                 if(prefixInt >= 2221 && prefixInt <= 2720)
                 {
-                    cardBankRes = CardBank.Mastercard;
+                    cardBankRes = BankCardBank.Mastercard;
                     return true;
                 }
             }
@@ -100,7 +100,7 @@ public class CardValidator
         // length: 16 digits
         if(cardStr.StartsWith("6011") || cardStr.StartsWith("65"))
         {
-            cardBankRes = CardBank.Discover;
+            cardBankRes = BankCardBank.Discover;
             return true;
         }
         if (cardStr.StartsWith("64"))
@@ -110,7 +110,7 @@ public class CardValidator
             {
                 if (prefixInt >= 644 && prefixInt <= 649)
                 {
-                    cardBankRes = CardBank.Discover;
+                    cardBankRes = BankCardBank.Discover;
                     return true;
                 }
             }
@@ -121,7 +121,7 @@ public class CardValidator
         //length: 14
         if (cardStr.StartsWith("36") || cardStr.StartsWith("38"))
         {
-            cardBankRes = CardBank.DinersClub;
+            cardBankRes = BankCardBank.DinersClub;
             return true;
         }
         if (cardStr.StartsWith("30"))
@@ -131,7 +131,7 @@ public class CardValidator
             {
                 if (prefixInt >= 300 && prefixInt <= 305)
                 {
-                    cardBankRes = CardBank.DinersClub;
+                    cardBankRes = BankCardBank.DinersClub;
                     return true;
                 }
             }
@@ -142,7 +142,7 @@ public class CardValidator
         // length: 16 - 19
         if(cardStr.StartsWith("62") || cardStr.StartsWith("81"))
         {
-            cardBankRes = CardBank.ChinaUnionPay;
+            cardBankRes = BankCardBank.ChinaUnionPay;
             return true;
         }
 
@@ -154,7 +154,7 @@ public class CardValidator
             {
                 if (prefixInt >= 3528 && prefixInt <= 3589)
                 {
-                    cardBankRes = CardBank.JCB;
+                    cardBankRes = BankCardBank.JCB;
                     return true;
                 }
             }
@@ -163,7 +163,7 @@ public class CardValidator
 
         //--other banks: 
 
-        cardBankRes = new CardBank();
+        cardBankRes = new BankCardBank();
         return false;
 
     }
@@ -176,10 +176,10 @@ public class CardValidator
     /// <param name="cardBanks"></param>
     /// <param name="cardBankRes"></param>
     /// <returns></returns>
-    static int FinalCheckLengthAndLuhnCalc(string cardStr, CardBank cardBanks, CardBank cardBankRes)
+    static int FinalCheckLengthAndLuhnCalc(string cardStr, BankCardBank cardBanks, BankCardBank cardBankRes)
     {
         //--is it a Visa card?
-        if (CheckCardBank(CardBank.Visa, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.Visa, cardBanks, cardBankRes))
         {
             if (cardStr.Length != 16) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -188,7 +188,7 @@ public class CardValidator
         }
 
         //--is it an American Express?
-        if (CheckCardBank(CardBank.AmericanExpress, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.AmericanExpress, cardBanks, cardBankRes))
         {
             if (cardStr.Length != 15) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -197,7 +197,7 @@ public class CardValidator
         }
 
         //--is it a Mastercard?
-        if (CheckCardBank(CardBank.Mastercard, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.Mastercard, cardBanks, cardBankRes))
         {
             if (cardStr.Length != 16) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -206,7 +206,7 @@ public class CardValidator
         }
 
         //--is it a Discover?
-        if (CheckCardBank(CardBank.Discover, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.Discover, cardBanks, cardBankRes))
         {
             if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -215,7 +215,7 @@ public class CardValidator
         }
 
         //--is it a DinnersClub?
-        if (CheckCardBank(CardBank.DinersClub, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.DinersClub, cardBanks, cardBankRes))
         {
             if (cardStr.Length != 14) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -224,7 +224,7 @@ public class CardValidator
         }
 
         //--is it a China UnionPay?
-        if (CheckCardBank(CardBank.ChinaUnionPay, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.ChinaUnionPay, cardBanks, cardBankRes))
         {
             if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -233,7 +233,7 @@ public class CardValidator
         }
 
         //--is it a JCB?
-        if (CheckCardBank(CardBank.JCB, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.JCB, cardBanks, cardBankRes))
         {
             if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -301,7 +301,7 @@ public class CardValidator
         return str[^1] - '0' == checkDigit;
     }
 
-    public static bool CheckCardBank(CardBank cardBankExpected, CardBank cardBankA, CardBank cardBankB)
+    public static bool CheckCardBank(BankCardBank cardBankExpected, BankCardBank cardBankA, BankCardBank cardBankB)
     {
         return cardBankA.HasFlag(cardBankExpected) && cardBankB.HasFlag(cardBankExpected);
     }

@@ -10,7 +10,7 @@ namespace SimpleDataValidation;
 /// Used to check card number.
 /// </summary>
 [Flags]
-public enum CardBank
+public enum BankCardBank
 {
     Visa = 1,
     Mastercard = 2,

@@ -40,8 +40,8 @@ public class RuleValidator
         if (rule is RuleFirstCharNotIn ruleFirstCharNotIn)
             return FirstCharNotIn(errorMessageMgr, dataName, value?.ToString(), ruleFirstCharNotIn.Chars);
 
-        //if(rule is RuleBetweenLength ruleBetweenLength)
-        //    return BetweenLength(errorMsgMgr, dataName, value?.ToString(), ruleBetweenLength.MinLength, ruleBetweenLength.MaxLength);
+        if (rule is RuleBetweenLength ruleBetweenLength)
+            return BetweenLength(errorMessageMgr, dataName, value?.ToString(), ruleBetweenLength.MinLength, ruleBetweenLength.MaxLength);
 
         if (rule is RuleMinLength ruleMinLength)
             return MinLength(errorMessageMgr, dataName, value?.ToString(), ruleMinLength.MinLength);
@@ -49,7 +49,10 @@ public class RuleValidator
         if(rule is RuleMaxLength ruleMaxLength)
             return MaxLength(errorMessageMgr, dataName, value?.ToString(), ruleMaxLength.MaxLength);
 
-        if (rule is RuleCardNumber cardNumber)
+        if (rule is RuleExactLength ruleExactLength)
+            return ExactLength(errorMessageMgr, dataName, value?.ToString(), ruleExactLength.Length);
+
+        if (rule is RuleBankCardNumber cardNumber)
             return CardNumber(errorMessageMgr, dataName, value?.ToString(), cardNumber.CardBank);
 
         throw new NotImplementedException(nameof(rule));
@@ -444,6 +447,33 @@ public class RuleValidator
     }
 
     /// <summary>
+    /// Validates that the provided value is a boolean.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <param name="errorMessage"></param>
+    /// <returns></returns>
+    public static string Bool(string dataName, object value, string errorMessage)
+    {
+        if (value == null) return errorMessage;
+
+        if (value.GetType() != typeof(bool)) return errorMessage;
+
+        return string.Empty;
+    }
+
+    /// <summary>
+    /// Validates that the provided value is a boolean.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Bool(ErrorMessageMgr errorMessageMgr, string dataName, object value)
+    {
+        return Bool(dataName, value, errorMessageMgr.GetMessage(ErrorCode.Bool, dataName));
+    }
+
+    /// <summary>
     /// Validates that the provided value is an integer.
     /// </summary>
     /// <param name="dataName"></param>
@@ -534,12 +564,12 @@ public class RuleValidator
         return IbanValidator.CheckIban(value) ? string.Empty : errorMessage;
     }
 
-    public static string CardNumber(ErrorMessageMgr errorMessageMgr, string dataName, string value, CardBank cardBank)
+    public static string CardNumber(ErrorMessageMgr errorMessageMgr, string dataName, string value, BankCardBank cardBank)
     {
         return CardNumber(dataName, value, cardBank, errorMessageMgr.GetMessage(ErrorCode.CardNumber, dataName));
     }
 
-    public static string CardNumber(string dataName, string value, CardBank cardBank, string errorMessage)
+    public static string CardNumber(string dataName, string value, BankCardBank cardBank, string errorMessage)
     {
         int res = CardValidator.CheckCardNumber(cardBank, value);
         if (res == 0) return string.Empty;

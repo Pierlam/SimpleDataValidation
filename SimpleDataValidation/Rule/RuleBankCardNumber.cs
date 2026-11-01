@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace SimpleDataValidation.Rule;
 
-public class RuleCardNumber: RuleBase
+public class RuleBankCardNumber: RuleBase
 {
-    public RuleCardNumber(CardBank cardBank)
+    public RuleBankCardNumber(BankCardBank cardBank)
     {
         CardBank = cardBank;
     }
 
-    public CardBank CardBank { get; }
+    public BankCardBank CardBank { get; }
 
 
 }

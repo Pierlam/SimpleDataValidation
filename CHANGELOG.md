@@ -2,13 +2,23 @@
 
 -New validation available:
 Null                   Check that the object value is null.
+Bool                   Check that the object value is a boolean.
 
 -New chain validation available:
 AddNull
+AddBetweenLength
+AddExactLength
 
+-Rework:
+CardNumber renamed by BankCardNumber
+AddCardNumber renamed by AddBankCardNumber
+Iban renamed by BankIban 
+
+-Languages:
 Added new language for messages: Spanish, German and Italian.  
 
--41 unit tests, all are green.
+
+-44 unit tests, all are green.
 
 
 ## 0.2.0 Release (2026-10-17)

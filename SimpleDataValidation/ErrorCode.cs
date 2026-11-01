@@ -35,6 +35,8 @@ public enum ErrorCode
 
     Email,
 
+    Bool,
+
     Int,
 
     Number,
