@@ -111,5 +111,27 @@ public abstract class VBase
             }
         }
         return finalErrMsg.Trim();
-    }    
+    }
+
+    public string Validate(ValidateOptions options)
+    {
+        string finalErrMsg = string.Empty;
+        foreach (var rule in _ruleBases)
+        {
+            string errMsg = RuleValidator.Validate(_errorMessageMgr, rule, _dataName, _value);
+            if (!string.IsNullOrEmpty(errMsg))
+            {
+                if (!string.IsNullOrEmpty(finalErrMsg))
+                {
+                    finalErrMsg += _errorMessageMgr.BetweenMsg;
+                }
+                finalErrMsg += errMsg;
+            }
+            if (options == ValidateOptions.StopOnFirstError && !string.IsNullOrEmpty(finalErrMsg))
+            {
+                break;
+            }
+        }
+        return finalErrMsg.Trim();
+    }
 }

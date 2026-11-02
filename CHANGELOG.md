@@ -31,11 +31,15 @@ Iban           Function renamed by BankIban.
 
 BankCardNumber Now possible to check with all banks. 
 
+-New behavior:
+.Validate(ValidateOptions.StopOnFirstError)    Will stop on the first error.
+
+
 -Languages:
 Added new language for error messages: Spanish, German and Italian.  
 
 
--61 unit tests, all are green.
+-63s unit tests, all are green.
 
 
 ## 0.2.0 Release (2026-10-17)
