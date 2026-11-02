@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SimpleDataValidation;
 
-public class IbanValidator
+public class BankIbanValidator
 {
     /// <summary>
     /// Check if the provided IBAN is valid according to the IBAN validation rules. The IBAN should be in the format of a string, and it can contain spaces for readability. For example, a valid IBAN could be:

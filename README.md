@@ -2,7 +2,7 @@
 
 SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
 
-It's written in C#/NET8 with VS2026. The code is covered by 59 unit tests to ensure the non-regression of incoming evolutions.
+It's written in C#/NET8 with VS2026. The code is covered by 61 unit tests to ensure the non-regression of incoming evolutions.
 
 
 # A quick example
@@ -121,6 +121,8 @@ Int                        Check that the object value is an integer.
 Number                     Check that the object value is a number: integer, double, float or BigInteger.
 String                     Check that the object value is a string.
 
+FormatDate                 Check that the string match the provided (one or more) date format.
+
 BankIban                   Check that the string value is a valid bank IBAN number.
 BankCardNumber             Check that the string is a valid bank card number.
 
@@ -218,7 +220,25 @@ errMsg = V.StartsWith("field", "hello", "hgj");  -> ok, errMsg will be empty
 errMsg = V.FirstCharIn("field", "hello", "xyz");  -> error! 
 ```
 
-## Check Iban and card Number
+## Check date 
+
+Check if a date match the provided format:
+
+```
+// one format to match
+errMsg = V.FormatDate("name", "10/12/2026", "dd/MM/yyyy");
+
+// the date can match one format among the both provided
+errMsg = V.FormatDate("name", "2026-10-25", new[] { "dd/MM/yyyy", "yyyy-MM-dd" });
+
+errMsg = V.FormatDate("name", "10/12/202", new[] { "dd/MM/yyyy", "yyyy-MM-dd" }, "Custom error message");
+// the date is wrong: errMsg will be: "Custom error message"
+
+// a more complex case: match date and time
+errMsg = V.FormatDate("name", "2026-12-20 10:30:00,123", "yyyy-MM-dd HH:mm:ss,fff");
+```
+
+## Check bank Iban and card Number
 
 Check if an Iban number is valid:
 With or without space chars.

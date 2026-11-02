@@ -78,6 +78,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Number, "{0} must be a number" },
             { lang + ErrorCode.String, "{0} must be a string" },
 
+            { lang + ErrorCode.FormatDate, "{0} must be a valid date" },
+
             { lang + ErrorCode.Email, "{0} must be a valid email address" },
 
             { lang + ErrorCode.BankIban, "{0} must be a valid IBAN" },
@@ -117,6 +119,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} deve essere un numero intero" },
             { lang + ErrorCode.Number, "{0} deve essere un numero" },
             { lang + ErrorCode.String, "{0} deve essere una stringa" },
+
+            { lang + ErrorCode.FormatDate, "{0} deve essere una data valida" },
 
             { lang + ErrorCode.Email, "{0} deve essere un indirizzo email valido" },
 
@@ -159,6 +163,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Number, "{0} muss eine Zahl sein" },
             { lang + ErrorCode.String, "{0} muss eine Zeichenkette sein" },
 
+            { lang + ErrorCode.FormatDate, "{0} muss ein gültiges Datum sein" },
+
             { lang + ErrorCode.Email, "{0} muss eine gültige E-Mail-Adresse sein" },
 
             { lang + ErrorCode.BankIban, "{0} muss eine gültige IBAN sein" },
@@ -199,6 +205,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Number, "{0} debe ser un número" },
             { lang + ErrorCode.String, "{0} debe ser una cadena de texto" },
 
+            { lang + ErrorCode.FormatDate, "{0} debe ser una fecha válida" },
+
             { lang + ErrorCode.Email, "{0} debe ser una dirección de correo electrónico válida" },
 
             { lang + ErrorCode.BankIban, "{0} debe ser un IBAN válido" },
@@ -232,11 +240,16 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.MinLength, "{0} doit contenir au moins {1} caractères"  },
             { lang + ErrorCode.MaxLength, "{0} doit contenir au maximum {1} caractères" },
             { lang + ErrorCode.ExactLength, "{0} doit contenir exactement {1} caractères"  },
-            { lang + ErrorCode.Email, "{0} doit être une adresse email valide" },
+
             { lang + ErrorCode.Bool, "{0} doit être une valeur booléenne" },
             { lang + ErrorCode.Int, "{0} doit être un entier" },
             { lang + ErrorCode.Number, "{0} doit être un nombre" },
             { lang + ErrorCode.String, "{0} doit être une chaîne de caractères" },
+
+            { lang + ErrorCode.FormatDate, "{0} doit être une date valide" },
+
+            { lang + ErrorCode.Email, "{0} doit être une adresse email valide" },
+
             { lang + ErrorCode.BankIban, "{0} doit être un IBAN valide" },
             { lang + ErrorCode.BankCardNumber, "{0} doit être un numéro de carte valide" },
 

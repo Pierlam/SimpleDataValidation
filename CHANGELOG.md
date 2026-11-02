@@ -10,7 +10,7 @@ Contains                   Check that the string contains the provided string, c
 ContainsCaseInsensitive    Check that the string contains the provided string, case insensitive. 
 NotContains                Check that the string does not contain the provided string, case sensitive.
 NotContainsCaseInsensitive Check that the string does not contain the provided string, case insensitive.
-
+FormatDate                 Check that the string match the provided (one or more) date format.
 
 -New chain validation available:
 AddNull
@@ -35,7 +35,7 @@ BankCardNumber Now possible to check with all banks.
 Added new language for error messages: Spanish, German and Italian.  
 
 
--59 unit tests, all are green.
+-61 unit tests, all are green.
 
 
 ## 0.2.0 Release (2026-10-17)

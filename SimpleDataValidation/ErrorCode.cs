@@ -45,7 +45,10 @@ public enum ErrorCode
 
     Number,
 
+
     String,
+
+    FormatDate,
 
     BankIban,
 

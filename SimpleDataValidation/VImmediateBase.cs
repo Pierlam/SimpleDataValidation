@@ -450,83 +450,6 @@ public class VImmediateBase: VBase
         return errMsg;
     }
 
-    /// <summary>
-    /// The value should be not null or empty. If it is, return an error message; otherwise, return an empty string.
-    /// </summary>
-    /// <param name="dataName"></param>
-    /// <param name="value"></param>
-    /// <returns></returns>
-    public static string EmailFormat(string dataName, string value)
-    {
-        string errMsg = RuleValidator.EmailFormat(_errorMessageMgr, dataName, value);
-        return errMsg;
-    }
-
-    /// <summary>
-    /// Very simple (useful for quick checks)
-    /// This pattern checks for something @something.something with no spaces.
-    /// see: https://www.c-sharpcorner.com/article/validate-email-addresses-with-regular-expressions-in-c-sharp
-    /// </summary>
-    /// <param name="dataName"></param>
-    /// <param name="value"></param>
-    /// <returns></returns>
-    public static string EmailFormat(string dataName, string value, string errorMessage)
-    {
-        string errMsg = RuleValidator.EmailFormat(dataName, value, errorMessage);
-        return errMsg;
-    }
-
-    /// <summary>
-    /// Very simple (useful for quick checks)
-    /// This pattern checks for something @something.something with no spaces.
-    /// see: https://www.c-sharpcorner.com/article/validate-email-addresses-with-regular-expressions-in-c-sharp
-    /// </summary>
-    /// <param name="dataName"></param>
-    /// <param name="value"></param>
-    /// <returns></returns>
-    public static string Email(string dataName, string value, string errorMessage)
-    {
-        string errMsg = RuleValidator.Email(dataName, value, errorMessage);
-        return errMsg;
-    }
-
-    /// <summary>
-    /// The value should be not null or empty. If it is, return an error message; otherwise, return an empty string.
-    /// </summary>
-    /// <param name="dataName"></param>
-    /// <param name="value"></param>
-    /// <returns></returns>
-    public static string Email(string dataName, string value)
-    {
-        string errMsg = RuleValidator.Email(_errorMessageMgr, dataName, value);
-        return errMsg;
-    }
-
-    /// <summary>
-    /// The value should be not null or empty. If it is, return an error message; otherwise, return an empty string.
-    /// </summary>
-    /// <param name="dataName"></param>
-    /// <param name="value"></param>
-    /// <returns></returns>
-    public static string EmailStrict(string dataName, string value)
-    {
-        string errMsg = RuleValidator.EmailStrict(_errorMessageMgr, dataName, value);
-        return errMsg;
-    }
-
-    /// <summary>
-    /// Very simple (useful for quick checks)
-    /// This pattern checks for something @something.something with no spaces.
-    /// see: https://www.c-sharpcorner.com/article/validate-email-addresses-with-regular-expressions-in-c-sharp
-    /// </summary>
-    /// <param name="dataName"></param>
-    /// <param name="value"></param>
-    /// <returns></returns>
-    public static string EmailStrict(string dataName, string value, string errorMessage)
-    {
-        string errMsg = RuleValidator.EmailStrict(dataName, value, errorMessage);
-        return errMsg;
-    }
 
     /// <summary>
     /// Validates that the provided value is a boolean.
@@ -628,9 +551,111 @@ public class VImmediateBase: VBase
         return errMsg;
     }
 
+    public static string FormatDate(string dataName, string value, string format)
+    {
+        string errMsg = RuleValidator.FormatDate(_errorMessageMgr, dataName, value, format);
+        return errMsg;
+    }
+
+    public static string FormatDate(string dataName, string value, string format, string errorMessage)
+    {
+        string errMsg = RuleValidator.FormatDate(dataName, value, format, errorMessage);
+        return errMsg;
+    }
+
+    public static string FormatDate(string dataName, string value, string[] formats)
+    {
+        string errMsg = RuleValidator.FormatDate(_errorMessageMgr, dataName, value, formats);
+        return errMsg;
+    }
+
+    public static string FormatDate(string dataName, string value, string[] formats, string errorMessage)
+    {
+        string errMsg = RuleValidator.FormatDate(dataName, value, formats, errorMessage);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// The value should be not null or empty. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string EmailFormat(string dataName, string value)
+    {
+        string errMsg = RuleValidator.EmailFormat(_errorMessageMgr, dataName, value);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// Very simple (useful for quick checks)
+    /// This pattern checks for something @something.something with no spaces.
+    /// see: https://www.c-sharpcorner.com/article/validate-email-addresses-with-regular-expressions-in-c-sharp
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string EmailFormat(string dataName, string value, string errorMessage)
+    {
+        string errMsg = RuleValidator.EmailFormat(dataName, value, errorMessage);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// Very simple (useful for quick checks)
+    /// This pattern checks for something @something.something with no spaces.
+    /// see: https://www.c-sharpcorner.com/article/validate-email-addresses-with-regular-expressions-in-c-sharp
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Email(string dataName, string value, string errorMessage)
+    {
+        string errMsg = RuleValidator.Email(dataName, value, errorMessage);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// The value should be not null or empty. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string Email(string dataName, string value)
+    {
+        string errMsg = RuleValidator.Email(_errorMessageMgr, dataName, value);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// The value should be not null or empty. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string EmailStrict(string dataName, string value)
+    {
+        string errMsg = RuleValidator.EmailStrict(_errorMessageMgr, dataName, value);
+        return errMsg;
+    }
+
+    /// <summary>
+    /// Very simple (useful for quick checks)
+    /// This pattern checks for something @something.something with no spaces.
+    /// see: https://www.c-sharpcorner.com/article/validate-email-addresses-with-regular-expressions-in-c-sharp
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string EmailStrict(string dataName, string value, string errorMessage)
+    {
+        string errMsg = RuleValidator.EmailStrict(dataName, value, errorMessage);
+        return errMsg;
+    }
+
     public static string BankIban(string dataName, string value)
     {
-        string errMsg = RuleValidator.Iban(_errorMessageMgr, dataName, value);
+        string errMsg = RuleValidator.BankIban(_errorMessageMgr, dataName, value);
         return errMsg;
     }
 

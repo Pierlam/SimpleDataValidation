@@ -1,12 +1,15 @@
-﻿using SimpleDataValidation.ErrorMsg;
+﻿using Microsoft.VisualBasic;
+using SimpleDataValidation.ErrorMsg;
 using SimpleDataValidation.Rule;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace SimpleDataValidation;
 
@@ -685,14 +688,64 @@ public class RuleValidator
         return string.Empty;
     }
 
-    public static string Iban(ErrorMessageMgr errorMessageMgr, string dataName, string value)
+    /// <summary>
+    /// Check the format of the date, on one format.
+    /// exp: dd/MM/YYYY
+    /// "yyyy-MM-dd HH:mm:ss,fff"
+    /// 
+    ///  msg = V.FormatDate("name", "2026-10-25", "dd/MM/yyyy", "yyyy-MM-dd");
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="value"></param>
+    /// <param name="dateFormat"></param>
+    /// <returns></returns>
+    public static string FormatDate(ErrorMessageMgr errorMessageMgr, string dataName, string value, string format)
+    {
+        return FormatDate(dataName, value, format, errorMessageMgr.GetMessage(ErrorCode.FormatDate, dataName));
+    }
+
+    public static string FormatDate(string dataName, string value, string format, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+
+        try
+        {
+            var date = DateTime.ParseExact(value, format, CultureInfo.InvariantCulture);
+            return string.Empty;
+        }
+        catch
+        {
+            // handle incorrect string error
+            return errorMessage;
+        }
+    }
+
+    public static string FormatDate(ErrorMessageMgr errorMessageMgr, string dataName, string value, string[] formats)
+    {
+        return FormatDate(dataName, value, formats, errorMessageMgr.GetMessage(ErrorCode.FormatDate, dataName));
+    }
+
+    public static string FormatDate(string dataName, string value, string[] formats, string errorMessage)
+    {
+        bool res = false;
+        foreach (var dateFormat in formats)
+        {
+            // one is good, ok
+            string errMsg = FormatDate(dataName, value, dateFormat, errorMessage);
+            if (errMsg == string.Empty) return string.Empty;
+        }
+        return errorMessage;
+    }
+
+
+    public static string BankIban(ErrorMessageMgr errorMessageMgr, string dataName, string value)
     {
         return BankIban(dataName, value, errorMessageMgr.GetMessage(ErrorCode.BankIban, dataName));
     }
 
     public static string BankIban(string dataName, string value, string errorMessage)
     {
-        return IbanValidator.CheckIban(value) ? string.Empty : errorMessage;
+        return BankIbanValidator.CheckIban(value) ? string.Empty : errorMessage;
     }
 
     public static string BankCardNumber(ErrorMessageMgr errorMessageMgr, string dataName, string value, BankCardBank cardBank)
