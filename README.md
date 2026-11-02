@@ -152,7 +152,7 @@ AddBankCardNumber
 
 ## Error Messages
 
-English, French Spanish, German and Italian languages are supported for error messages, other languages will be added in the future.
+English, French Spanish, German, Italian, Portuguese, Brazilian, Chinese and Hindi languages are supported for error messages, other languages will be added in the future.
 
 You can also set your own error messages for each validation method, by passing the error message as a parameter to the validation method.
 
@@ -176,6 +176,10 @@ V.SetLanguage("fr-fr");
 "es-es"  Spanish
 "de-de"  German
 "it-it"  Italian
+"pt-pt"  portuguese
+"pt-br"  brazilian portuguese
+"zh-cn"  Chinese
+"hi-in"  hindi 
 ```
 
 You can also set the end of the error message with a dot or not, by calling the SetEndMessageDot method of the V class, passing a boolean value as a parameter.

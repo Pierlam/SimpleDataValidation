@@ -24,24 +24,52 @@ internal class ErrorMessagesTableBuilder
             return Build_en_gb();
         }
 
+        // french
         if (lang.Equals("fr-fr", StringComparison.OrdinalIgnoreCase))
         {
             return Build_fr_fr();
         }
 
+        // spanish
         if (lang.Equals("es-es", StringComparison.OrdinalIgnoreCase))
         {
             return Build_es_es();
         }
 
+        // german
         if (lang.Equals("de-de", StringComparison.OrdinalIgnoreCase))
         {
             return Build_de_de();
         }
 
+        // italian
         if (lang.Equals("it-it", StringComparison.OrdinalIgnoreCase))
         {
             return Build_it_it();
+        }
+
+        // chinese
+        if (lang.Equals("zh-cn", StringComparison.OrdinalIgnoreCase))
+        {
+            return Build_zh_cn();
+        }
+
+        // hindi
+        if (lang.Equals("hi-in", StringComparison.OrdinalIgnoreCase))
+        {
+            return Build_hi_in();
+        }
+
+        // portuguese
+        if (lang.Equals("pt-pt", StringComparison.OrdinalIgnoreCase))
+        {
+            return Build_pt_pt();
+        }
+
+        // brazilian portuguese
+        if (lang.Equals("pt-br", StringComparison.OrdinalIgnoreCase))
+        {
+            return Build_pt_br();
         }
 
         throw new NotImplementedException("Language not implemented: " + lang);
@@ -253,6 +281,166 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.BankIban, "{0} doit être un IBAN valide" },
             { lang + ErrorCode.BankCardNumber, "{0} doit être un numéro de carte valide" },
 
+        };
+
+        return tableErrorMsg;
+    }
+
+    static Dictionary<string, string> Build_zh_cn()
+    {
+        string lang = "zh-cn.";
+        Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
+        {
+            { lang + ErrorCode.Null, "{0} 必须为 null" },
+            { lang + ErrorCode.NotNull, "{0} 为必填项" },
+            { lang + ErrorCode.NotNullOrEmpty, "{0} 为必填项" },
+            { lang + ErrorCode.NotNullOrWhiteSpace, "{0} 为必填项" },
+
+            { lang + ErrorCode.Letters, "{0} 只能包含字母" },
+            { lang + ErrorCode.Digits, "{0} 只能包含数字" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} 只能包含字母、数字或下划线" },
+
+            { lang + ErrorCode.StartsWith, "{0} 必须以以下内容开头：{1}" },
+            { lang + ErrorCode.EndsWith, "{0} 必须以以下内容结尾：{1}" },
+            { lang + ErrorCode.Contains, "{0} 必须包含：{1}" },
+            { lang + ErrorCode.NotContains, "{0} 不能包含：{1}" },
+            { lang + ErrorCode.FirstCharIn, "{0} 的第一个字符必须是以下字符之一：{1}" },
+            { lang + ErrorCode.FirstCharNotIn, "{0} 的第一个字符不能是以下字符之一：{1}" },
+
+            { lang + ErrorCode.BetweenLength, "{0} 的长度必须介于 {1} 和 {2} 个字符之间" },
+            { lang + ErrorCode.MinLength, "{0} 的长度至少为 {1} 个字符" },
+            { lang + ErrorCode.MaxLength, "{0} 的长度不能超过 {1} 个字符" },
+            { lang + ErrorCode.ExactLength, "{0} 的长度必须正好为 {1} 个字符" },
+
+            { lang + ErrorCode.Bool, "{0} 必须是布尔值" },
+            { lang + ErrorCode.Int, "{0} 必须是整数" },
+            { lang + ErrorCode.Number, "{0} 必须是数字" },
+            { lang + ErrorCode.String, "{0} 必须是字符串" },
+            { lang + ErrorCode.FormatDate, "{0} 必须是有效的日期" },
+
+            { lang + ErrorCode.Email, "{0} 必须是有效的电子邮件地址" },
+            { lang + ErrorCode.BankIban, "{0} 必须是有效的 IBAN" },
+            { lang + ErrorCode.BankCardNumber, "{0} 必须是有效的银行卡号" },
+        };
+
+        return tableErrorMsg;
+    }
+
+    static Dictionary<string, string> Build_hi_in()
+    {
+        string lang = "hi-in.";
+        Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
+        {
+            { lang + ErrorCode.Null, "{0} का मान null होना चाहिए" },
+            { lang + ErrorCode.NotNull, "{0} आवश्यक है" },
+            { lang + ErrorCode.NotNullOrEmpty, "{0} आवश्यक है" },
+            { lang + ErrorCode.NotNullOrWhiteSpace, "{0} आवश्यक है" },
+
+            { lang + ErrorCode.Letters, "{0} में केवल अक्षर होने चाहिए" },
+            { lang + ErrorCode.Digits, "{0} में केवल अंक होने चाहिए" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} में केवल अक्षर, अंक या अंडरस्कोर होना चाहिए" },
+
+            { lang + ErrorCode.StartsWith, "{0} की शुरुआत इनसे होनी चाहिए: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} का अंत इनसे होना चाहिए: {1}" },
+            { lang + ErrorCode.Contains, "{0} में यह शामिल होना चाहिए: {1}" },
+            { lang + ErrorCode.NotContains, "{0} में यह शामिल नहीं होना चाहिए: {1}" },
+            { lang + ErrorCode.FirstCharIn, "{0} का पहला अक्षर इनमें से एक होना चाहिए: {1}" },
+            { lang + ErrorCode.FirstCharNotIn, "{0} का पहला अक्षर इनमें से कोई नहीं होना चाहिए: {1}" },
+
+            { lang + ErrorCode.BetweenLength, "{0} की लंबाई {1} और {2} अक्षरों के बीच होनी चाहिए" },
+            { lang + ErrorCode.MinLength, "{0} की लंबाई कम से कम {1} अक्षर होनी चाहिए" },
+            { lang + ErrorCode.MaxLength, "{0} की लंबाई अधिकतम {1} अक्षर होनी चाहिए" },
+            { lang + ErrorCode.ExactLength, "{0} की लंबाई ठीक {1} अक्षर होनी चाहिए" },
+
+            { lang + ErrorCode.Bool, "{0} एक बूलियन मान होना चाहिए" },
+            { lang + ErrorCode.Int, "{0} एक पूर्णांक होना चाहिए" },
+            { lang + ErrorCode.Number, "{0} एक संख्या होनी चाहिए" },
+            { lang + ErrorCode.String, "{0} एक स्ट्रिंग होनी चाहिए" },
+            { lang + ErrorCode.FormatDate, "{0} एक मान्य दिनांक होनी चाहिए" },
+
+            { lang + ErrorCode.Email, "{0} एक मान्य ई-मेल पता होना चाहिए" },
+            { lang + ErrorCode.BankIban, "{0} एक मान्य IBAN होना चाहिए" },
+            { lang + ErrorCode.BankCardNumber, "{0} एक मान्य कार्ड नंबर होना चाहिए" },
+        };
+
+        return tableErrorMsg;
+    }
+
+    static Dictionary<string, string> Build_pt_pt()
+    {
+        string lang = "pt-pt.";
+        Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
+        {
+            { lang + ErrorCode.Null, "{0} deve ser nulo" },
+            { lang + ErrorCode.NotNull, "{0} é obrigatório" },
+            { lang + ErrorCode.NotNullOrEmpty, "{0} é obrigatório" },
+            { lang + ErrorCode.NotNullOrWhiteSpace, "{0} é obrigatório" },
+
+            { lang + ErrorCode.Letters, "{0} deve conter apenas letras" },
+            { lang + ErrorCode.Digits, "{0} deve conter apenas algarismos" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} deve conter apenas letras, algarismos ou o carácter de sublinhado" },
+
+            { lang + ErrorCode.StartsWith, "{0} deve começar por: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} deve terminar por: {1}" },
+            { lang + ErrorCode.Contains, "{0} deve conter: {1}" },
+            { lang + ErrorCode.NotContains, "{0} não deve conter: {1}" },
+            { lang + ErrorCode.FirstCharIn, "{0} deve ter como primeiro carácter um dos seguintes: {1}" },
+            { lang + ErrorCode.FirstCharNotIn, "{0} não deve ter como primeiro carácter um dos seguintes: {1}" },
+
+            { lang + ErrorCode.BetweenLength, "{0} deve ter entre {1} e {2} caracteres" },
+            { lang + ErrorCode.MinLength, "{0} deve ter pelo menos {1} caracteres" },
+            { lang + ErrorCode.MaxLength, "{0} não deve ter mais de {1} caracteres" },
+            { lang + ErrorCode.ExactLength, "{0} deve ter exactamente {1} caracteres" },
+
+            { lang + ErrorCode.Bool, "{0} deve ser um valor booleano" },
+            { lang + ErrorCode.Int, "{0} deve ser um número inteiro" },
+            { lang + ErrorCode.Number, "{0} deve ser um número" },
+            { lang + ErrorCode.String, "{0} deve ser uma cadeia de caracteres" },
+            { lang + ErrorCode.FormatDate, "{0} deve ser uma data válida" },
+
+            { lang + ErrorCode.Email, "{0} deve ser um endereço de e-mail válido" },
+            { lang + ErrorCode.BankIban, "{0} deve ser um IBAN válido" },
+            { lang + ErrorCode.BankCardNumber, "{0} deve ser um número de cartão válido" },
+        };
+
+        return tableErrorMsg;
+    }
+
+    static Dictionary<string, string> Build_pt_br()
+    {
+        string lang = "pt-br.";
+        Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
+        {
+            { lang + ErrorCode.Null, "{0} deve ser nulo" },
+            { lang + ErrorCode.NotNull, "{0} é obrigatório" },
+            { lang + ErrorCode.NotNullOrEmpty, "{0} é obrigatório" },
+            { lang + ErrorCode.NotNullOrWhiteSpace, "{0} é obrigatório" },
+
+            { lang + ErrorCode.Letters, "{0} deve conter apenas letras" },
+            { lang + ErrorCode.Digits, "{0} deve conter apenas dígitos" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} deve conter apenas letras, dígitos ou sublinhado" },
+
+            { lang + ErrorCode.StartsWith, "{0} deve começar com: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} deve terminar com: {1}" },
+            { lang + ErrorCode.Contains, "{0} deve conter: {1}" },
+            { lang + ErrorCode.NotContains, "{0} não deve conter: {1}" },
+            { lang + ErrorCode.FirstCharIn, "{0} deve ter como primeiro caractere um dos seguintes: {1}" },
+            { lang + ErrorCode.FirstCharNotIn, "{0} não deve ter como primeiro caractere um dos seguintes: {1}" },
+
+            { lang + ErrorCode.BetweenLength, "{0} deve ter entre {1} e {2} caracteres" },
+            { lang + ErrorCode.MinLength, "{0} deve ter pelo menos {1} caracteres" },
+            { lang + ErrorCode.MaxLength, "{0} não deve ter mais de {1} caracteres" },
+            { lang + ErrorCode.ExactLength, "{0} deve ter exatamente {1} caracteres" },
+
+            { lang + ErrorCode.Bool, "{0} deve ser um valor booleano" },
+            { lang + ErrorCode.Int, "{0} deve ser um número inteiro" },
+            { lang + ErrorCode.Number, "{0} deve ser um número" },
+            { lang + ErrorCode.String, "{0} deve ser uma string" },
+            { lang + ErrorCode.FormatDate, "{0} deve ser uma data válida" },
+
+            { lang + ErrorCode.Email, "{0} deve ser um endereço de e-mail válido" },
+            { lang + ErrorCode.BankIban, "{0} deve ser um IBAN válido" },
+            { lang + ErrorCode.BankCardNumber, "{0} deve ser um número de cartão válido" },
         };
 
         return tableErrorMsg;
