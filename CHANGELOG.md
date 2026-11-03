@@ -1,4 +1,19 @@
-﻿## 0.3.0 Release (2026-11-03)
+﻿## 0.4.0 Release (202?-??-??)
+
+-New validation available:
+
+-New chain validation available:
+
+-Improvements:
+
+-Languages:
+Added new language for error messages:  English-American 
+
+
+-63 unit tests, all are green.
+
+
+## 0.3.0 Release (2026-11-03)
 
 -New validation available:
 Null                       Check that the object value is null.

@@ -24,6 +24,11 @@ internal class ErrorMessagesTableBuilder
             return Build_en_gb();
         }
 
+        if (lang.Equals("en-us", StringComparison.OrdinalIgnoreCase))
+        {
+            return Build_en_us();
+        }
+
         // french
         if (lang.Equals("fr-fr", StringComparison.OrdinalIgnoreCase))
         {
@@ -112,6 +117,46 @@ internal class ErrorMessagesTableBuilder
 
             { lang + ErrorCode.BankIban, "{0} must be a valid IBAN" },
             { lang + ErrorCode.BankCardNumber, "{0} must be a valid Card Number" },
+        };
+
+        return tableErrorMsg;
+    }
+
+    static Dictionary<string, string> Build_en_us()
+    {
+        string lang = "en-us.";
+        Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
+        {
+            { lang + ErrorCode.Null, "{0} must be null" },
+            { lang + ErrorCode.NotNull, "{0} is required" },
+            { lang + ErrorCode.NotNullOrEmpty, "{0} is required" },
+            { lang + ErrorCode.NotNullOrWhiteSpace, "{0} is required" },
+
+            { lang + ErrorCode.Letters, "{0} must contain only letters" },
+            { lang + ErrorCode.Digits, "{0} must contain only digits" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} must contain only letters, digits, or underscores" },
+
+            { lang + ErrorCode.StartsWith, "{0} must start with: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} must end with: {1}" },
+            { lang + ErrorCode.Contains, "{0} must contain: {1}" },
+            { lang + ErrorCode.NotContains, "{0} must not contain: {1}" },
+            { lang + ErrorCode.FirstCharIn, "{0}'s first character must be one of: {1}" },
+            { lang + ErrorCode.FirstCharNotIn, "{0}'s first character must not be one of: {1}" },
+
+            { lang + ErrorCode.BetweenLength, "{0} must be between {1} and {2} characters long" },
+            { lang + ErrorCode.MinLength, "{0} must be at least {1} characters long" },
+            { lang + ErrorCode.MaxLength, "{0} must be no more than {1} characters long" },
+            { lang + ErrorCode.ExactLength, "{0} must be exactly {1} characters long" },
+
+            { lang + ErrorCode.Bool, "{0} must be a Boolean value" },
+            { lang + ErrorCode.Int, "{0} must be an integer" },
+            { lang + ErrorCode.Number, "{0} must be a number" },
+            { lang + ErrorCode.String, "{0} must be a string" },
+            { lang + ErrorCode.FormatDate, "{0} must be a valid date" },
+
+            { lang + ErrorCode.Email, "{0} must be a valid email address" },
+            { lang + ErrorCode.BankIban, "{0} must be a valid IBAN" },
+            { lang + ErrorCode.BankCardNumber, "{0} must be a valid card number" },
         };
 
         return tableErrorMsg;

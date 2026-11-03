@@ -152,7 +152,7 @@ AddBankCardNumber
 
 ## Error Messages
 
-English, French Spanish, German, Italian, Portuguese, Brazilian, Chinese and Hindi languages are supported for error messages, other languages will be added in the future.
+English, American, French Spanish, German, Italian, Portuguese, Brazilian, Chinese and Hindi languages are supported for error messages, other languages will be added in the future.
 
 You can also set your own error messages for each validation method, by passing the error message as a parameter to the validation method.
 
@@ -169,7 +169,8 @@ The default language for error messages is English, but you can change it to ano
 
 ```
 // list of available languages:
-"en-en"  English   default
+"en-en"  English    -The default language-
+"en-us"  American 
 "fr-fr"  French
 "es-es"  Spanish
 "de-de"  German
