@@ -47,14 +47,19 @@ public abstract class VBase
         _errorMessageMgr.TableErrorMsg = ErrorMessagesTableBuilder.Build(_errorMessageMgr.CurrentLang);
     }
 
-    public static void SetEndMessage(string endMessage)
+    public static void SetMessageSeparator(string separator)
     {
-        _errorMessageMgr.EndMessage = endMessage;
+        _errorMessageMgr.BetweenMsg = separator;
     }
 
-    public static void SetEndMessageDot()
+    public static void SetMessageEnd(string endMessage)
     {
-        _errorMessageMgr.EndMessage = ".";
+        _errorMessageMgr.MessageEnd = endMessage;
+    }
+
+    public static void SetMessageEndDot()
+    {
+        _errorMessageMgr.MessageEnd = ".";
     }
 
     /// <summary>
@@ -97,22 +102,14 @@ public abstract class VBase
     /// <returns></returns>
     public string Validate()
     {
-        string finalErrMsg = string.Empty;
-        foreach (var rule in _ruleBases)
-        {
-            string errMsg = RuleValidator.Validate(_errorMessageMgr, rule, _dataName, _value);
-            if (!string.IsNullOrEmpty(errMsg))
-            {
-                if(!string.IsNullOrEmpty(finalErrMsg))
-                {
-                    finalErrMsg += _errorMessageMgr.BetweenMsg;
-                }
-                finalErrMsg += errMsg;
-            }
-        }
-        return finalErrMsg.Trim();
+        return Validate(ValidOptions.ContinueOnAllErrors);
     }
 
+    /// <summary>
+    /// Apply the defined validation rules to the value and return an error message if any rule fails. If all rules pass, return an empty string.
+    /// </summary>
+    /// <param name="options"></param>
+    /// <returns></returns>
     public string Validate(ValidOptions options)
     {
         string finalErrMsg = string.Empty;

@@ -14,7 +14,7 @@
     <PackageIcon>logo_V_128_basic.jpg</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/Pierlam/SimpleDataValidation</RepositoryUrl>
-    <PackageTags>dotnet;csharp;validation;datavalidation;validator;validate;check;verification;email;mail;iban;card;visa;cardnumber;field;property</PackageTags>
+    <PackageTags>dotnet;csharp;validation;datavalidation;validator;validate;check;verification;email;mail;bank;iban;card;visa;cardnumber;field;property</PackageTags>
     <Authors>Pierlam</Authors>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>

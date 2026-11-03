@@ -29,11 +29,12 @@ CardNumber     Function renamed by BankCardNumber.
 AddCardNumber  Function renamed by AddBankCardNumber.
 Iban           Function renamed by BankIban. 
 
-BankCardNumber Now possible to check with all banks. 
 
--New behavior:
+-Improvements:
+BankCardNumber Now possible to check with all banks. 
 .Validate(ValidOptions.StopOnFirstError)    Will stop on the first error.
 
+SetMessageSeparator     Modify the separatorbetween messages, used in chain validation.
 
 -Languages:
 Added new language for error messages: Spanish, German, Italian, Portugese, Brazilian, hindi and chinese.  

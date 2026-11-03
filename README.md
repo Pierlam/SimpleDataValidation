@@ -194,17 +194,28 @@ The name is required
 ```
 
 ```
-// put a . char at the end of the error message:
-V.SetEndMessageDot();
+// put a . char at the end of each error message
+V.SetMessageEndDot();
 The name is required.
 ```
 
 Or put something else:
 
 ```
-// put a ! char at the end of the error message:
-V.SetEndMessage("!");
+// put a ! char at the end of each error message
+V.SetMessageEnd("!");
 The name is required!
+```
+
+Modify the separator between messages when using a chain validation.
+By default, put a - between messages.
+
+```
+// now put a | between messages if many errors occurs
+V.SetMessageSeparator(" | ");
+
+example:
+The name is required | The length of name is too short | ....
 ```
 
 # Some samples
@@ -235,7 +246,7 @@ errMsg = V.FormatDate("name", "10/12/2026", "dd/MM/yyyy");
 errMsg = V.FormatDate("name", "2026-10-25", new[] { "dd/MM/yyyy", "yyyy-MM-dd" });
  -> ok
 
-// the date can match one format among the both provided, return the custom message
+// the date can match one format among the both provided, if an error occurs, return the custom message
 errMsg = V.FormatDate("name", "10/12/202", new[] { "dd/MM/yyyy", "yyyy-MM-dd" }, "Custom error message");
  -> The date is wrong: errMsg will be: "Custom error message"
 
@@ -284,7 +295,8 @@ Bank validation implemented: Visa, Mastercard, American Express, Dinners Club, D
 ## Apply several validation on a data
 
 You can also do several checks in a more fluent way, by chaining the validation methods to validate a data value many times.
-By default, every validation rule will be applied, error messages will concatenated.
+By default, every validation rule will be applied, error messages will concatenated, separated by default by ' - '. 
+but you can change this by calling the SetMessageSeparator function.
 
 But you can stop the validation after the first error, by using the option: ValidOptions.StopOnFirstError.
 
