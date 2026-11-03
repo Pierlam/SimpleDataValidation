@@ -7,22 +7,8 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public class Test_V_RuleStartsWithFirstCharInNotIn
+public class Test_V_FirstChar
 {
-    [TestMethod]
-    public void StartsWith()
-    {
-        string errMsg;
-        errMsg = V.Define("field", "john").AddStartsWith("jo").Validate();
-        Assert.AreEqual(string.Empty, errMsg);
-
-        errMsg = V.Define("field", "john").AddStartsWith("abc").Validate();
-        Assert.AreEqual("field must starts with: abc", errMsg);
-
-        errMsg = V.Define("field", null).AddStartsWith("jo").Validate();
-        Assert.AreEqual("field must starts with: jo", errMsg);
-    }
-
     [TestMethod]
     public void FirstCharIn()
     {

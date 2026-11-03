@@ -8,6 +8,7 @@ namespace SimpleDataValidation;
 
 public enum ErrorCode
 {
+    Null,
     NotNull,
     NotNullOrEmpty,
 
@@ -18,7 +19,11 @@ public enum ErrorCode
     Digits,
     LettersDigitsUnderscore,
 
-    StarsWith,
+    StartsWith,
+    EndsWith,
+    Contains,
+
+    NotContains,
 
     FirstCharIn,
 
@@ -34,13 +39,18 @@ public enum ErrorCode
 
     Email,
 
+    Bool,
+
     Int,
 
     Number,
 
+
     String,
 
-    Iban,
+    FormatDate,
 
-    CardNumber
+    BankIban,
+
+    BankCardNumber
 }

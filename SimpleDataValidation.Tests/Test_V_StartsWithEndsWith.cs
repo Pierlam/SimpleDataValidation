@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public class Test_V_StartsWithAndFirstChar
+public class Test_V_StartsWithEndsWith
 {
     [TestMethod]
     public void StartsWith()
@@ -20,6 +20,48 @@ public class Test_V_StartsWithAndFirstChar
         Assert.AreEqual("field must starts with: jo", errMsg);
 
         errMsg = V.StartsWith("field", null, "jo", "Custom error message");
+        Assert.AreEqual("Custom error message", errMsg);
+    }
+
+    [TestMethod]
+    public void StartsWithCaseInsensitive()
+    {
+        string errMsg;
+        errMsg = V.StartsWithCaseInsensitive("field", "john", "JO");
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.StartsWithCaseInsensitive("field", null, "jo");
+        Assert.AreEqual("field must starts with: jo", errMsg);
+
+        errMsg = V.StartsWithCaseInsensitive("field", null, "jo", "Custom error message");
+        Assert.AreEqual("Custom error message", errMsg);
+    }
+
+    [TestMethod]
+    public void EndsWith()
+    {
+        string errMsg;
+        errMsg = V.EndsWith("field", "john", "hn");
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.EndsWith("field", null, "hn");
+        Assert.AreEqual("field must ends with: hn", errMsg);
+
+        errMsg = V.EndsWith("field", null, "hn", "Custom error message");
+        Assert.AreEqual("Custom error message", errMsg);
+    }
+
+    [TestMethod]
+    public void EndsWithCaseInsensitive()
+    {
+        string errMsg;
+        errMsg = V.EndsWithCaseInsensitive("field", "john", "HN");
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.EndsWithCaseInsensitive("field", null, "hn");
+        Assert.AreEqual("field must ends with: hn", errMsg);
+
+        errMsg = V.EndsWithCaseInsensitive("field", null, "hn", "Custom error message");
         Assert.AreEqual("Custom error message", errMsg);
     }
 

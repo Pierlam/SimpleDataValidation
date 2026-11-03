@@ -28,8 +28,11 @@ public class ErrorMessageMgr
     /// <summary>
     /// last part of the error message, for example: "." or "!"
     /// </summary>
-    public string EndMessage = string.Empty;
+    public string MessageEnd = string.Empty;
 
+    /// <summary>
+    /// string to put between two error messages, used in chain validation.
+    /// </summary>
     public string BetweenMsg = " - ";
 
     /// <summary>
@@ -48,10 +51,10 @@ public class ErrorMessageMgr
             string msg = TableErrorMsg[key];
 
             // replace msg params
-            return string.Format(msg, dataName) + EndMessage;
+            return string.Format(msg, dataName) + MessageEnd;
         }
         // return the default error message if the specific error code is not found in the error message table
-        return string.Format(DefaultErrorMessage, errorCode.ToString()) + EndMessage;
+        return string.Format(DefaultErrorMessage, errorCode.ToString()) + MessageEnd;
     }
 
     /// <summary>
@@ -70,10 +73,10 @@ public class ErrorMessageMgr
             string msg = TableErrorMsg[key];
 
             // replace msg params
-            return string.Format(msg, dataName, p1) + EndMessage;
+            return string.Format(msg, dataName, p1) + MessageEnd;
         }
         // return the default error message if the specific error code is not found in the error message table
-        return string.Format(DefaultErrorMessage, errorCode.ToString()) + EndMessage;
+        return string.Format(DefaultErrorMessage, errorCode.ToString()) + MessageEnd;
     }
 
     /// <summary>
@@ -92,9 +95,9 @@ public class ErrorMessageMgr
             string msg = TableErrorMsg[key];
 
             // replace msg params
-            return string.Format(msg, dataName, p1, p2) + EndMessage;
+            return string.Format(msg, dataName, p1, p2) + MessageEnd;
         }
         // return the default error message if the specific error code is not found in the error message table
-        return string.Format(DefaultErrorMessage, errorCode.ToString()) + EndMessage;
+        return string.Format(DefaultErrorMessage, errorCode.ToString()) + MessageEnd;
     }
 }

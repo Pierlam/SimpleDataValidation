@@ -35,5 +35,5 @@ Console.WriteLine("2: " + errMsg);
 
 string iban = "GB82 WEST 1234 5698 7654 32";
 
-errMsg = V.Iban("field", iban);
+errMsg = V.BankIban("field", iban);
 Console.WriteLine("Iban validation: " + errMsg);

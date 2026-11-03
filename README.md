@@ -2,7 +2,7 @@
 
 SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
 
-It's written in C#/NET8 with VS2026. The code is covered by 40 unit tests to ensure the non-regression of incoming evolutions.
+It's written in C#/NET8 with VS2026. The code is covered by 63 unit tests to ensure the non-regression of incoming evolutions.
 
 
 # A quick example
@@ -13,8 +13,22 @@ Then if the validation failed, the function returns an error message or an empty
 ```
 Syntax:
 string errMsg = V.Function(DataName, Value);
+
 If the validation fails  -> The error message is returned in the errMsg variable. 
 If the validation passes -> An empty string is returned.
+```
+
+Check easily if an error occurs:
+
+```
+Syntax:
+string errMsg = V.Function(DataName, Value);
+
+// if an error occurs, there is a message
+if(V.Error(errMsg)) DoSomethingError();
+
+// no error, no message
+if(V.Ok(errMsg)) DoSomethingOk(); 
 ```
 
 The following example shows some usual cases:
@@ -22,36 +36,36 @@ The following example shows some usual cases:
 ```
 using SimpleDataValidation;
 
-// Validate that the string value contains a text, it is not null, not empty and without any whitespace.
+//--Validate that the string value contains a text, it is not null, not empty and without any whitespace.
 errMsg = V.Text("Name", "John");
+
 if(V.Error(errMsg))
 	Console.WriteLine($"-> errorMessage: {errMsg}");   <- Not diplayed
 
 if(V.Ok(errMsg))
 	Console.WriteLine($"The Name value is correct!");  <- Displayed
 
-// Validate that the value has 8 chars length minimum
+//--Validate that the value has 8 chars length minimum
 errMsg = V.MinLength("Name", "John", 8);
+
 if(V.Error(errMsg))
 	Console.WriteLine($"-> errorMessage: {errMsg}");   <- Displayed
+
 
 > Output:
 The Name value is correct!
 -> errorMessage: Name must be at least 8 characters long
 ```
 
-# Another way to use the library
+# Another way to validate data
 
-You can also use the library in a more fluent way, by chaining the validation methods to validate a data value many times.
+You can also do several checks in a more fluent way, by chaining the validation methods to validate a data value many times.
 
 ```
 // Validate a string value to check if it's not null and has a minimum length of 8 characters
 errMsg = V.Define("Name", "John").AddNotNull().AddMinLength(8).Validate();
 
 errMsg = V.Define("Name", "john").AddNotNull().AddStartsWith("jo").Validate();
-
-errMsg = V.Define("Card Number", "4111 1111 4555 1142").AddNotNull().AddCardNumber(CardBank.Visa).Validate();
-
 ```
 
 Start by calling the validation static method Define of the V class, passing the name of the data and its value. 
@@ -62,60 +76,85 @@ All validation rules will be executed. Error messages will be concatened.
 
 # Features
 
-There are many available features to validate data, by type, by length, and by format.
+There are many available features to validate data, by type, by length, by format and more.
 
 ## Available validation methods
 
 ```
 // List of available direct validation methods:
-NotNull                  Check that the object value is not null.
-NotNullOrEmpty           Check that the string value is not null or empty.
-NotNullOrWhiteSpace      Check that the string value is not null or whitespace.
-Text                     Check that the string contains a text, same as NotNullOrWhiteSpace.
+Null                       Check that the object value is null.
+NotNull                    Check that the object value is not null.
+NotNullOrEmpty             Check that the string value is not null or empty.
+NotNullOrWhiteSpace        Check that the string value is not null or whitespace.
+Text                       Check that the string contains a text, same as NotNullOrWhiteSpace.
 
-Letters                  Check that the string contains only letter.
-Digits                   Check that the string contains only digit.
-LettersDigitsUnderscore  Check that the string contains only letter, digit or underscore.
+Letters                    Check that the string contains only letter.
+Digits                     Check that the string contains only digit.
+LettersDigitsUnderscore    Check that the string contains only letter, digit or underscore.
 
-StartsWith               Check that the string starts with the provided string.
-AddFirstCharIn           Check that the first char of the string is one of provided chars.
-FirstCharNotIn           Check that the first char of the string is not one of provided chars.
+StartsWith                 Check that the string starts with the provided string, case sensitive. 
+StartsWithCaseInsensitive  Check that the string starts with the provided string, case insensitive.
+EndsWith                   Check that the string ends with the provided string, case sensitive. 
+EndsWithCaseInsensitive    Check that the string ends with the provided string, case insensitive.
+Contains                   Check that the string contains the provided string, case sensitive. 
+ContainsCaseInsensitive    Check that the string contains the provided string, case insensitive. 
+NotContains                Check that the string does not contain the provided string, case sensitive.
+NotContainsCaseInsensitive Check that the string does not contain the provided string, case insensitive.
 
-BetweenLength            Check that the length of string is between a min and a max value.
-MinLength                Check that the string value has a minimum length.
-MaxLength                Check that the string value has a maximum length.
-ExactLength              Check that the string value has an exact length.
+FirstCharIn                Check that the first char of the string is one of provided chars.
+FirstCharNotIn             Check that the first char of the string is not one of provided chars.
 
-EmailFormat              Check that the email format is valid: a@b.c
-Email                    Check that the string value is a valid email address.
-EmailStrict              Check that the email format is valid , more strict but more time consuming.
+MinLength                  Check that the string value has a minimum length.
+MaxLength                  Check that the string value has a maximum length.
+BetweenLength              Check that the length of string is between a min and a max value.
+ExactLength                Check that the string value has an exact length.
 
-Int                      Check that the object value is an integer.
-Number                   Check that the object value is a number: integer, dou ble float or BigInteger.
-String                   Check that the object value is a string.
+EmailFormat                Check that the email format is valid: a@b.c
+Email                      Check that the string value is a valid email address.
+EmailStrict                Check that the email format is valid , more strict but more time consuming.
+ 
+Bool                       Check that the object value is a boolean.
+Int                        Check that the object value is an integer.
+Number                     Check that the object value is a number: integer, double, float or BigInteger.
+String                     Check that the object value is a string.
 
-Iban                     Check that the string value is a valid IBAN number.
-CardNumber               Check that the string is a valid card number.
+FormatDate                 Check that the string match the provided (one or more) date format.
+
+BankIban                   Check that the string value is a valid bank IBAN number.
+BankCardNumber             Check that the string is a valid bank card number.
 
 
 // List of available chained validation methods:
+AddNull
 AddNotNull
 AddNotNullOrEmpty
 AddNotNullOrWhiteSpace
 AddText
+
 AddStartsWith
+AddStartsWithCaseInsensitive
+AddEndsWith
+AddEndsWithCaseInsensitive
+AddContains                    
+AddContainsCaseInsensitive     
+AddNotContains                
+AddNotContainsCaseInsensitive 
+
 AddFirstCharIn
 AddFirstCharNotIn
+
 AddMinLength
 AddMaxLength
-AddCardNumber
+AddBetweenLength
+AddExactLength
+AddBankCardNumber
 ```
 
 ## Error Messages
 
-Today only english and french are supported for error messages, but other languages will be added in the future.
+English, French Spanish, German, Italian, Portuguese, Brazilian, Chinese and Hindi languages are supported for error messages, other languages will be added in the future.
 
-But you can also set your own error messages for each validation method, by passing the error message as a parameter to the validation method.
+You can also set your own error messages for each validation method, by passing the error message as a parameter to the validation method.
 
 ```
 string nameValue = null;
@@ -126,25 +165,57 @@ Console.WriteLine($"-> errorMessage: {errMsg}");
 -> errorMessage: The name is mandatory!
 ```
 
-The default language for error messages is English, but you can change it to French by calling the SetLanguage method of the V class, passing the language code as a parameter.
+The default language for error messages is English, but you can change it to another one by calling the SetLanguage method of the V class, passing the language code as a parameter.
 
 ```
-// Set the language for error messages to French
+// list of available languages:
+"en-en"  English   default
+"fr-fr"  French
+"es-es"  Spanish
+"de-de"  German
+"it-it"  Italian
+"pt-pt"  Portuguese
+"pt-br"  Brazilian Portuguese
+"zh-cn"  Chinese
+"hi-in"  Hindi 
+
+// example: Set the language for error messages to be in French
 V.SetLanguage("fr-fr");
 ```
 
 You can also set the end of the error message with a dot or not, by calling the SetEndMessageDot method of the V class, passing a boolean value as a parameter.
 
+Below are results of the error message: The name is required.
+
+
+``` 
+// by default:
+The name is required
 ```
-V.SetEndMessageDot();
-exp: The name is required.
+
+```
+// put a . char at the end of each error message
+V.SetMessageEndDot();
+The name is required.
 ```
 
 Or put something else:
 
 ```
-V.SetEndMessage("!");
-exp: The name is required!
+// put a ! char at the end of each error message
+V.SetMessageEnd("!");
+The name is required!
+```
+
+Modify the separator between messages when using a chain validation.
+By default, put a - between messages.
+
+```
+// now put a | between messages if many errors occurs
+V.SetMessageSeparator(" | ");
+
+example:
+The name is required | The length of name is too short | ....
 ```
 
 # Some samples
@@ -156,47 +227,91 @@ Do some checks on a string value.
 
 ```
 // Check that the value starts with the provided string.
-string a="hello";
-errMsg = V.StartsWith("field", a, "h");  -> ok, errMsg will be empty
+errMsg = V.StartsWith("field", "hello", "hgj");  -> ok, errMsg will be empty
 
 // Check that the value first char is one of 'xyz'.
-string a="hello";
-errMsg = V.FirstCharIn("field", a, "xyz");  -> error! 
+errMsg = V.FirstCharIn("field", "hello", "xyz");  -> error! 
 ```
 
-## Check Iban and card Number
+## Check date 
+
+Check if a date match the provided format:
+
+```
+// one format to match: will be ok
+errMsg = V.FormatDate("name", "10/12/2026", "dd/MM/yyyy");
+ -> ok
+ 
+// the date can match one format among the both provided
+errMsg = V.FormatDate("name", "2026-10-25", new[] { "dd/MM/yyyy", "yyyy-MM-dd" });
+ -> ok
+
+// the date can match one format among the both provided, if an error occurs, return the custom message
+errMsg = V.FormatDate("name", "10/12/202", new[] { "dd/MM/yyyy", "yyyy-MM-dd" }, "Custom error message");
+ -> The date is wrong: errMsg will be: "Custom error message"
+
+// a more complex case: match date and time
+errMsg = V.FormatDate("name", "2026-12-20 10:30:00,123", "yyyy-MM-dd HH:mm:ss,fff");
+ -> ok
+```
+
+## Check bank Iban and card Number
 
 Check if an Iban number is valid:
 With or without space chars.
 
 ```
+// with whitespaces:
 string iban = "GB82 WEST 1234 5698 7654 32";
-errMsg = V.Iban("field", iban);  -> ok
+errMsg = V.BankIban("field", iban);  -> ok
 
 iban = "GB82WEST12345698765432";
-errMsg = V.Iban("field", iban);  -> ok
+errMsg = V.BankIban("field", iban);  -> ok
 ```
 
-Check if a card number is valid:
+Check if a bank card number is valid:
 
 Should contains only digits and char space.
 Verify the length and the check sum, apply the Luhn algo.
 
 ```
-// the card number bank should be Visa
-errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa);
+// the card number bank should be valid over all banks, with whitespaces:
+errMsg = V.BankCardNumber("field", "4111 1111 4555 1142");
 
-errMsg = V.CardNumber("field", "4111111145551142", CardBank.Visa);
+// the card number bank should be Visa, with whitespaces:
+errMsg = V.BankCardNumber("field", "4111 1111 4555 1142", CardBank.Visa);
+
+errMsg = V.BankCardNumber("field", "4111111145551142", CardBank.Visa);
 
 // the card number bank should be Visa or Mastercard
-errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard);
+errMsg = V.BankCardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard);
 
 // the card number bank should be Visa or Mastercard or American Express
-errMsg = V.CardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard | CardBank.AmericanExpress);
+errMsg = V.BankCardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard | CardBank.AmericanExpress);
 ```
 
-Bank validation implemented: Visa, Mastercard, American Express, Dinners Club, Discover JCB and China UnionPay.
+Bank validation implemented: Visa, Mastercard, American Express, Dinners Club, Discover, JCB and China UnionPay.
  
+## Apply several validation on a data
+
+You can also do several checks in a more fluent way, by chaining the validation methods to validate a data value many times.
+By default, every validation rule will be applied, error messages will concatenated, separated by default by ' - '. 
+but you can change this by calling the SetMessageSeparator function.
+
+But you can stop the validation after the first error, by using the option: ValidOptions.StopOnFirstError.
+
+```
+errMsg = V.Define("Card Number", "4111 1111 4555 1142").AddNotNull().AddCardNumber(CardBank.Visa).Validate();
+ -> ok
+
+// continue on error, so the max length validation will be executed and the error message will be concatenated
+errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(5).Validate();
+ -> errMsg contains all error messages: "field must be at least 10 characters long - field must be no more than 5 characters long"
+
+// will stop on the first error, so the max length validation will not be executed
+errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(4).Validate(ValidOptions.StopOnFirstError);
+  -> errMsg contains only the first error: "field must be at least 10 characters long"
+```
 
 # Source code, documentation and nuget
 
@@ -213,7 +328,9 @@ https://github.com/Pierlam/SimpleDataValidation/
 
 Have a comment to do? A question to ask? Want to request a new feature?
 
-Don't hesitate to send me an email: 
+Error messages were generated by AI, maybe some of them are wrong or not clear, please let me know to fix it.
+
+Send an email to: 
 
 pierlam-project@outlook.com
 

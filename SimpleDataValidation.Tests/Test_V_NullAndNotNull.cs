@@ -1,8 +1,22 @@
 ﻿namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public sealed class Test_V_NotNull
+public sealed class Test_V_NullAndNotNull
 {
+    [TestMethod]
+    public void Null()
+    {
+        string errMsg;
+        errMsg = V.Null("field", null);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.Null("field", "notnull");
+        Assert.AreEqual("field must be null", errMsg);
+
+        errMsg = V.Null("field", "notnull", "Custom error message");
+        Assert.AreEqual("Custom error message", errMsg);
+    }
+
     [TestMethod]
     public void NotNull()
     {

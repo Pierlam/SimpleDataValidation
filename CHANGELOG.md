@@ -1,4 +1,49 @@
-﻿## 0.2.0 Release (2026-10-17)
+﻿## 0.3.0 Release (2026-11-03)
+
+-New validation available:
+Null                       Check that the object value is null.
+Bool                       Check that the object value is a boolean.
+StartsWithCaseInsensitive  Check that the string starts with the provided string, case insensitive.
+EndsWith                   Check that the string ends with the provided string, case sensitive. 
+EndsWithCaseInsensitive    Check that the string ends with the provided string, case insensitive.
+Contains                   Check that the string contains the provided string, case sensitive. 
+ContainsCaseInsensitive    Check that the string contains the provided string, case insensitive. 
+NotContains                Check that the string does not contain the provided string, case sensitive.
+NotContainsCaseInsensitive Check that the string does not contain the provided string, case insensitive.
+FormatDate                 Check that the string match the provided (one or more) date format.
+
+-New chain validation available:
+AddNull
+AddBetweenLength
+AddExactLength
+AddStartsWithCaseInsensitive
+AddEndsWith
+AddEndsWithCaseInsensitive
+AddContains                    
+AddContainsCaseInsensitive     
+AddNotContains                
+AddNotContainsCaseInsensitive 
+
+-Rework:
+CardNumber     Function renamed by BankCardNumber.
+AddCardNumber  Function renamed by AddBankCardNumber.
+Iban           Function renamed by BankIban. 
+
+
+-Improvements:
+BankCardNumber Now possible to check with all banks. 
+.Validate(ValidOptions.StopOnFirstError)    Will stop on the first error.
+
+SetMessageSeparator     Modify the separatorbetween messages, used in chain validation.
+
+-Languages:
+Added new language for error messages: Spanish, German, Italian, Portugese, Brazilian, hindi and chinese.  
+
+
+-63 unit tests, all are green.
+
+
+## 0.2.0 Release (2026-10-17)
 
 -New validation available:
 Text				     Check that the string contains a text, same as NotNullOrWhiteSpace.
@@ -8,7 +53,7 @@ LettersDigitsUnderscore  Check that the string contains only letter, digit or un
 StartsWith				 Check that the string starts with the provided string.
 FirstCharIn				 Check that the first char of the string is one of provided chars.
 FirstCharNotIn			 Check that the first char of the string is not one of provided chars.
-Number					 Check that the object value is a number: integer, dou ble float or BigInteger.
+Number					 Check that the object value is a number: integer, double float or BigInteger.
 String 					 Check that the object value is a string.
 CardNumber				 Check that the string is a valid card number.
 

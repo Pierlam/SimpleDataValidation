@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace SimpleDataValidation.Rule;
 
-public class RuleCardNumber: RuleBase
+public class RuleEndsWith: RuleBase
 {
-    public RuleCardNumber(CardBank cardBank)
+    public string End { get; private set; }
+    public RuleEndsWith(string end)
     {
-        CardBank = cardBank;
-    }
-
-    public CardBank CardBank { get; }
-
-
+        End = end;
+    }   
 }
