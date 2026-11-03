@@ -168,18 +168,19 @@ Console.WriteLine($"-> errorMessage: {errMsg}");
 The default language for error messages is English, but you can change it to another one by calling the SetLanguage method of the V class, passing the language code as a parameter.
 
 ```
-// Set the language for error messages to French
-V.SetLanguage("fr-fr");
-
 // list of available languages:
 "en-en"  English   default
+"fr-fr"  French
 "es-es"  Spanish
 "de-de"  German
 "it-it"  Italian
-"pt-pt"  portuguese
-"pt-br"  brazilian portuguese
+"pt-pt"  Portuguese
+"pt-br"  Brazilian Portuguese
 "zh-cn"  Chinese
-"hi-in"  hindi 
+"hi-in"  Hindi 
+
+// example: Set the language for error messages to be in French
+V.SetLanguage("fr-fr");
 ```
 
 You can also set the end of the error message with a dot or not, by calling the SetEndMessageDot method of the V class, passing a boolean value as a parameter.
@@ -226,17 +227,21 @@ errMsg = V.FirstCharIn("field", "hello", "xyz");  -> error!
 Check if a date match the provided format:
 
 ```
-// one format to match
+// one format to match: will be ok
 errMsg = V.FormatDate("name", "10/12/2026", "dd/MM/yyyy");
-
+ -> ok
+ 
 // the date can match one format among the both provided
 errMsg = V.FormatDate("name", "2026-10-25", new[] { "dd/MM/yyyy", "yyyy-MM-dd" });
+ -> ok
 
+// the date can match one format among the both provided, return the custom message
 errMsg = V.FormatDate("name", "10/12/202", new[] { "dd/MM/yyyy", "yyyy-MM-dd" }, "Custom error message");
-// the date is wrong: errMsg will be: "Custom error message"
+ -> The date is wrong: errMsg will be: "Custom error message"
 
 // a more complex case: match date and time
 errMsg = V.FormatDate("name", "2026-12-20 10:30:00,123", "yyyy-MM-dd HH:mm:ss,fff");
+ -> ok
 ```
 
 ## Check bank Iban and card Number
@@ -259,7 +264,7 @@ Should contains only digits and char space.
 Verify the length and the check sum, apply the Luhn algo.
 
 ```
-// the card number bank should be vaild voer all banks, with whitespaces:
+// the card number bank should be valid over all banks, with whitespaces:
 errMsg = V.BankCardNumber("field", "4111 1111 4555 1142");
 
 // the card number bank should be Visa, with whitespaces:
@@ -279,17 +284,21 @@ Bank validation implemented: Visa, Mastercard, American Express, Dinners Club, D
 ## Apply several validation on a data
 
 You can also do several checks in a more fluent way, by chaining the validation methods to validate a data value many times.
+By default, every validation rule will be applied, error messages will concatenated.
+
+But you can stop the validation after the first error, by using the option: ValidOptions.StopOnFirstError.
 
 ```
 errMsg = V.Define("Card Number", "4111 1111 4555 1142").AddNotNull().AddCardNumber(CardBank.Visa).Validate();
+ -> ok
 
 // continue on error, so the max length validation will be executed and the error message will be concatenated
-// errMsg contains all error messages: "field must be at least 10 characters long - field must be no more than 5 characters long"
 errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(5).Validate();
+ -> errMsg contains all error messages: "field must be at least 10 characters long - field must be no more than 5 characters long"
 
 // will stop on the first error, so the max length validation will not be executed
-// errMsg contains only the first error: "field must be at least 10 characters long"
-errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(4).Validate(ValidateOptions.StopOnFirstError);
+errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(4).Validate(ValidOptions.StopOnFirstError);
+  -> errMsg contains only the first error: "field must be at least 10 characters long"
 ```
 
 # Source code, documentation and nuget

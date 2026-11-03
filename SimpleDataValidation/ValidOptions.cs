@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace SimpleDataValidation;
 
-public enum ValidateOptions
+
+/// <summary>
+/// Validation options, uses in validation chain.
+/// </summary>
+public enum ValidOptions
 {
     StopOnFirstError,
     ContinueOnAllErrors,

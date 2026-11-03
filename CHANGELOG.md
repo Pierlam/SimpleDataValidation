@@ -1,4 +1,4 @@
-﻿## 0.3.0 Release (2026-XX-XX)
+﻿## 0.3.0 Release (2026-11-03)
 
 -New validation available:
 Null                       Check that the object value is null.
@@ -32,7 +32,7 @@ Iban           Function renamed by BankIban.
 BankCardNumber Now possible to check with all banks. 
 
 -New behavior:
-.Validate(ValidateOptions.StopOnFirstError)    Will stop on the first error.
+.Validate(ValidOptions.StopOnFirstError)    Will stop on the first error.
 
 
 -Languages:

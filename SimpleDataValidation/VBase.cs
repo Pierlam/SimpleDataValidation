@@ -113,7 +113,7 @@ public abstract class VBase
         return finalErrMsg.Trim();
     }
 
-    public string Validate(ValidateOptions options)
+    public string Validate(ValidOptions options)
     {
         string finalErrMsg = string.Empty;
         foreach (var rule in _ruleBases)
@@ -127,7 +127,7 @@ public abstract class VBase
                 }
                 finalErrMsg += errMsg;
             }
-            if (options == ValidateOptions.StopOnFirstError && !string.IsNullOrEmpty(finalErrMsg))
+            if (options == ValidOptions.StopOnFirstError && !string.IsNullOrEmpty(finalErrMsg))
             {
                 break;
             }
