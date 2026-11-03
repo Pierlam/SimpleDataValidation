@@ -5,6 +5,7 @@
 -New chain validation available:
 
 -Improvements:
+	Added lib for net10.0
 
 -Languages:
 Added new language for error messages:  English-American 
