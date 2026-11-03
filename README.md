@@ -1,6 +1,7 @@
 # What is SimpleDataValidation?
 
-SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
+SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way. 
+There are many available functions, more than 30, to validate data, by type, by length, by format and more like: NotNull, Length, StartsWith, Email, Iban, Card Number,...
 
 It's written in C#/NET8 with VS2026. The code is covered by 63 unit tests to ensure the non-regression of incoming evolutions.
 
