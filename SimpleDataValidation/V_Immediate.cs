@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace SimpleDataValidation;
 
 /// <summary>
 /// Immediate validation.
 /// </summary>
-public class VImmediateBase: VBase
+public partial class V
 {
-
     /// <summary>
     /// The value should be null. If it is, return an error message; otherwise, return an empty string.
     /// </summary>

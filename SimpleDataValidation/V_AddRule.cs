@@ -1,6 +1,4 @@
-﻿using SimpleDataValidation.ErrorMsg;
 using SimpleDataValidation.Rule;
-using System.Text.RegularExpressions;
 
 namespace SimpleDataValidation;
 
@@ -8,21 +6,8 @@ namespace SimpleDataValidation;
 /// The V class is a simple data validation utility that provides methods to validate data based on defined rules. 
 /// It supports multiple languages for error messages and allows chaining of validation rules for a given data field.
 /// </summary>
-public class V : VImmediateBase
+public partial class V
 {
-    /// <summary>
-    /// Constructor for the V class, initializing the validation context with the specified field name and value.
-    /// </summary>
-    /// <param name="dataName"></param>
-    /// <param name="value"></param>
-    public V(string dataName, string value)
-    {
-        _dataName = dataName;
-        _value = value;
-    }
-
-    #region -- Add rule validation --
-
     public V AddNull()
     {
         _ruleBases.Add(new RuleNull());
@@ -147,6 +132,4 @@ public class V : VImmediateBase
         _ruleBases.Add(new RuleBankCardNumber(cardBank));
         return this;
     }
-
-    #endregion
 }

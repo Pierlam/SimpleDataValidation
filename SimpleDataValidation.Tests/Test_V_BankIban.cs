@@ -26,7 +26,7 @@ public class Test_V_BankIban
         errMsg = V.BankIban("field", iban);
         Assert.AreEqual(string.Empty, errMsg);
 
-        errMsg = V.BankIban("field", "B82WEST12345698765432");
+        errMsg = V .BankIban("field", "B82WEST12345698765432");
         Assert.AreEqual("field must be a valid IBAN", errMsg);
     }
 
