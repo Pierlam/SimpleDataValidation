@@ -306,7 +306,7 @@ But you can stop the validation after the first error, by using the option: Vali
 errMsg = V.Define("Card Number", "4111 1111 4555 1142").AddNotNull().AddCardNumber(CardBank.Visa).Validate();
  -> ok
 
-// continue on error, so the max length validation will be executed and the error message will be concatenated
+// continue even if error occurs, so the max length validation will be executed and the error message will be concatenated
 errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(5).Validate();
  -> errMsg contains all error messages: "field must be at least 10 characters long - field must be no more than 5 characters long"
 

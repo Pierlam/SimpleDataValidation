@@ -14,7 +14,7 @@
     <PackageIcon>logo_V_128_basic.jpg</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/Pierlam/SimpleDataValidation</RepositoryUrl>
-    <PackageTags>csharp;validation;datavalidation;validator;validate;check;verification;email;mail;bank;iban;luhn;credit;card;creditcard;cardnumber;visa;mastercard;discover;amex;americanexpress;jcb;chinaunionpay;diners;dinersclub</PackageTags>
+    <PackageTags>csharp;validation;datavalidation;validator;validate;check;verification;input;email;mail;bank;iban;luhn;credit;card;creditcard;cardnumber;visa;mastercard;discover;amex;americanexpress;jcb;chinaunionpay;diners;dinersclub</PackageTags>
     <Authors>Pierlam</Authors>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>
