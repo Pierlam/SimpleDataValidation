@@ -7,7 +7,7 @@
 -Improvements:
 	lib now compliant with net10.0
 	Possible to create a VInst object in a specific language.
-    Added Bank Dankord.
+    Added Dankord, HiperCard banks.
 	
 -Languages:
 Added new language for error messages:  English-American 

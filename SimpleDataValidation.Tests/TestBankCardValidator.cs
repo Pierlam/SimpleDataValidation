@@ -130,6 +130,11 @@ public class TestBankCardValidator
 
         res = BankCardValidator.CheckCardNumber(BankCardBank.DinersClub, "3622 7206 2716 67");
         Assert.AreEqual(0, res);
+
+        // not HiperCard but DinersClub
+        res = BankCardValidator.CheckCardNumber(BankCardBank.DinersClub, "3800 1111 1122 27");
+        Assert.AreEqual(0, res);
+
     }
 
     [TestMethod]
@@ -162,7 +167,19 @@ public class TestBankCardValidator
 
         res = BankCardValidator.CheckCardNumber(BankCardBank.JCB, "3542 9693 1355 5276 538");
         Assert.AreEqual(0, res);
+    }
 
+    [TestMethod]
+    public void CardRuPay()
+    {
+        int res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "3569 9900 1009 5841");
+        Assert.AreEqual(0, res);
+
+        res = BankCardValidator.CheckCardNumber(BankCardBank.JCB, "3566 0020 2036 0505");
+        Assert.AreEqual(0, res);
+
+        res = BankCardValidator.CheckCardNumber(BankCardBank.JCB, "3542 9693 1355 5276 538");
+        Assert.AreEqual(0, res);
     }
 
 }

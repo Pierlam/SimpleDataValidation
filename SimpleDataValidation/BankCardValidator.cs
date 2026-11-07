@@ -132,8 +132,14 @@ public class BankCardValidator
 
         //--Dinners club
         // begins with 300 to 305, or 36 or 38.
-        //length: 14
-        if (cardStr.StartsWith("36") || cardStr.StartsWith("38"))
+        //length: 14 
+        if (cardStr.StartsWith("36"))
+        {
+            cardBankRes = BankCardBank.DinersClub;
+            return true;
+        }
+        // 3841 is used by HiperCard, not DinnersClub
+        if (cardStr.StartsWith("38") && !cardStr.StartsWith("3841"))
         {
             cardBankRes = BankCardBank.DinersClub;
             return true;
@@ -175,7 +181,13 @@ public class BankCardValidator
 
         }
 
-        //--other banks: 
+        //--HiperCard: 
+        if (cardStr.StartsWith("637095") || cardStr.StartsWith("637568") || cardStr.StartsWith("637599") || cardStr.StartsWith("637600") || cardStr.StartsWith("637609") || cardStr.StartsWith("637612")
+              || cardStr.StartsWith("606282") || cardStr.StartsWith("384100") || cardStr.StartsWith("384140") || cardStr.StartsWith("384160"))
+        {
+            cardBankRes = BankCardBank.HiperCard;
+            return true;
+        }
 
         cardBankRes = new BankCardBank();
         return false;
@@ -285,6 +297,21 @@ public class BankCardValidator
         if (CheckCardBank(BankCardBank.JCB, cardBanks, cardBankToCheck))
         {
             if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
+            if (!LuhnValidation(cardStr)) return 4;
+            // card number is good
+            return 0;
+        }
+
+        //--is it an HiperCard?
+        if (CheckCardBank(BankCardBank.HiperCard, cardBanks, cardBankToCheck))
+        {
+            if(cardStr.StartsWith("384100") || cardStr.StartsWith("384140") || cardStr.StartsWith("384160"))
+            {
+                if (cardStr.Length != 19) return 3;
+                if (!LuhnValidation(cardStr)) return 4;
+                return 0;
+            }
+            if (cardStr.Length != 16 ) return 3;
             if (!LuhnValidation(cardStr)) return 4;
             // card number is good
             return 0;

@@ -304,7 +304,7 @@ errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.VisaDanko
 errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Dankord);
 ```
 
-Bank validation implemented: Visa, Mastercard, American Express, Dankord, Dinners Club, Discover, JCB and China UnionPay.
+Bank validation implemented: Visa, Mastercard, American Express, Dankord, Dinners Club, Discover, HiperCard, JCB and China UnionPay.
  
 ## Apply several validation on a data
 

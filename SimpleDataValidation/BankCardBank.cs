@@ -27,5 +27,7 @@ public enum BankCardBank
     DankordPure= 256,
 
     VisaDankord = 512,
+
+    HiperCard = 1024,
 }
 

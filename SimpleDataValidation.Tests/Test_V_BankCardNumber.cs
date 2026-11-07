@@ -61,4 +61,56 @@ public class Test_V_BankCardNumber
         errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Visa | BankCardBank.Dankord);
         Assert.AreEqual(string.Empty, errMsg);
     }
+
+    /// <summary>
+    /// Prefix: 
+    /// 384100, 384140, 384160   ->  19 digits
+    /// 606282 -> 16 or 19 digits
+    /// 637095, 637568, 637599, 637600, 637609, 637612   -> 16 digits
+    /// </summary>
+    [TestMethod]
+    public void BankCardNumberHiperCard()
+    {
+        string errMsg;
+
+        // 637095 : 
+        errMsg = V.BankCardNumber("field", "6370 9511 1122 2231", BankCardBank.HiperCard);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        // 637568 : 
+        errMsg = V.BankCardNumber("field", "6375 6811 1122 2239", BankCardBank.HiperCard);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        // 637599 : 
+        errMsg = V.BankCardNumber("field", "6375 9911 1122 2232", BankCardBank.HiperCard);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        // 637600 : 
+        errMsg = V.BankCardNumber("field", "6376 0011 1122 2239", BankCardBank.HiperCard);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        // 637609 : 
+        errMsg = V.BankCardNumber("field", "6376 0911 1122 2230", BankCardBank.HiperCard);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        // 637612 : 
+        errMsg = V.BankCardNumber("field", "6376 1211 1122 2235", BankCardBank.HiperCard);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        // 606282 : 
+        errMsg = V.BankCardNumber("field", "6062 8211 1122 2239", BankCardBank.HiperCard);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        // 384100 : 
+        errMsg = V.BankCardNumber("field", "3841 0011 1122 2233 338", BankCardBank.HiperCard);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        // 384140 : 
+        errMsg = V.BankCardNumber("field", "3841 4011 1122 2233 334", BankCardBank.HiperCard);
+        Assert.AreEqual(string.Empty, errMsg);
+
+        // 384160 : 
+        errMsg = V.BankCardNumber("field", "3841 6011 1122 2233 332", BankCardBank.HiperCard);
+        Assert.AreEqual(string.Empty, errMsg);
+    }
 }
