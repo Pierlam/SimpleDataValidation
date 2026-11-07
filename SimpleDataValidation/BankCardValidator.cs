@@ -62,9 +62,23 @@ public class BankCardValidator
     static bool FindBank(string cardStr, out BankCardBank cardBankRes)
     {
         //--visa
+        if (cardStr.StartsWith("4571"))
+        {
+            cardBankRes = BankCardBank.VisaDankord;
+            return true;
+        }
+
+        //--visa
         if (cardStr.StartsWith("4"))
         {
             cardBankRes = BankCardBank.Visa;
+            return true;
+        }
+
+        //--Dankord: Start with 5019
+        if (cardStr.StartsWith("5019"))
+        {
+            cardBankRes = BankCardBank.DankordPure;
             return true;
         }
 
@@ -174,12 +188,47 @@ public class BankCardValidator
     /// </summary>
     /// <param name="cardStr"></param>
     /// <param name="cardBanks"></param>
-    /// <param name="cardBankRes"></param>
+    /// <param name="cardBankToCheck"></param>
     /// <returns></returns>
-    static int FinalCheckLengthAndLuhnCalc(string cardStr, BankCardBank cardBanks, BankCardBank cardBankRes)
+    static int FinalCheckLengthAndLuhnCalc(string cardStr, BankCardBank cardBanks, BankCardBank cardBankToCheck)
     {
+        //--is it a pure Dankord card?
+        if (CheckCardBank(BankCardBank.DankordPure, cardBanks, cardBankToCheck))
+        {
+            if (cardStr.Length != 16) return 3;
+            if (!LuhnValidation(cardStr)) return 4;
+            // card number is good
+            return 0;
+        }
+
+        //--is it a Visa/Dankord card?
+        if (cardBanks.HasFlag(BankCardBank.Dankord) && cardBankToCheck.HasFlag(BankCardBank.VisaDankord))
+        {
+            if (cardStr.Length != 16) return 3;
+            if (!LuhnValidation(cardStr)) return 4;
+            // card number is good
+            return 0;
+        }
+
         //--is it a Visa card?
-        if (CheckCardBank(BankCardBank.Visa, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.Visa, cardBanks, cardBankToCheck))
+        {
+            if (cardStr.Length != 16) return 3;
+            if (!LuhnValidation(cardStr)) return 4;
+            // card number is good
+            return 0;
+        }
+
+        //--is it a Visa/Dankord card?
+        if(cardBanks.HasFlag(BankCardBank.Visa) && cardBankToCheck.HasFlag(BankCardBank.VisaDankord))
+        {
+            if (cardStr.Length != 16) return 3;
+            if (!LuhnValidation(cardStr)) return 4;
+            // card number is good
+            return 0;
+        }
+
+        if (CheckCardBank(BankCardBank.VisaDankord, cardBanks, cardBankToCheck))
         {
             if (cardStr.Length != 16) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -188,7 +237,7 @@ public class BankCardValidator
         }
 
         //--is it an American Express?
-        if (CheckCardBank(BankCardBank.AmericanExpress, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.AmericanExpress, cardBanks, cardBankToCheck))
         {
             if (cardStr.Length != 15) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -197,7 +246,7 @@ public class BankCardValidator
         }
 
         //--is it a Mastercard?
-        if (CheckCardBank(BankCardBank.Mastercard, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.Mastercard, cardBanks, cardBankToCheck))
         {
             if (cardStr.Length != 16) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -206,7 +255,7 @@ public class BankCardValidator
         }
 
         //--is it a Discover?
-        if (CheckCardBank(BankCardBank.Discover, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.Discover, cardBanks, cardBankToCheck))
         {
             if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -215,7 +264,7 @@ public class BankCardValidator
         }
 
         //--is it a DinnersClub?
-        if (CheckCardBank(BankCardBank.DinersClub, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.DinersClub, cardBanks, cardBankToCheck))
         {
             if (cardStr.Length != 14) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -224,7 +273,7 @@ public class BankCardValidator
         }
 
         //--is it a China UnionPay?
-        if (CheckCardBank(BankCardBank.ChinaUnionPay, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.ChinaUnionPay, cardBanks, cardBankToCheck))
         {
             if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -233,7 +282,7 @@ public class BankCardValidator
         }
 
         //--is it a JCB?
-        if (CheckCardBank(BankCardBank.JCB, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.JCB, cardBanks, cardBankToCheck))
         {
             if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
             if (!LuhnValidation(cardStr)) return 4;
@@ -241,7 +290,7 @@ public class BankCardValidator
             return 0;
         }
 
-        // 5: The number dones't match the bank
+        // 5: The number doesn't match the bank
         return 5;
     }
 

@@ -3,7 +3,7 @@
 SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way. 
 There are many available functions, more than 30, to validate data, by type, by length, by format and more like: NotNull, Length, StartsWith, Email, Iban, Card Number,...
 
-It's written in C#/NET8 with VS2026. The code is covered by 63 unit tests to ensure the non-regression of incoming evolutions.
+It's written in C#/NET8 with VS2026. The code is covered by 68 unit tests to ensure the non-regression of incoming evolutions.
 
 
 # A quick example
@@ -292,7 +292,19 @@ errMsg = V.BankCardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBa
 errMsg = V.BankCardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard | CardBank.AmericanExpress);
 ```
 
-Bank validation implemented: Visa, Mastercard, American Express, Dinners Club, Discover, JCB and China UnionPay.
+Special cases for Dankord bank wich is cobranded with Visa, all these cases are accepted:
+
+```
+// Pure Dankord
+errMsg = V.BankCardNumber("field", "5019 5555 4444 5555", BankCardBank.DankordPure);
+
+// Dankord cobranded with Visa
+errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Visa);
+errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.VisaDankord);
+errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Dankord);
+```
+
+Bank validation implemented: Visa, Mastercard, American Express, Dankord, Dinners Club, Discover, JCB and China UnionPay.
  
 ## Apply several validation on a data
 
@@ -313,6 +325,22 @@ errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(5).Validate
 // will stop on the first error, so the max length validation will not be executed
 errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(4).Validate(ValidOptions.StopOnFirstError);
   -> errMsg contains only the first error: "field must be at least 10 characters long"
+```
+
+## Create instance
+
+It's possible to create a V instance dedicated to a language.
+You can create as many Vinst object as you need.
+
+```
+VInst vInst = V.CreateInst("fr-fr");
+errMsg = vInst.NotNull("field", null);
+ -> "field est requis"
+ 
+// the default validator is still available in the defined language
+errMsg = V.NotNull("field", null);
+ -> "field is required"
+  
 ```
 
 # Source code, documentation and nuget

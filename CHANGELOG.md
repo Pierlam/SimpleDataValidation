@@ -6,12 +6,14 @@
 
 -Improvements:
 	lib now compliant with net10.0
-
+	Possible to create a VInst object in a specific language.
+    Added Bank Dankord.
+	
 -Languages:
 Added new language for error messages:  English-American 
 
 
--63 unit tests, all are green.
+-68 unit tests, all are green.
 
 
 ## 0.3.0 Release (2026-11-03)

@@ -16,8 +16,7 @@ public partial class VInst
     /// <returns></returns>
     public string Null(string dataName, object value)
     {
-        string errMsg = RuleValidator.Null(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.Null(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -28,8 +27,7 @@ public partial class VInst
     /// <returns></returns>
     public string Null(string dataName, object value, string errorMessage)
     {
-        string errMsg = RuleValidator.Null(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.Null(dataName, value, errorMessage);
     }
 
     /// <summary>
@@ -40,8 +38,7 @@ public partial class VInst
     /// <returns></returns>
     public string NotNull(string dataName, object value)
     {
-        string errMsg = RuleValidator.NotNull(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.NotNull(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -52,8 +49,7 @@ public partial class VInst
     /// <returns></returns>
     public string NotNull(string dataName, object value, string errorMessage)
     {
-        string errMsg = RuleValidator.NotNull(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.NotNull(dataName, value, errorMessage);
     }
 
     /// <summary>
@@ -64,8 +60,7 @@ public partial class VInst
     /// <returns></returns>
     public string NotNullOrEmpty(string dataName, string value)
     {
-        string errMsg = RuleValidator.NotNullOrEmpty(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.NotNullOrEmpty(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -76,8 +71,7 @@ public partial class VInst
     /// <returns></returns>
     public string NotNullOrEmpty(string dataName, string value, string errorMessage)
     {
-        string errMsg = RuleValidator.NotNullOrEmpty(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.NotNullOrEmpty(dataName, value, errorMessage);
     }
 
     /// <summary>
@@ -112,8 +106,7 @@ public partial class VInst
     /// <returns></returns>
     public string NotNullOrWhiteSpace(string dataName, string value)
     {
-        string errMsg = RuleValidator.NotNullOrWhiteSpace(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.NotNullOrWhiteSpace(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -124,8 +117,7 @@ public partial class VInst
     /// <returns></returns>
     public string NotNullOrWhiteSpace(string dataName, string value, string errorMessage)
     {
-        string errMsg = RuleValidator.NotNullOrWhiteSpace(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.NotNullOrWhiteSpace(dataName, value, errorMessage);
     }
 
     /// <summary>
@@ -136,9 +128,7 @@ public partial class VInst
     /// <returns></returns>
     public string Letters(string dataName, string value)
     {
-        string errMsg = RuleValidator.Letters(_errorMessageMgr, dataName, value);
-        return errMsg;
-
+        return RuleValidator.Letters(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -149,8 +139,7 @@ public partial class VInst
     /// <returns></returns>
     public string Letters(string dataName, string value, string errorMessage)
     {
-        string errMsg = RuleValidator.Letters(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.Letters(dataName, value, errorMessage);
     }
 
     /// <summary>
@@ -161,21 +150,18 @@ public partial class VInst
     /// <returns></returns>
     public string Digits(string dataName, string value)
     {
-        string errMsg = RuleValidator.Digits(_errorMessageMgr, dataName, value);
-        return errMsg;
-
+        return RuleValidator.Digits(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
-    /// The value should contains only letters.
+    /// The value should contains only digits (number).
     /// </summary>
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
     public string Digits(string dataName, string value, string errorMessage)
     {
-        string errMsg = RuleValidator.Digits(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.Digits(dataName, value, errorMessage);
     }
 
     /// <summary>
@@ -186,8 +172,7 @@ public partial class VInst
     /// <returns></returns>
     public string LettersDigitsUnderscore(string dataName, string value)
     {
-        string errMsg = RuleValidator.LettersDigitsUnderscore(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.LettersDigitsUnderscore(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -198,14 +183,12 @@ public partial class VInst
     /// <returns></returns>
     public string LettersDigitsUnderscore(string dataName, string value, string errorMessage)
     {
-        string errMsg = RuleValidator.LettersDigitsUnderscore(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.LettersDigitsUnderscore(dataName, value, errorMessage);
     }
 
     public string StartsWith(string dataName, string value, string start)
     {
-        string errMsg = RuleValidator.StartsWith(_errorMessageMgr, dataName, value, start);
-        return errMsg;
+        return RuleValidator.StartsWith(_errorMessageMgr, dataName, value, start);
     }
 
     /// <summary>
@@ -215,26 +198,22 @@ public partial class VInst
     /// <returns></returns>
     public string StartsWith(string dataName, string value, string start, string errorMessage)
     {
-        string errMsg = RuleValidator.StartsWith(dataName, value, start, errorMessage);
-        return errMsg;
+        return RuleValidator.StartsWith(dataName, value, start, errorMessage);
     }
 
     public string EndsWith(string dataName, string value, string start, string errorMessage)
     {
-        string errMsg = RuleValidator.EndsWith(dataName, value, start, errorMessage);
-        return errMsg;
+        return RuleValidator.EndsWith(dataName, value, start, errorMessage);
     }
 
     public string EndsWith(string dataName, string value, string start)
     {
-        string errMsg = RuleValidator.EndsWith(_errorMessageMgr, dataName, value, start);
-        return errMsg;
+        return RuleValidator.EndsWith(_errorMessageMgr, dataName, value, start);
     }
 
     public string StartsWithCaseInsensitive(string dataName, string value, string start)
     {
-        string errMsg = RuleValidator.StartsWithCaseInsensitive(_errorMessageMgr, dataName, value, start);
-        return errMsg;
+        return RuleValidator.StartsWithCaseInsensitive(_errorMessageMgr, dataName, value, start);
     }
 
     /// <summary>
@@ -244,8 +223,7 @@ public partial class VInst
     /// <returns></returns>
     public string StartsWithCaseInsensitive(string dataName, string value, string start, string errorMessage)
     {
-        string errMsg = RuleValidator.StartsWithCaseInsensitive(dataName, value, start, errorMessage);
-        return errMsg;
+        return RuleValidator.StartsWithCaseInsensitive(dataName, value, start, errorMessage);
     }
 
     /// <summary>
@@ -255,70 +233,58 @@ public partial class VInst
     /// <returns></returns>
     public string EndsWithCaseInsensitive(string dataName, string value, string start, string errorMessage)
     {
-        string errMsg = RuleValidator.EndsWithCaseInsensitive(dataName, value, start, errorMessage);
-        return errMsg;
+        return RuleValidator.EndsWithCaseInsensitive(dataName, value, start, errorMessage);
     }
 
     public string EndsWithCaseInsensitive(string dataName, string value, string start)
     {
-        string errMsg = RuleValidator.EndsWithCaseInsensitive(_errorMessageMgr, dataName, value, start);
-        return errMsg;
+        return RuleValidator.EndsWithCaseInsensitive(_errorMessageMgr, dataName, value, start);
     }
 
     public string Contains(string dataName, string value, string start, string errorMessage)
     {
-        string errMsg = RuleValidator.Contains(dataName, value, start, errorMessage);
-        return errMsg;
+        return RuleValidator.Contains(dataName, value, start, errorMessage);
     }
 
     public string Contains(string dataName, string value, string start)
     {
-        string errMsg = RuleValidator.Contains(_errorMessageMgr, dataName, value, start);
-        return errMsg;
+        return RuleValidator.Contains(_errorMessageMgr, dataName, value, start);
     }
 
     public string ContainsCaseInsensitive(string dataName, string value, string start, string errorMessage)
     {
-        string errMsg = RuleValidator.ContainsCaseInsensitive(dataName, value, start, errorMessage);
-        return errMsg;
+        return RuleValidator.ContainsCaseInsensitive(dataName, value, start, errorMessage);
     }
 
     public string ContainsCaseInsensitive(string dataName, string value, string start)
     {
-        string errMsg = RuleValidator.ContainsCaseInsensitive(_errorMessageMgr, dataName, value, start);
-        return errMsg;
+        return RuleValidator.ContainsCaseInsensitive(_errorMessageMgr, dataName, value, start);
     }
 
     public string NotContains(string dataName, string value, string start, string errorMessage)
     {
-        string errMsg = RuleValidator.NotContains(dataName, value, start, errorMessage);
-        return errMsg;
+        return RuleValidator.NotContains(dataName, value, start, errorMessage);
     }
 
     public string NotContains(string dataName, string value, string start)
     {
-        string errMsg = RuleValidator.NotContains(_errorMessageMgr, dataName, value, start);
-        return errMsg;
+        return RuleValidator.NotContains(_errorMessageMgr, dataName, value, start);
     }
 
     public string NotContainsCaseInsensitive(string dataName, string value, string start, string errorMessage)
     {
-        string errMsg = RuleValidator.NotContainsCaseInsensitive(dataName, value, start, errorMessage);
-        return errMsg;
+        return RuleValidator.NotContainsCaseInsensitive(dataName, value, start, errorMessage);
     }
 
     public string NotContainsCaseInsensitive(string dataName, string value, string start)
     {
-        string errMsg = RuleValidator.NotContainsCaseInsensitive(_errorMessageMgr, dataName, value, start);
-        return errMsg;
+        return RuleValidator.NotContainsCaseInsensitive(_errorMessageMgr, dataName, value, start);
     }
 
 
     public string FirstCharIn(string dataName, string value, string chars)
     {
-        string errMsg = RuleValidator.FirstCharIn(_errorMessageMgr, dataName, value, chars);
-        return errMsg;
-
+        return RuleValidator.FirstCharIn(_errorMessageMgr, dataName, value, chars);
     }
 
     /// <summary>
@@ -328,15 +294,12 @@ public partial class VInst
     /// <returns></returns>
     public string FirstCharIn(string dataName, string value, string chars, string errorMessage)
     {
-        string errMsg = RuleValidator.FirstCharIn(dataName, value, chars, errorMessage);
-        return errMsg;
+        return RuleValidator.FirstCharIn(dataName, value, chars, errorMessage);
     }
 
     public string FirstCharNotIn(string dataName, string value, string chars)
     {
-        string errMsg = RuleValidator.FirstCharNotIn(_errorMessageMgr, dataName, value, chars);
-        return errMsg;
-
+        return RuleValidator.FirstCharNotIn(_errorMessageMgr, dataName, value, chars);
     }
 
     /// <summary>
@@ -346,8 +309,7 @@ public partial class VInst
     /// <returns></returns>
     public string FirstCharNotIn(string dataName, string value, string chars, string errorMessage)
     {
-        string errMsg = RuleValidator.FirstCharNotIn(dataName, value, chars, errorMessage);
-        return errMsg;
+        return RuleValidator.FirstCharNotIn(dataName, value, chars, errorMessage);
     }
 
     /// <summary>
@@ -358,8 +320,7 @@ public partial class VInst
     /// <returns></returns>
     public string BetweenLength(string dataName, string value, int minLength, int maxLength)
     {
-        string errMsg = RuleValidator.BetweenLength(_errorMessageMgr, dataName, value, minLength, maxLength);
-        return errMsg;
+        return RuleValidator.BetweenLength(_errorMessageMgr, dataName, value, minLength, maxLength);
     }
 
     /// <summary>
@@ -370,8 +331,7 @@ public partial class VInst
     /// <returns></returns>
     public string BetweenLength(string dataName, string value, int minLength, int maxLength, string errorMessage)
     {
-        string errMsg = RuleValidator.BetweenLength(dataName, value, minLength, maxLength, errorMessage);
-        return errMsg;
+        return RuleValidator.BetweenLength(dataName, value, minLength, maxLength, errorMessage);
     }
 
     /// <summary>
@@ -382,8 +342,7 @@ public partial class VInst
     /// <returns></returns>
     public string MinLength(string dataName, string value, int minLength)
     {
-        string errMsg = RuleValidator.MinLength(_errorMessageMgr, dataName, value, minLength);
-        return errMsg;
+        return RuleValidator.MinLength(_errorMessageMgr, dataName, value, minLength);
     }
 
     /// <summary>
@@ -394,8 +353,7 @@ public partial class VInst
     /// <returns></returns>
     public string MinLength(string dataName, string value, int minLength, string errorMessage)
     {
-        string errMsg = RuleValidator.MinLength(dataName, value, minLength, errorMessage);
-        return errMsg;
+        return RuleValidator.MinLength(dataName, value, minLength, errorMessage);
     }
 
     /// <summary>
@@ -406,8 +364,7 @@ public partial class VInst
     /// <returns></returns>
     public string MaxLength(string dataName, string value, int maxLength)
     {
-        string errMsg = RuleValidator.MaxLength(_errorMessageMgr, dataName, value, maxLength);
-        return errMsg;
+        return RuleValidator.MaxLength(_errorMessageMgr, dataName, value, maxLength);
     }
 
     /// <summary>
@@ -418,8 +375,7 @@ public partial class VInst
     /// <returns></returns>
     public string MaxLength(string dataName, string value, int maxLength, string errorMessage)
     {
-        string errMsg = RuleValidator.MaxLength(dataName, value, maxLength, errorMessage);
-        return errMsg;
+        return RuleValidator.MaxLength(dataName, value, maxLength, errorMessage);
     }
 
     /// <summary>
@@ -430,8 +386,7 @@ public partial class VInst
     /// <returns></returns>
     public string ExactLength(string dataName, string value, int exactLength)
     {
-        string errMsg = RuleValidator.ExactLength(_errorMessageMgr, dataName, value, exactLength);
-        return errMsg;
+        return RuleValidator.ExactLength(_errorMessageMgr, dataName, value, exactLength);
     }
 
     /// <summary>
@@ -442,8 +397,7 @@ public partial class VInst
     /// <returns></returns>
     public string ExactLength(string dataName, string value, int exactLength, string errorMessage)
     {
-        string errMsg = RuleValidator.ExactLength(dataName, value, exactLength, errorMessage);
-        return errMsg;
+        return RuleValidator.ExactLength(dataName, value, exactLength, errorMessage);
     }
 
 
@@ -455,8 +409,7 @@ public partial class VInst
     /// <returns></returns>
     public string Bool(string dataName, object value)
     {
-        string errMsg = RuleValidator.Bool(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.Bool(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -468,8 +421,7 @@ public partial class VInst
     /// <returns></returns>
     public string Bool(string dataName, object value, string errorMessage)
     {
-        string errMsg = RuleValidator.Bool(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.Bool(dataName, value, errorMessage);
     }
 
     /// <summary>
@@ -480,8 +432,7 @@ public partial class VInst
     /// <returns></returns>
     public string Int(string dataName, object value)
     {
-        string errMsg = RuleValidator.Int(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.Int(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -493,8 +444,7 @@ public partial class VInst
     /// <returns></returns>
     public string Int(string dataName, object value, string errorMessage)
     {
-        string errMsg = RuleValidator.Int(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.Int(dataName, value, errorMessage);
     }
 
     /// <summary>
@@ -505,8 +455,7 @@ public partial class VInst
     /// <returns></returns>
     public string Number(string dataName, object value)
     {
-        string errMsg = RuleValidator.Number(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.Number(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -518,8 +467,7 @@ public partial class VInst
     /// <returns></returns>
     public string Number(string dataName, object value, string errorMessage)
     {
-        string errMsg = RuleValidator.Number(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.Number(dataName, value, errorMessage);
     }
 
     /// <summary>
@@ -530,8 +478,7 @@ public partial class VInst
     /// <returns></returns>
     public string String(string dataName, object value)
     {
-        string errMsg = RuleValidator.String(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.String(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -543,32 +490,27 @@ public partial class VInst
     /// <returns></returns>
     public string String(string dataName, object value, string errorMessage)
     {
-        string errMsg = RuleValidator.String(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.String(dataName, value, errorMessage);
     }
 
     public string FormatDate(string dataName, string value, string format)
     {
-        string errMsg = RuleValidator.FormatDate(_errorMessageMgr, dataName, value, format);
-        return errMsg;
+        return RuleValidator.FormatDate(_errorMessageMgr, dataName, value, format);
     }
 
     public string FormatDate(string dataName, string value, string format, string errorMessage)
     {
-        string errMsg = RuleValidator.FormatDate(dataName, value, format, errorMessage);
-        return errMsg;
+        return RuleValidator.FormatDate(dataName, value, format, errorMessage);
     }
 
     public string FormatDate(string dataName, string value, string[] formats)
     {
-        string errMsg = RuleValidator.FormatDate(_errorMessageMgr, dataName, value, formats);
-        return errMsg;
+        return RuleValidator.FormatDate(_errorMessageMgr, dataName, value, formats);
     }
 
     public string FormatDate(string dataName, string value, string[] formats, string errorMessage)
     {
-        string errMsg = RuleValidator.FormatDate(dataName, value, formats, errorMessage);
-        return errMsg;
+        return RuleValidator.FormatDate(dataName, value, formats, errorMessage);
     }
 
     /// <summary>
@@ -579,8 +521,7 @@ public partial class VInst
     /// <returns></returns>
     public string EmailFormat(string dataName, string value)
     {
-        string errMsg = RuleValidator.EmailFormat(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.EmailFormat(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -593,8 +534,7 @@ public partial class VInst
     /// <returns></returns>
     public string EmailFormat(string dataName, string value, string errorMessage)
     {
-        string errMsg = RuleValidator.EmailFormat(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.EmailFormat(dataName, value, errorMessage);
     }
 
     /// <summary>
@@ -607,8 +547,7 @@ public partial class VInst
     /// <returns></returns>
     public string Email(string dataName, string value, string errorMessage)
     {
-        string errMsg = RuleValidator.Email(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.Email(dataName, value, errorMessage);
     }
 
     /// <summary>
@@ -619,8 +558,7 @@ public partial class VInst
     /// <returns></returns>
     public string Email(string dataName, string value)
     {
-        string errMsg = RuleValidator.Email(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.Email(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -631,8 +569,7 @@ public partial class VInst
     /// <returns></returns>
     public string EmailStrict(string dataName, string value)
     {
-        string errMsg = RuleValidator.EmailStrict(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.EmailStrict(_errorMessageMgr, dataName, value);
     }
 
     /// <summary>
@@ -645,32 +582,27 @@ public partial class VInst
     /// <returns></returns>
     public string EmailStrict(string dataName, string value, string errorMessage)
     {
-        string errMsg = RuleValidator.EmailStrict(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.EmailStrict(dataName, value, errorMessage);
     }
 
     public string BankIban(string dataName, string value)
     {
-        string errMsg = RuleValidator.BankIban(_errorMessageMgr, dataName, value);
-        return errMsg;
+        return RuleValidator.BankIban(_errorMessageMgr, dataName, value);
     }
 
     public string BankIban(string dataName, string value, string errorMessage)
     {
-        string errMsg = RuleValidator.BankIban(dataName, value, errorMessage);
-        return errMsg;
+        return RuleValidator.BankIban(dataName, value, errorMessage);
     }
 
     public string BankCardNumber(string dataName, string value, BankCardBank cardbank)
     {
-        string errMsg = RuleValidator.BankCardNumber(_errorMessageMgr, dataName, value, cardbank);
-        return errMsg;
+        return RuleValidator.BankCardNumber(_errorMessageMgr, dataName, value, cardbank);
     }
 
     public string BankCardNumber(string dataName, string value, BankCardBank cardbank, string errorMessage)
     {
-        string errMsg = RuleValidator.BankCardNumber(dataName, value, cardbank, errorMessage);
-        return errMsg;
+        return RuleValidator.BankCardNumber(dataName, value, cardbank, errorMessage);
     }
 
     public string BankCardNumber(string dataName, string value)
@@ -678,15 +610,13 @@ public partial class VInst
         // all banks
         BankCardBank cardbank = BankCardBank.Visa | BankCardBank.Mastercard | BankCardBank.AmericanExpress | BankCardBank.Discover | BankCardBank.DinersClub | BankCardBank.JCB | BankCardBank.ChinaUnionPay;
 
-        string errMsg = RuleValidator.BankCardNumber(_errorMessageMgr, dataName, value, cardbank);
-        return errMsg;
+        return RuleValidator.BankCardNumber(_errorMessageMgr, dataName, value, cardbank);
     }
 
     public string BankCardNumber(string dataName, string value, string errorMessage)
     {
         // all banks
         BankCardBank cardbank = BankCardBank.Visa | BankCardBank.Mastercard | BankCardBank.AmericanExpress | BankCardBank.Discover | BankCardBank.DinersClub | BankCardBank.JCB | BankCardBank.ChinaUnionPay;
-        string errMsg = RuleValidator.BankCardNumber(dataName, value, cardbank, errorMessage);
-        return errMsg;
+        return RuleValidator.BankCardNumber(dataName, value, cardbank, errorMessage);
     }
 }

@@ -20,6 +20,12 @@ public enum BankCardBank
     DinersClub = 16,
 
     ChinaUnionPay=32,
-
     JCB=64,
+
+    Dankord = 128,
+
+    DankordPure= 256,
+
+    VisaDankord = 512,
 }
+
