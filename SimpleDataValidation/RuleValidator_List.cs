@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SimpleDataValidation;
 
-public abstract class RuleValidatorBase
+public partial class RuleValidator
 {
     /// <summary>
     /// The value should be not null. If it is, return an error message; otherwise, return an empty string.
