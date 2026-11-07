@@ -77,7 +77,7 @@ internal class ErrorMessagesTableBuilder
             return Build_pt_br();
         }
 
-        throw new NotImplementedException("Language not implemented: " + lang);
+        throw new NotImplementedException("Language '"+lang+"' not found in the error message table");
     }
 
     static Dictionary<string, string> Build_en_gb()

@@ -12,7 +12,12 @@ public partial class V
     /// <summary>
     /// The default instance used by static methods.
     /// </summary>
-    protected static VInst _defaultInst;
+    static VInst _defaultInst;
+
+    /// <summary>
+    /// List of all V instance created.
+    /// </summary>
+    static List<VInst> vInsts = new List<VInst>();
 
     /// <summary>
     /// Initializes the static members of the V class, including the default language and the error message table for that language. This static constructor is called automatically before any static members are accessed or any instances of the class are created.
@@ -31,8 +36,19 @@ public partial class V
     /// <returns></returns>
     public static VInst CreateInst()
     {
-        VInst vinst= new VInst();
-        vinst.Setlanguage(_defaultLang);
+        return  CreateInst(_defaultLang);
+    }
+
+    /// <summary>
+    /// Create an instance of V.
+    /// </summary>
+    /// <returns></returns>
+    public static VInst CreateInst(string lang)
+    {
+        VInst vinst = new VInst();
+        vinst.Setlanguage(lang);
+
+        vInsts.Add(vinst);
         return vinst;
     }
 
