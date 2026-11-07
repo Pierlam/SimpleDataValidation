@@ -93,7 +93,5 @@ public class Test_VInst_ChangeLang
         //--back to the default lang (en-gb)
         errMsg = V.NotNull("field", null);
         Assert.AreEqual("field is required", errMsg);
-
     }
-
 }

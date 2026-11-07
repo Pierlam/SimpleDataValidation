@@ -55,10 +55,6 @@ public partial class V
     public static void Setlanguage(string lang)
     {
         _defaultInst.Setlanguage(lang);
-        //_errorMessageMgr.CurrentLang = lang;
-
-        // build the table of error messages
-        //_errorMessageMgr.TableErrorMsg = ErrorMessagesTableBuilder.Build(_errorMessageMgr.CurrentLang);
     }
 
     public static void SetMessageSeparator(string separator)
