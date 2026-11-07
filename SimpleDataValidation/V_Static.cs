@@ -5,40 +5,59 @@ namespace SimpleDataValidation;
 public partial class V
 {
     /// <summary>
-    /// The ErrorMessageMgr instance is responsible for managing error messages, including retrieving the appropriate error message based on the current language and error code. It also provides functionality to set the current language and build the table of error messages for that language.
+    /// The default language for error messages. This value is used when no specific language is set or when the specified language is not found in the error message table. The default value is "en-gb" (English - Great Britain).
     /// </summary>
-    protected static ErrorMessageMgr _errorMessageMgr = new ErrorMessageMgr();
+    static string _defaultLang = "en-gb";
+
+    /// <summary>
+    /// The default instance used by static methods.
+    /// </summary>
+    protected static VInst _defaultInst;
 
     /// <summary>
     /// Initializes the static members of the V class, including the default language and the error message table for that language. This static constructor is called automatically before any static members are accessed or any instances of the class are created.
     /// </summary>
     static V()
     {
+        _defaultInst = new VInst();
+
         // build the table of error messages
-        Setlanguage(_errorMessageMgr.CurrentLang);
+        Setlanguage(_defaultLang);
+    }
+
+    /// <summary>
+    /// Create an instance of V.
+    /// </summary>
+    /// <returns></returns>
+    public static VInst CreateInst()
+    {
+        VInst vinst= new VInst();
+        vinst.Setlanguage(_defaultLang);
+        return vinst;
     }
 
     public static void Setlanguage(string lang)
     {
-        _errorMessageMgr.CurrentLang = lang;
+        _defaultInst.Setlanguage(lang);
+        //_errorMessageMgr.CurrentLang = lang;
 
         // build the table of error messages
-        _errorMessageMgr.TableErrorMsg = ErrorMessagesTableBuilder.Build(_errorMessageMgr.CurrentLang);
+        //_errorMessageMgr.TableErrorMsg = ErrorMessagesTableBuilder.Build(_errorMessageMgr.CurrentLang);
     }
 
     public static void SetMessageSeparator(string separator)
     {
-        _errorMessageMgr.BetweenMsg = separator;
+        _defaultInst.SetMessageSeparator(separator);
     }
 
     public static void SetMessageEnd(string endMessage)
     {
-        _errorMessageMgr.MessageEnd = endMessage;
+        _defaultInst.SetMessageEnd(endMessage);
     }
 
     public static void SetMessageEndDot()
     {
-        _errorMessageMgr.MessageEnd = ".";
+        _defaultInst.SetMessageEnd(".");
     }
 
     /// <summary>
@@ -69,9 +88,8 @@ public partial class V
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static V  Define(string dataName, string value)
+    public static VChain Define(string dataName, string value)
     {
-        V v = new V(dataName, value);
-        return v;
+        return _defaultInst.Define(dataName, value);
     }
 }

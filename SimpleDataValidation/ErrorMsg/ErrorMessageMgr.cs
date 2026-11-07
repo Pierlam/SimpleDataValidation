@@ -16,11 +16,6 @@ public class ErrorMessageMgr
     /// </summary>
     public Dictionary<string, string> TableErrorMsg;
 
-    /// <summary>
-    /// The default language for error messages. This value is used when no specific language is set or when the specified language is not found in the error message table. The default value is "en-gb" (English - Great Britain).
-    /// </summary>
-    public string DefaultLang = "en-gb";
-
     public string CurrentLang = "en-gb";
 
     public string DefaultErrorMessage = "An error occurred, code: {0}";
