@@ -8,12 +8,12 @@ False                      Check that the bool value is false.
 AddTrue, AddFalse
 
 -Improvements:
-	lib now compliant with net10.0
-	Possible to create a VInst object in a specific language.
-    Added Dankord, HiperCard and RuPay banks.
+	-library publish now in net8.0 and net10.0
+	-Possible to create a VInst object in a specific language.
+    -Added Dankord, HiperCard and RuPay banks.
 	
 -Languages:
-Added new language for error messages:  English-American 
+Added new language for error messages:  English-American, Danish. 
 
 
 -73 unit tests, all are green.

@@ -77,6 +77,12 @@ internal class ErrorMessagesTableBuilder
             return Build_pt_br();
         }
 
+        // danish
+        if (lang.Equals("da-dk", StringComparison.OrdinalIgnoreCase))
+        {
+            return Build_da_dk();
+        }
+
         throw new NotImplementedException("Language '"+lang+"' not found in the error message table");
     }
 
@@ -502,6 +508,50 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Email, "{0} deve ser um endereço de e-mail válido" },
             { lang + ErrorCode.BankIban, "{0} deve ser um IBAN válido" },
             { lang + ErrorCode.BankCardNumber, "{0} deve ser um número de cartão válido" },
+        };
+
+        return tableErrorMsg;
+    }
+
+    static Dictionary<string, string> Build_da_dk()
+    {
+        string lang = "da-dk.";
+        Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
+        {
+            { lang + ErrorCode.True, "{0} skal være sand" },
+            { lang + ErrorCode.False, "{0} skal være falsk" },
+            { lang + ErrorCode.Null, "{0} skal være null" },
+            { lang + ErrorCode.NotNull, "{0} er påkrævet" },
+            { lang + ErrorCode.NotNullOrEmpty, "{0} er påkrævet" },
+            { lang + ErrorCode.NotNullOrWhiteSpace, "{0} er påkrævet" },
+
+            { lang + ErrorCode.Letters, "{0} må kun indeholde bogstaver" },
+            { lang + ErrorCode.Digits, "{0} må kun indeholde cifre" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} må kun indeholde bogstaver, cifre eller understreg" },
+
+            { lang + ErrorCode.StartsWith, "{0} skal starte med: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} skal slutte med: {1}" },
+            { lang + ErrorCode.FirstCharIn, "{0} skal have som første tegn et af følgende: {1}" },
+            { lang + ErrorCode.FirstCharNotIn, "{0} må ikke have som første tegn et af følgende: {1}" },
+            { lang + ErrorCode.Contains, "{0} skal indeholde: {1}" },
+            { lang + ErrorCode.NotContains, "{0} må ikke indeholde: {1}" },
+
+            { lang + ErrorCode.BetweenLength, "{0} skal have mellem {1} og {2} tegn" },
+            { lang + ErrorCode.MinLength, "{0} skal have mindst {1} tegn" },
+            { lang + ErrorCode.MaxLength, "{0} må ikke have mere end {1} tegn" },
+            { lang + ErrorCode.ExactLength, "{0} skal have præcis {1} tegn" },
+
+            { lang + ErrorCode.Bool, "{0} skal være en boolesk værdi" },
+            { lang + ErrorCode.Int, "{0} skal være et heltal" },
+            { lang + ErrorCode.Number, "{0} skal være et tal" },
+            { lang + ErrorCode.String, "{0} skal være en tekststreng" },
+
+            { lang + ErrorCode.FormatDate, "{0} skal være en gyldig dato" },
+
+            { lang + ErrorCode.Email, "{0} skal være en gyldig e-mailadresse" },
+
+            { lang + ErrorCode.BankIban, "{0} skal være en gyldig IBAN" },
+            { lang + ErrorCode.BankCardNumber, "{0} skal være et gyldigt kortnummer" },
         };
 
         return tableErrorMsg;
