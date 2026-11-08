@@ -85,6 +85,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "en-gb.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} must be true" },
+            { lang + ErrorCode.False, "{0} must be false" },
             { lang + ErrorCode.Null, "{0} must be null" },
             { lang + ErrorCode.NotNull, "{0} is required" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} is required" },
@@ -127,6 +129,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "en-us.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} must be true" },
+            { lang + ErrorCode.False, "{0} must be false" },
             { lang + ErrorCode.Null, "{0} must be null" },
             { lang + ErrorCode.NotNull, "{0} is required" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} is required" },
@@ -167,6 +171,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "it-it.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} deve essere true" },
+            { lang + ErrorCode.False, "{0} deve essere false" },
             { lang + ErrorCode.Null, "{0} deve essere null" },
             { lang + ErrorCode.NotNull, "{0} è obbligatorio" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} è obbligatorio" },
@@ -210,6 +216,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "de-de.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} muss wahr sein" },
+            { lang + ErrorCode.False, "{0} muss falsch sein" },
             { lang + ErrorCode.Null, "{0} muss null sein" },
             { lang + ErrorCode.NotNull, "{0} ist erforderlich" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} ist erforderlich" },
@@ -294,6 +302,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "fr-fr.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} doit être vrai" },
+            { lang + ErrorCode.False, "{0} doit être faux" },
             { lang + ErrorCode.Null, "{0} doit être null" },
             { lang + ErrorCode.NotNull, "{0} est requis" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} est requis" },
@@ -336,6 +346,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "zh-cn.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} 必须为 true" },
+            { lang + ErrorCode.False, "{0} 必须为 false" },
             { lang + ErrorCode.Null, "{0} 必须为 null" },
             { lang + ErrorCode.NotNull, "{0} 为必填项" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} 为必填项" },
@@ -416,6 +428,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "pt-pt.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} deve ser verdadeiro" },
+            { lang + ErrorCode.False, "{0} deve ser falso" },
             { lang + ErrorCode.Null, "{0} deve ser nulo" },
             { lang + ErrorCode.NotNull, "{0} é obrigatório" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} é obrigatório" },
@@ -456,6 +470,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "pt-br.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} deve ser verdadeiro" },
+            { lang + ErrorCode.False, "{0} deve ser falso" },
             { lang + ErrorCode.Null, "{0} deve ser nulo" },
             { lang + ErrorCode.NotNull, "{0} é obrigatório" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} é obrigatório" },

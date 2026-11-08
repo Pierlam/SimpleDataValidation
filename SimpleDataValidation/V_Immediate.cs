@@ -7,6 +7,26 @@ namespace SimpleDataValidation;
 public partial class V
 {
     /// <summary>
+    /// The value should be true. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    public static string True(string dataName, bool value) => _defaultInst.True(dataName, value);
+
+    /// <summary>
+    /// The value should be true. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    public static string True(string dataName, bool value, string errorMessage) => _defaultInst.True(dataName, value, errorMessage);
+
+    /// <summary>
+    /// The value should be false. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    public static string False(string dataName, bool value) => _defaultInst.False(dataName, value);
+
+    /// <summary>
+    /// The value should be false. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    public static string False(string dataName, bool value, string errorMessage) => _defaultInst.False(dataName, value, errorMessage);
+
+    /// <summary>
     /// The value should be null. If it is, return an error message; otherwise, return an empty string.
     /// </summary>
     public static string Null(string dataName, object value) => _defaultInst.Null(dataName, value);

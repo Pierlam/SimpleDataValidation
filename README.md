@@ -83,6 +83,8 @@ There are many available features to validate data, by type, by length, by forma
 
 ```
 // List of available direct validation methods:
+True                       Check that the bool value is true.
+False                      Check that the bool value is false.
 Null                       Check that the object value is null.
 NotNull                    Check that the object value is not null.
 NotNullOrEmpty             Check that the string value is not null or empty.

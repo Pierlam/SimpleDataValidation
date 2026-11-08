@@ -22,7 +22,7 @@ public partial class VChain
     /// <summary>
     /// The value being validated. This is the actual data that will be checked against the defined validation rules.
     /// </summary>
-    protected string _value;
+    protected object _value;
 
     /// <summary>
     /// To save the list of validation rules that have been defined for this instance of the V class. Each rule is represented by an instance of a class that inherits from RuleBase.
@@ -30,11 +30,23 @@ public partial class VChain
     protected List<RuleBase> _ruleBases = new List<RuleBase>();
 
 
-    public VChain(ErrorMessageMgr errorMessageMgr, string dataName, string value)
+    public VChain(ErrorMessageMgr errorMessageMgr, string dataName, object value)
     {
         _errorMessageMgr = errorMessageMgr;
         _dataName = dataName;
         _value = value;
+    }
+
+    public VChain AddTrue()
+    {
+        _ruleBases.Add(new RuleTrue());
+        return this;
+    }
+
+    public VChain AddFalse()
+    {
+        _ruleBases.Add(new RuleFalse());
+        return this;
     }
 
     public VChain AddNull()

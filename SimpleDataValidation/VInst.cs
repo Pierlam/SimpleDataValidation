@@ -73,7 +73,7 @@ public partial class VInst
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public VChain Define(string dataName, string value)
+    public VChain Define(string dataName, object value)
     {
         VChain vChain = new VChain(_errorMessageMgr, dataName, value);
         return vChain;

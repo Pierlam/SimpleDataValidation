@@ -100,7 +100,7 @@ public partial class V
     /// <param name="dataName"></param>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static VChain Define(string dataName, string value)
+    public static VChain Define(string dataName, object value)
     {
         return _defaultInst.Define(dataName, value);
     }

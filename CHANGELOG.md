@@ -1,8 +1,11 @@
 ﻿## 0.4.0 Release (202?-??-??)
 
 -New validation available:
+True                       Check that the bool value is true.
+False                      Check that the bool value is false.
 
 -New chain validation available:
+AddTrue, AddFalse
 
 -Improvements:
 	lib now compliant with net10.0

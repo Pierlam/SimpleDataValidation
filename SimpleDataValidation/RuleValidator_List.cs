@@ -13,7 +13,53 @@ namespace SimpleDataValidation;
 public partial class RuleValidator
 {
     /// <summary>
-    /// The value should be not null. If it is, return an error message; otherwise, return an empty string.
+    /// The value should be true. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string True(ErrorMessageMgr errorMessageMgr, string dataName, bool value)
+    {
+        return True(dataName, value, errorMessageMgr.GetMessage(ErrorCode.True, dataName));
+    }
+
+    /// <summary>
+    /// The value should be true. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string True(string dataName, bool value, string errorMessage)
+    {
+        if (value) return string.Empty;
+        return errorMessage;
+    }
+
+    /// <summary>
+    /// The value should be false. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string False(ErrorMessageMgr errorMessageMgr, string dataName, bool value)
+    {
+        return False(dataName, value, errorMessageMgr.GetMessage(ErrorCode.False, dataName));
+    }
+
+    /// <summary>
+    /// The value should be false. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string False(string dataName, bool value, string errorMessage)
+    {
+        if (!value) return string.Empty;
+        return errorMessage;
+    }
+
+    /// <summary>
+    /// The value should be null. If it is, return an error message; otherwise, return an empty string.
     /// </summary>
     /// <param name="dataName"></param>
     /// <param name="value"></param>
@@ -24,7 +70,7 @@ public partial class RuleValidator
     }
 
     /// <summary>
-    /// The value should be not null. If it is, return an error message; otherwise, return an empty string.
+    /// The value should be null. If it is, return an error message; otherwise, return an empty string.
     /// </summary>
     /// <param name="dataName"></param>
     /// <param name="value"></param>

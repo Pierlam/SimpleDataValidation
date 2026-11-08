@@ -9,6 +9,50 @@ namespace SimpleDataValidation;
 public partial class VInst
 {
     /// <summary>
+    /// The value should be true. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public string True(string dataName, bool value)
+    {
+        return RuleValidator.True(_errorMessageMgr, dataName, value);
+    }
+
+    /// <summary>
+    /// The value should be true. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public string True(string dataName, bool value, string errorMessage)
+    {
+        return RuleValidator.True(dataName, value, errorMessage);
+    }
+
+    /// <summary>
+    /// The value should be false. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public string False(string dataName, bool value)
+    {
+        return RuleValidator.False(_errorMessageMgr, dataName, value);
+    }
+
+    /// <summary>
+    /// The value should be false. If it is, return an error message; otherwise, return an empty string.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public string False(string dataName, bool value, string errorMessage)
+    {
+        return RuleValidator.False(dataName, value, errorMessage);
+    }
+
+    /// <summary>
     /// The value should be null. If it is, return an error message; otherwise, return an empty string.
     /// </summary>
     /// <param name="dataName"></param>
