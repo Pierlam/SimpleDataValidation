@@ -24,10 +24,10 @@ public partial class V
     /// </summary>
     static V()
     {
-        _defaultInst = new VInst();
+        _defaultInst = new VInst(_defaultLang);
 
         // build the table of error messages
-        Setlanguage(_defaultLang);
+        //Setlanguage(_defaultLang);
     }
 
     /// <summary>
@@ -45,9 +45,10 @@ public partial class V
     /// <returns></returns>
     public static VInst CreateInst(string lang)
     {
-        VInst vinst = new VInst();
-        vinst.Setlanguage(lang);
+        VInst vinst = new VInst(lang);
+        //vinst.Setlanguage(lang);
 
+        // save the instance in the list of instances
         vInsts.Add(vinst);
         return vinst;
     }

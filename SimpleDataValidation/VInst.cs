@@ -15,16 +15,19 @@ public partial class VInst
     /// </summary>
     /// <param name="dataName"></param>
     /// <param name="value"></param>
-    public VInst()
-    {
-    }
-
-    public void Setlanguage(string lang)
+    public VInst(string lang)
     {
         _errorMessageMgr = new ErrorMessageMgr
         {
             CurrentLang = lang
         };
+        // build the table of error messages
+        _errorMessageMgr.TableErrorMsg = ErrorMessagesTableBuilder.Build(_errorMessageMgr.CurrentLang);
+    }
+
+    public void Setlanguage(string lang)
+    {
+        _errorMessageMgr.CurrentLang= lang;
 
         // build the table of error messages
         _errorMessageMgr.TableErrorMsg = ErrorMessagesTableBuilder.Build(_errorMessageMgr.CurrentLang);
