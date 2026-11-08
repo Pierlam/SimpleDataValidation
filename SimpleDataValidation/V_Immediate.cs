@@ -354,10 +354,18 @@ public partial class V
 
     public static string BankCardNumber(string dataName, string value, BankCardBank cardbank, string errorMessage) => _defaultInst.BankCardNumber(dataName, value, cardbank, errorMessage);
 
+    /// <summary>
+    /// Accept all bank.
+    /// </summary>
+    /// <param name="dataName"></param>
+    /// <param name="value"></param>
+    /// <returns></returns>
     public static string BankCardNumber(string dataName, string value)
     {
         // all banks
-        BankCardBank cardbank = BankCardBank.Visa | BankCardBank.Mastercard | BankCardBank.AmericanExpress | BankCardBank.Discover | BankCardBank.DinersClub | BankCardBank.JCB | BankCardBank.ChinaUnionPay;
+        BankCardBank cardbank = BankCardBank.Visa | BankCardBank.Mastercard | BankCardBank.AmericanExpress 
+            | BankCardBank.Discover | BankCardBank.DinersClub | BankCardBank.JCB | BankCardBank.ChinaUnionPay | BankCardBank.Dankord 
+            | BankCardBank.DankordPure | BankCardBank.VisaDankord | BankCardBank.HiperCard | BankCardBank.JCBRuPay | BankCardBank.RuPay;
 
         return _defaultInst.BankCardNumber(dataName, value, cardbank);
     }

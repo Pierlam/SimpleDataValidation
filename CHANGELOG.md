@@ -7,13 +7,13 @@
 -Improvements:
 	lib now compliant with net10.0
 	Possible to create a VInst object in a specific language.
-    Added Dankord, HiperCard banks and RuPay.
+    Added Dankord, HiperCard and RuPay banks.
 	
 -Languages:
 Added new language for error messages:  English-American 
 
 
--68 unit tests, all are green.
+-73 unit tests, all are green.
 
 
 ## 0.3.0 Release (2026-11-03)

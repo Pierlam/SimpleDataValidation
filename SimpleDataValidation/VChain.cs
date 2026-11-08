@@ -163,20 +163,6 @@ public partial class VChain
     }
 
     /// <summary>
-    /// Defines a new validation context for a given data field, allowing the chaining of validation rules.
-    /// </summary>
-    /// <param name="dataName"></param>
-    /// <param name="value"></param>
-    /// <returns></returns>
-    //public VChain Define(string dataName, string value)
-    //{
-    //    //V v = new V(dataName, value);
-    //    _dataName = dataName;
-    //    _value = value;
-    //    return v;
-    //}
-
-    /// <summary>
     /// Apply the defined validation rules to the value and return an error message if any rule fails. If all rules pass, return an empty string.
     /// </summary>
     /// <returns></returns>

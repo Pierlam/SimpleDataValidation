@@ -3,7 +3,7 @@
 SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way. 
 There are many available functions, more than 30, to validate data, by type, by length, by format and more like: NotNull, Length, StartsWith, Email, Iban, Card Number,...
 
-It's written in C#/NET8 with VS2026. The code is covered by 68 unit tests to ensure the non-regression of incoming evolutions.
+It's written in C#/NET8 with VS2026. The code is covered by 73 unit tests to ensure the non-regression of incoming evolutions.
 
 
 # A quick example
@@ -226,7 +226,6 @@ The name is required | The length of name is too short | ....
 
 Do some checks on a string value.
 
-
 ```
 // Check that the value starts with the provided string.
 errMsg = V.StartsWith("field", "hello", "hgj");  -> ok, errMsg will be empty
@@ -304,7 +303,7 @@ errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.VisaDanko
 errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Dankord);
 ```
 
-Bank validation implemented: Visa, Mastercard, American Express, Dankord, Dinners Club, Discover, HiperCard, JCB and China UnionPay.
+Bank validation implemented: Visa, Mastercard, American Express, Dankord, Dinners Club, Discover, HiperCard, JCB, RuPay and China UnionPay.
  
 ## Apply several validation on a data
 
