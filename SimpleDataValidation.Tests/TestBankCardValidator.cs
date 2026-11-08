@@ -172,14 +172,81 @@ public class TestBankCardValidator
     [TestMethod]
     public void CardRuPay()
     {
-        int res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "3569 9900 1009 5841");
+        int res;
+
+        // 5085 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "5085 0011 1122 2233");
         Assert.AreEqual(0, res);
 
-        res = BankCardValidator.CheckCardNumber(BankCardBank.JCB, "3566 0020 2036 0505");
+        // 5086 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "5086 0011 1122 2232");
         Assert.AreEqual(0, res);
 
-        res = BankCardValidator.CheckCardNumber(BankCardBank.JCB, "3542 9693 1355 5276 538");
+        // 5087 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "5087 0011 1122 2231");
         Assert.AreEqual(0, res);
+
+        // 5088 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "5088 0011 1122 2230");
+        Assert.AreEqual(0, res);
+
+        // 5089 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "5089 0011 1122 2239");
+        Assert.AreEqual(0, res);
+
+        // Todo:
+
+        // 6068 to 6089
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "6068 0011 1122 2232");
+        Assert.AreEqual(0, res);
+
+
+        // 6072:
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "6072 0011 1122 2236");
+        Assert.AreEqual(0, res);
+
+        // 6085:
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "6085 0011 1122 2231");
+        Assert.AreEqual(0, res);
+
+
+        // 6521:
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "6521 0011 1122 2233");
+        Assert.AreEqual(0, res);
+
+        // 6522:
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "6522 0011 1122 2232");
+        Assert.AreEqual(0, res);
+
+        // 6527 :
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "6527 6589 0000 1005");
+        Assert.AreEqual(0, res);
+
+        // 6529:
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "6529 0211 1122 2233");
+        Assert.AreEqual(0, res);
+
+        // 8172 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "8172 0011 1122 2231");
+        Assert.AreEqual(0, res);
+
+        // 82 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "8200 1111 2222 3338");
+        Assert.AreEqual(0, res);
+
+        // 5028, 5029, 5040, 5054
+
+        // 345678 
+
+        // cobrandé: RuPay-JCB  353 et 356 
+        // • 3560 0011 1122 2237
+
+        // pb avec 502 et 504, et maestro
+
+
+        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "");
+        Assert.AreEqual(0, res);
+
     }
 
 }

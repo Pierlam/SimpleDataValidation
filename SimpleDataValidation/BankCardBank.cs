@@ -29,5 +29,7 @@ public enum BankCardBank
     VisaDankord = 512,
 
     HiperCard = 1024,
+
+    RuPay = 2048,
 }
 

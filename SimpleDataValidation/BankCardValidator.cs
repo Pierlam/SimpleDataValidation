@@ -61,7 +61,21 @@ public class BankCardValidator
     /// <returns></returns>
     static bool FindBank(string cardStr, out BankCardBank cardBankRes)
     {
-        //--visa
+        //--Mastercard BIN2, Start with 2.  2221 à 2720
+        if (cardStr.StartsWith("2"))
+        {
+            string prefix = cardStr.Substring(0, 4);
+            if (int.TryParse(prefix, out int prefixInt))
+            {
+                if (prefixInt >= 2221 && prefixInt <= 2720)
+                {
+                    cardBankRes = BankCardBank.Mastercard;
+                    return true;
+                }
+            }
+        }
+
+        //--visa/Dankord: Start with 4571
         if (cardStr.StartsWith("4571"))
         {
             cardBankRes = BankCardBank.VisaDankord;
@@ -75,11 +89,52 @@ public class BankCardValidator
             return true;
         }
 
-        //--Dankord: Start with 5019
+        //--Dankord
         if (cardStr.StartsWith("5019"))
         {
             cardBankRes = BankCardBank.DankordPure;
             return true;
+        }
+
+        //--Dinners club
+        // begins with 300 to 305, or 36 or 38.
+        //length: 14 
+        if (cardStr.StartsWith("30"))
+        {
+            string prefix = cardStr.Substring(0, 3);
+            if (int.TryParse(prefix, out int prefixInt))
+            {
+                if (prefixInt >= 300 && prefixInt <= 305)
+                {
+                    cardBankRes = BankCardBank.DinersClub;
+                    return true;
+                }
+            }
+        }
+        if (cardStr.StartsWith("36"))
+        {
+            cardBankRes = BankCardBank.DinersClub;
+            return true;
+        }
+        // 3841 is used by HiperCard, not DinnersClub
+        if (cardStr.StartsWith("38") && !cardStr.StartsWith("3841"))
+        {
+            cardBankRes = BankCardBank.DinersClub;
+            return true;
+        }
+
+        // JCB: begins with 35, specifically from 3528 through 3589
+        if (cardStr.StartsWith("35"))
+        {
+            string prefix = cardStr.Substring(0, 4);
+            if (int.TryParse(prefix, out int prefixInt))
+            {
+                if (prefixInt >= 3528 && prefixInt <= 3589)
+                {
+                    cardBankRes = BankCardBank.JCB;
+                    return true;
+                }
+            }
         }
 
         //--American Express
@@ -96,23 +151,9 @@ public class BankCardValidator
             return true;
         }
 
-        //--Mastercard BIN2, Start with 2.  2221 à 2720
-        if(cardStr.StartsWith("2"))
-        {
-            string prefix = cardStr.Substring(0, 4);
-            if(int.TryParse(prefix, out int prefixInt))
-            {
-                if(prefixInt >= 2221 && prefixInt <= 2720)
-                {
-                    cardBankRes = BankCardBank.Mastercard;
-                    return true;
-                }
-            }
-        }
-
         //--Discover: Begins with 6011, 644 to 649, or 65.
         // length: 16 digits
-        if(cardStr.StartsWith("6011") || cardStr.StartsWith("65"))
+        if(cardStr.StartsWith("6011"))
         {
             cardBankRes = BankCardBank.Discover;
             return true;
@@ -129,57 +170,50 @@ public class BankCardValidator
                 }
             }
         }
+        // 65 is Discover, but 6521 and 6522 are RuPay
+        if (cardStr.StartsWith("65") && !cardStr.StartsWith("6521") && !cardStr.StartsWith("6522") && !cardStr.StartsWith("6527") && !cardStr.StartsWith("6529"))
+        {
+            cardBankRes = BankCardBank.Discover;
+            return true;
+        }
 
-        //--Dinners club
-        // begins with 300 to 305, or 36 or 38.
-        //length: 14 
-        if (cardStr.StartsWith("36"))
+        //--RuPay:
+        if (cardStr.StartsWith("60") || cardStr.StartsWith("6521") || cardStr.StartsWith("6522") || cardStr.StartsWith("6527") || cardStr.StartsWith("6529"))
         {
-            cardBankRes = BankCardBank.DinersClub;
+            cardBankRes = BankCardBank.RuPay;
             return true;
         }
-        // 3841 is used by HiperCard, not DinnersClub
-        if (cardStr.StartsWith("38") && !cardStr.StartsWith("3841"))
+        // 5085 to 5089  
+        if (cardStr.StartsWith("50"))
         {
-            cardBankRes = BankCardBank.DinersClub;
-            return true;
-        }
-        if (cardStr.StartsWith("30"))
-        {
-            string prefix = cardStr.Substring(0, 3);
+            string prefix = cardStr.Substring(0, 4);
             if (int.TryParse(prefix, out int prefixInt))
             {
-                if (prefixInt >= 300 && prefixInt <= 305)
+                if (prefixInt >= 5085 && prefixInt <= 5089)
                 {
-                    cardBankRes = BankCardBank.DinersClub;
+                    cardBankRes = BankCardBank.RuPay;
                     return true;
                 }
             }
         }
+        if (cardStr.StartsWith("8172") || cardStr.StartsWith("82") )
+        {
+            cardBankRes = BankCardBank.RuPay;
+            return true;
+        }
+
+        // cobrandé: 8172, 82
+        // cobrandé: RuPay-JCB  353 et 356 
 
         //--China UnionPay:
         // begins with 62 or 81
         // length: 16 - 19
-        if(cardStr.StartsWith("62") || cardStr.StartsWith("81"))
+        if (cardStr.StartsWith("62") || cardStr.StartsWith("81"))
         {
             cardBankRes = BankCardBank.ChinaUnionPay;
             return true;
         }
 
-        // JCB: begins with 35, specifically from 3528 through 3589
-        if(cardStr.StartsWith("35"))
-        {
-            string prefix = cardStr.Substring(0, 4);
-            if (int.TryParse(prefix, out int prefixInt))
-            {
-                if (prefixInt >= 3528 && prefixInt <= 3589)
-                {
-                    cardBankRes = BankCardBank.JCB;
-                    return true;
-                }
-            }
-
-        }
 
         //--HiperCard: 
         if (cardStr.StartsWith("637095") || cardStr.StartsWith("637568") || cardStr.StartsWith("637599") || cardStr.StartsWith("637600") || cardStr.StartsWith("637609") || cardStr.StartsWith("637612")
@@ -297,6 +331,15 @@ public class BankCardValidator
         if (CheckCardBank(BankCardBank.JCB, cardBanks, cardBankToCheck))
         {
             if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
+            if (!LuhnValidation(cardStr)) return 4;
+            // card number is good
+            return 0;
+        }
+
+        //--is it a RuPay?
+        if (CheckCardBank(BankCardBank.RuPay, cardBanks, cardBankToCheck))
+        {
+            if (cardStr.Length != 16) return 3;
             if (!LuhnValidation(cardStr)) return 4;
             // card number is good
             return 0;
