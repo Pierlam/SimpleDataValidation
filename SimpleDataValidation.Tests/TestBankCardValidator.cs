@@ -42,7 +42,7 @@ public class TestBankCardValidator
     }
 
     [TestMethod]
-    public void CardVisaOk()
+    public void CardVisa()
     {
         int res = BankCardValidator.CheckCardNumber(BankCardBank.Visa, "4111 1111 4555 1142");
         Assert.AreEqual(0, res);
@@ -54,7 +54,30 @@ public class TestBankCardValidator
     }
 
     [TestMethod]
-    public void CardVisaMultiOk()
+    public void CardVisaDankord()
+    {
+        int res = BankCardValidator.CheckCardNumber(BankCardBank.DankordPure, "5019 5555 4444 5555");
+        Assert.AreEqual(0, res);
+
+        // eror
+        res = BankCardValidator.CheckCardNumber(BankCardBank.Visa, "5019 5555 4444 5555");
+        Assert.AreEqual(5, res);
+
+        // Dankord cobranded with Visa, so it's also Visa
+        res = BankCardValidator.CheckCardNumber(BankCardBank.Visa, "4571 0000 0000 0001");
+        Assert.AreEqual(0, res);
+
+        // Visa/Dankord 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.VisaDankord, "4571 0000 0000 0001");
+        Assert.AreEqual(0, res);
+
+        // cobranded with Visa, but accepted as Dankord
+        res = BankCardValidator.CheckCardNumber(BankCardBank.Dankord, "4571 0000 0000 0001");
+        Assert.AreEqual(0, res);
+    }
+
+    [TestMethod]
+    public void CardVisaMulti()
     {
         int res = BankCardValidator.CheckCardNumber(BankCardBank.Visa | BankCardBank.AmericanExpress, "4111 1111 4555 1142");
         Assert.AreEqual(0, res);
@@ -64,7 +87,7 @@ public class TestBankCardValidator
     }
 
     [TestMethod]
-    public void CardAmericaExpressOk()
+    public void CardAmericaExpress()
     {
         int res = BankCardValidator.CheckCardNumber(BankCardBank.AmericanExpress, "3700 0000 0000 002");
         Assert.AreEqual(0, res);
@@ -76,7 +99,7 @@ public class TestBankCardValidator
     }
 
     [TestMethod]
-    public void CardMastercardOk()
+    public void CardMastercard()
     {
         int res = BankCardValidator.CheckCardNumber(BankCardBank.Mastercard, "2222 4000 7000 0005");
         Assert.AreEqual(0, res);
@@ -103,7 +126,7 @@ public class TestBankCardValidator
     }
 
     [TestMethod]
-    public void CardDiscoverOk()
+    public void CardDiscover()
     {
         int res = BankCardValidator.CheckCardNumber(BankCardBank.Discover, "6011 1111 1111 1117");
         Assert.AreEqual(0, res);
@@ -120,7 +143,7 @@ public class TestBankCardValidator
     }
 
     [TestMethod]
-    public void CardDinersClubOk()
+    public void CardDinersClub()
     {
         int res = BankCardValidator.CheckCardNumber(BankCardBank.DinersClub, "3600 6666 3333 44");
         Assert.AreEqual(0, res);
@@ -138,7 +161,7 @@ public class TestBankCardValidator
     }
 
     [TestMethod]
-    public void CardChinaUnionPayOk()
+    public void CardChinaUnionPay()
     {
         int res = BankCardValidator.CheckCardNumber(BankCardBank.ChinaUnionPay, "6247 2049 7121 3457");
         Assert.AreEqual(0, res);
@@ -157,7 +180,7 @@ public class TestBankCardValidator
     }
 
     [TestMethod]
-    public void CardJCBOk()
+    public void CardJCB()
     {
         int res = BankCardValidator.CheckCardNumber(BankCardBank.JCB, "3569 9900 1009 5841");
         Assert.AreEqual(0, res);
@@ -166,6 +189,58 @@ public class TestBankCardValidator
         Assert.AreEqual(0, res);
 
         res = BankCardValidator.CheckCardNumber(BankCardBank.JCB, "3542 9693 1355 5276 538");
+        Assert.AreEqual(0, res);
+    }
+
+    /// <summary>
+    /// Prefix: 
+    /// 384100, 384140, 384160   ->  19 digits
+    /// 606282 -> 16 or 19 digits
+    /// 637095, 637568, 637599, 637600, 637609, 637612   -> 16 digits
+    /// </summary>
+    [TestMethod]
+    public void BankCardNumberHiperCard()
+    {
+        string errMsg;
+
+        // 637095 : 
+        int res = BankCardValidator.CheckCardNumber(BankCardBank.HiperCard, "6370 9511 1122 2231");
+        Assert.AreEqual(0, res);
+
+        // 637568 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.HiperCard, "6375 6811 1122 2239");
+        Assert.AreEqual(0, res);
+
+        // 637599 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.HiperCard, "6375 9911 1122 2232");
+        Assert.AreEqual(0, res);
+
+        // 637600 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.HiperCard, "6376 0011 1122 2239");
+        Assert.AreEqual(0, res);
+
+        // 637609 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.HiperCard, "6376 0911 1122 2230");
+        Assert.AreEqual(0, res);
+
+        // 637612 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.HiperCard, "6376 1211 1122 2235");
+        Assert.AreEqual(0, res);
+
+        // 606282 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.HiperCard, "6062 8211 1122 2239");
+        Assert.AreEqual(0, res);
+
+        // 384100 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.HiperCard, "3841 0011 1122 2233 338");
+        Assert.AreEqual(0, res);
+
+        // 384140 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.HiperCard, "3841 4011 1122 2233 334");
+        Assert.AreEqual(0, res);
+
+        // 384160 : 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.HiperCard, "3841 6011 1122 2233 332");
         Assert.AreEqual(0, res);
     }
 
@@ -233,20 +308,18 @@ public class TestBankCardValidator
         // 82 : 
         res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "8200 1111 2222 3338");
         Assert.AreEqual(0, res);
-
-        // 5028, 5029, 5040, 5054
-
-        // 345678 
-
-        // cobrandé: RuPay-JCB  353 et 356 
-        // • 3560 0011 1122 2237
-
-        // pb avec 502 et 504, et maestro
-
-
-        res = BankCardValidator.CheckCardNumber(BankCardBank.RuPay, "");
-        Assert.AreEqual(0, res);
-
     }
 
+    [TestMethod]
+    public void BankCardJCBRuPay()
+    {
+        int res;
+
+        // cobrandé: RuPay-JCB  353 et 356 
+        res = BankCardValidator.CheckCardNumber(BankCardBank.JCBRuPay, "3539 0400 0000 0000");
+        Assert.AreEqual(0, res);
+
+        res = BankCardValidator.CheckCardNumber(BankCardBank.JCBRuPay, "3561 4600 0000 0001");
+        Assert.AreEqual(0, res);
+    }
 }

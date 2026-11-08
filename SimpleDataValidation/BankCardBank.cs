@@ -31,5 +31,7 @@ public enum BankCardBank
     HiperCard = 1024,
 
     RuPay = 2048,
+
+    JCBRuPay= 4096
 }
 
