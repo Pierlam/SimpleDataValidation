@@ -66,9 +66,11 @@ You can also chain validation methods to perform multiple checks on the same dat
 
 ```
 // Validate a string value to check if it's not null and has a minimum length of 8 characters
-errMsg = V.Define("Name", "John").AddNotNull().AddMinLength(8).Validate();
+errMsg = V.Define("Name", "John").AddNotNull().AddMinLength(8).Validate();     
+  -> ok, errMsg is empty
 
 errMsg = V.Define("Name", "john").AddNotNull().AddStartsWith("jo").Validate();
+  -> ok, errMsg is empty
 ```
 
 Start by calling the Define static method of the V class, passing the name of the data and its value.
@@ -84,8 +86,9 @@ The library provides a wide range of validation methods to check data types, len
 
 ## Available validation methods
 
+List of Available Direct Validation Methods:
+
 ```
-// List of available direct validation methods:
 True                       Check that the bool value is true.
 False                      Check that the bool value is false.
 Null                       Check that the object value is null.
@@ -128,9 +131,14 @@ FormatDate                 Check that the string match the provided (one or more
 
 BankIban                   Check that the string value is a valid bank IBAN number.
 BankCardNumber             Check that the string is a valid bank card number.
+```
 
 
-// List of available chained validation methods:
+List of available Chained validation Methods:
+
+```
+AddTrue
+AddFalse
 AddNull
 AddNotNull
 AddNotNullOrEmpty
@@ -195,7 +203,7 @@ V.SetLanguage("fr-fr");
 You can also choose whether error messages should end with a period by calling the SetEndMessageDot method of the V class.
 
 ``` 
-// by default:
+// example of an error message, by default:
 The name is required
 ```
 
@@ -234,7 +242,7 @@ Do some checks on a string value.
 // Check that the value starts with the provided string.
 errMsg = V.StartsWith("field", "hello", "hgj");  -> ok, errMsg will be empty
 
-// Check that the value first char is one of 'xyz'.
+// Check that the  first char of the value 'hello' is one of 'xyz'.
 errMsg = V.FirstCharIn("field", "hello", "xyz");  -> error! 
 ```
 
@@ -331,7 +339,7 @@ errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(4).Validate
   -> errMsg contains only the first error: "field must be at least 10 characters long"
 ```
 
-## Create instance
+## Use an instance in place of V
 
 Another option is to create an instance of the VInst class instead of using the static V class.
 
@@ -342,7 +350,12 @@ All the methods available in the static V class are also available in the VInst 
 
 
 ```
-// use a specific language is a certain context
+// use the default language (en-en)
+VInst vInst = V.CreateInst();
+errMsg = vInst.NotNull("field", null);
+ -> "field is required"
+
+// use a specific language, example here: French
 VInst vInst = V.CreateInst("fr-fr");
 errMsg = vInst.NotNull("field", null);
  -> "field est requis"

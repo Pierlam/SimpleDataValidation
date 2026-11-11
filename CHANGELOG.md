@@ -1,4 +1,4 @@
-﻿## 0.4.0 Release (202?-??-??)
+﻿## 0.4.0 Release (2026-11-11)
 
 -New validation available:
 True                       Check that the bool value is true.
@@ -8,8 +8,8 @@ False                      Check that the bool value is false.
 AddTrue, AddFalse
 
 -Improvements:
-	-library publish now in net8.0 and net10.0
-	-Possible to create a VInst object in a specific language.
+	-library now targets both net8.0 and net10.0
+	-Possible to create VInst instance in place of using V static class.
     -Added Dankort, HiperCard and RuPay banks.
 	
 -Languages:
