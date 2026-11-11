@@ -1,14 +1,17 @@
 # What is SimpleDataValidation?
 
-SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.
+SimpleDataValidation is an open-source .NET library designed to validate data in a simple and intuitive way.
 
-It's written in C#/NET8 with VS2026. The code is covered by 63 unit tests to ensure the non-regression of incoming evolutions.
+It provides more than 30 built-in validation functions to check data types, lengths, formats, and much more. These include NotNull, Length, StartsWith, Email, IBAN, and CreditCardNumber.
 
+The library is written in C# and developed using Visual Studio 2026. It targets both .NET 8 and .NET 10.
+
+The codebase is covered by 78 unit tests to ensure reliability and prevent regressions as new features and improvements are introduced.
 
 # A quick example
 
-The usage is very simple, you just need to call one of validation static method of the V class, passing the name of the data and its value.
-Then if the validation failed, the function returns an error message or an empty string if validation finished successfully.
+Usage is very simple: you just need to call one of the static validation methods of the V class, passing the name of the data and its value.
+If validation fails, the method returns an error message; otherwise, it returns an empty string.
 
 ```
 Syntax:
@@ -31,7 +34,7 @@ if(V.Error(errMsg)) DoSomethingError();
 if(V.Ok(errMsg)) DoSomethingOk(); 
 ```
 
-The following example shows some usual cases:
+The following examples show some common scenarios:
 
 ```
 using SimpleDataValidation;
@@ -59,29 +62,35 @@ The Name value is correct!
 
 # Another way to validate data
 
-You can also do several checks in a more fluent way, by chaining the validation methods to validate a data value many times.
+You can also chain validation methods to perform multiple checks on the same data value.
 
 ```
 // Validate a string value to check if it's not null and has a minimum length of 8 characters
-errMsg = V.Define("Name", "John").AddNotNull().AddMinLength(8).Validate();
+errMsg = V.Define("Name", "John").AddNotNull().AddMinLength(8).Validate();     
+  -> ok, errMsg is empty
 
 errMsg = V.Define("Name", "john").AddNotNull().AddStartsWith("jo").Validate();
+  -> ok, errMsg is empty
 ```
 
-Start by calling the validation static method Define of the V class, passing the name of the data and its value. 
-Then, you can chain the validation methods to validate the data value many times. 
-Finally, call the Validate method to perform the validation and return the error message if any.
+Start by calling the Define static method of the V class, passing the name of the data and its value.
+Then, chain validation methods to check the data value against multiple validation rules.
+Finally, call the Validate method to execute the validation and return any error messages.
 
-All validation rules will be executed. Error messages will be concatened.
+All validation rules will be executed, and any resulting error messages will be concatenated.
 
 # Features
 
-There are many available features to validate data, by type, by length, by format and more.
+The library provides a wide range of validation methods to check data types, lengths, formats, and much more.
+
 
 ## Available validation methods
 
+List of Available Direct Validation Methods:
+
 ```
-// List of available direct validation methods:
+True                       Check that the bool value is true.
+False                      Check that the bool value is false.
 Null                       Check that the object value is null.
 NotNull                    Check that the object value is not null.
 NotNullOrEmpty             Check that the string value is not null or empty.
@@ -122,9 +131,14 @@ FormatDate                 Check that the string match the provided (one or more
 
 BankIban                   Check that the string value is a valid bank IBAN number.
 BankCardNumber             Check that the string is a valid bank card number.
+```
 
 
-// List of available chained validation methods:
+List of available Chained validation Methods:
+
+```
+AddTrue
+AddFalse
 AddNull
 AddNotNull
 AddNotNullOrEmpty
@@ -152,10 +166,11 @@ AddBankCardNumber
 
 ## Error Messages
 
-English, French Spanish, German, Italian, Portuguese, Brazilian, Chinese and Hindi languages are supported for error messages, other languages will be added in the future.
+Error messages are available in the following languages: English (US), English (UK), French, Spanish, German, Italian, Danish, Portuguese, Brazilian Portuguese, Chinese, and Hindi.
 
-You can also set your own error messages for each validation method, by passing the error message as a parameter to the validation method.
+You can also customize error messages for each validation method by passing your own message as a parameter.
 
+The default language for error messages is English (en-en).
 ```
 string nameValue = null;
 errMsg = V.NotNull("Name",nameValue, "The name is mandatory!");
@@ -165,15 +180,17 @@ Console.WriteLine($"-> errorMessage: {errMsg}");
 -> errorMessage: The name is mandatory!
 ```
 
-The default language for error messages is English, but you can change it to another one by calling the SetLanguage method of the V class, passing the language code as a parameter.
+You can change the language used for error messages by calling the SetLanguage method of the V class and passing the desired language code as a parameter.
 
 ```
 // list of available languages:
-"en-en"  English   default
+"en-en"  English    -The default language-
+"en-us"  American 
 "fr-fr"  French
 "es-es"  Spanish
 "de-de"  German
 "it-it"  Italian
+"da-dk"  Danish
 "pt-pt"  Portuguese
 "pt-br"  Brazilian Portuguese
 "zh-cn"  Chinese
@@ -183,13 +200,10 @@ The default language for error messages is English, but you can change it to ano
 V.SetLanguage("fr-fr");
 ```
 
-You can also set the end of the error message with a dot or not, by calling the SetEndMessageDot method of the V class, passing a boolean value as a parameter.
-
-Below are results of the error message: The name is required.
-
+You can also choose whether error messages should end with a period by calling the SetEndMessageDot method of the V class.
 
 ``` 
-// by default:
+// example of an error message, by default:
 The name is required
 ```
 
@@ -207,8 +221,8 @@ V.SetMessageEnd("!");
 The name is required!
 ```
 
-Modify the separator between messages when using a chain validation.
-By default, put a - between messages.
+You can customize the separator between error messages when using chained validation.
+By default, a hyphen (-) is used to separate messages.
 
 ```
 // now put a | between messages if many errors occurs
@@ -224,12 +238,11 @@ The name is required | The length of name is too short | ....
 
 Do some checks on a string value.
 
-
 ```
 // Check that the value starts with the provided string.
 errMsg = V.StartsWith("field", "hello", "hgj");  -> ok, errMsg will be empty
 
-// Check that the value first char is one of 'xyz'.
+// Check that the  first char of the value 'hello' is one of 'xyz'.
 errMsg = V.FirstCharIn("field", "hello", "xyz");  -> error! 
 ```
 
@@ -257,8 +270,8 @@ errMsg = V.FormatDate("name", "2026-12-20 10:30:00,123", "yyyy-MM-dd HH:mm:ss,ff
 
 ## Check bank Iban and card Number
 
-Check if an Iban number is valid:
-With or without space chars.
+Validate an IBAN, with or without spaces.
+
 
 ```
 // with whitespaces:
@@ -269,10 +282,10 @@ iban = "GB82WEST12345698765432";
 errMsg = V.BankIban("field", iban);  -> ok
 ```
 
-Check if a bank card number is valid:
+Validate a bank card number:
 
-Should contains only digits and char space.
-Verify the length and the check sum, apply the Luhn algo.
+Ensure that it contains only digits and spaces.
+Check its length and verify its checksum using the Luhn algorithm.
 
 ```
 // the card number bank should be valid over all banks, with whitespaces:
@@ -290,21 +303,34 @@ errMsg = V.BankCardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBa
 errMsg = V.BankCardNumber("field", "4111 1111 4555 1142", CardBank.Visa | CardBank.Mastercard | CardBank.AmericanExpress);
 ```
 
-Bank validation implemented: Visa, Mastercard, American Express, Dinners Club, Discover, JCB and China UnionPay.
+Special cases for Dankort cards co-branded with Visa: all the following cases are accepted:
+
+```
+// Pure Dankord
+errMsg = V.BankCardNumber("field", "5019 5555 4444 5555", BankCardBank.DankortPure);
+
+// Dankord cobranded with Visa
+errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Visa);
+errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.VisaDankort);
+errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Dankort);
+```
+
+Bank validation implemented: Visa, Mastercard, American Express, Dankort, Dinners Club, Discover, HiperCard, JCB, RuPay and China UnionPay.
  
 ## Apply several validation on a data
 
-You can also do several checks in a more fluent way, by chaining the validation methods to validate a data value many times.
-By default, every validation rule will be applied, error messages will concatenated, separated by default by ' - '. 
-but you can change this by calling the SetMessageSeparator function.
+You can perform multiple checks more fluently by chaining validation methods to validate the same data value against several rules.
 
-But you can stop the validation after the first error, by using the option: ValidOptions.StopOnFirstError.
+By default, all validation rules are executed, and any resulting error messages are concatenated and separated by -. You can customize the separator by calling the SetMessageSeparator method.
+
+Alternatively, you can stop the validation process after the first error by using the ValidOptions.StopOnFirstError option.
+
 
 ```
 errMsg = V.Define("Card Number", "4111 1111 4555 1142").AddNotNull().AddCardNumber(CardBank.Visa).Validate();
  -> ok
 
-// continue on error, so the max length validation will be executed and the error message will be concatenated
+// continue even if error occurs, so the max length validation will be executed and the error message will be concatenated
 errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(5).Validate();
  -> errMsg contains all error messages: "field must be at least 10 characters long - field must be no more than 5 characters long"
 
@@ -312,6 +338,34 @@ errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(5).Validate
 errMsg = V.Define("field", "johnjohn").AddMinLength(10).AddMaxLength(4).Validate(ValidOptions.StopOnFirstError);
   -> errMsg contains only the first error: "field must be at least 10 characters long"
 ```
+
+## Use an instance in place of V
+
+Another option is to create an instance of the VInst class instead of using the static V class.
+
+This is a better approach in multithreaded environments, as each instance maintains its own validation settings.
+You can create as many VInst instances as you need.
+
+All the methods available in the static V class are also available in the VInst class.
+
+
+```
+// use the default language (en-en)
+VInst vInst = V.CreateInst();
+errMsg = vInst.NotNull("field", null);
+ -> "field is required"
+
+// use a specific language, example here: French
+VInst vInst = V.CreateInst("fr-fr");
+errMsg = vInst.NotNull("field", null);
+ -> "field est requis"
+ 
+// the default validator is still available in the defined language
+errMsg = V.NotNull("field", null);
+ -> "field is required"
+```
+
+
 
 # Source code, documentation and nuget
 
@@ -326,11 +380,11 @@ https://github.com/Pierlam/SimpleDataValidation/
 
 ## Contact 
 
-Have a comment to do? A question to ask? Want to request a new feature?
+Have any comments or questions? Would you like to request a new feature?
 
-Error messages were generated by AI, maybe some of them are wrong or not clear, please let me know to fix it.
+The error messages were generated using AI, so some of them may be incorrect or unclear. If you notice any issues, please let me know so I can fix them.
 
-Send an email to: 
+Feel free to send me an email at:
 
 pierlam-project@outlook.com
 

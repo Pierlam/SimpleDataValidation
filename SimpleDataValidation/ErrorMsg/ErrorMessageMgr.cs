@@ -8,6 +8,13 @@ namespace SimpleDataValidation.ErrorMsg;
 
 public class ErrorMessageMgr
 {
+    // starting from NET9
+    //private readonly Lock lockObject = new();
+    /// <summary>
+    /// In a strong multi-thread env, some trouble to get the message from the dictionary should occurs.
+    /// </summary>
+    private readonly object _lock = new();
+
     /// <summary>
     /// https://www.andiamo.co.uk/resources/iso-language-codes/
     /// Lang -> ErrorCode -> Msg
@@ -15,11 +22,6 @@ public class ErrorMessageMgr
     /// exp: en-gb.NotNull  -> "The {0} is required"
     /// </summary>
     public Dictionary<string, string> TableErrorMsg;
-
-    /// <summary>
-    /// The default language for error messages. This value is used when no specific language is set or when the specified language is not found in the error message table. The default value is "en-gb" (English - Great Britain).
-    /// </summary>
-    public string DefaultLang = "en-gb";
 
     public string CurrentLang = "en-gb";
 
@@ -43,15 +45,23 @@ public class ErrorMessageMgr
     /// <returns></returns>
     public string GetMessage(ErrorCode errorCode, string dataName)
     {
-        // current language
-        string key = CurrentLang + "." + errorCode.ToString();
-
-        if (TableErrorMsg.ContainsKey(key))
+        lock (_lock)
         {
-            string msg = TableErrorMsg[key];
+            // current language
+            string key = CurrentLang + "." + errorCode.ToString();
 
-            // replace msg params
-            return string.Format(msg, dataName) + MessageEnd;
+            if (TableErrorMsg.TryGetValue(key, out string msg))
+            {
+                // replace msg params
+                return string.Format(msg, dataName) + MessageEnd;
+            }
+
+            // sometimes failed in multi-thread env, so try again
+            if (TableErrorMsg.TryGetValue(key, out msg))
+            {
+                // replace msg params
+                return string.Format(msg, dataName) + MessageEnd;
+            }
         }
         // return the default error message if the specific error code is not found in the error message table
         return string.Format(DefaultErrorMessage, errorCode.ToString()) + MessageEnd;
@@ -65,15 +75,22 @@ public class ErrorMessageMgr
     /// <returns></returns>
     public string GetMessage(ErrorCode errorCode, string dataName, string p1)
     {
-        // current language
-        string key = CurrentLang + "." + errorCode.ToString();
-
-        if (TableErrorMsg.ContainsKey(key))
+        lock (_lock)
         {
-            string msg = TableErrorMsg[key];
+            // current language
+            string key = CurrentLang + "." + errorCode.ToString();
 
-            // replace msg params
-            return string.Format(msg, dataName, p1) + MessageEnd;
+            if (TableErrorMsg.TryGetValue(key, out string msg))
+            {
+                // replace msg params
+                return string.Format(msg, dataName, p1) + MessageEnd;
+            }
+            // sometimes failed in multi-thread env, so try again
+            if (TableErrorMsg.TryGetValue(key, out msg))
+            {
+                // replace msg params
+                return string.Format(msg, dataName, p1) + MessageEnd;
+            }
         }
         // return the default error message if the specific error code is not found in the error message table
         return string.Format(DefaultErrorMessage, errorCode.ToString()) + MessageEnd;
@@ -87,15 +104,21 @@ public class ErrorMessageMgr
     /// <returns></returns>
     public string GetMessage(ErrorCode errorCode, string dataName, string p1, string p2)
     {
-        // current language
-        string key = CurrentLang + "." + errorCode.ToString();
-
-        if (TableErrorMsg.ContainsKey(key))
+        lock (_lock)
         {
-            string msg = TableErrorMsg[key];
-
-            // replace msg params
-            return string.Format(msg, dataName, p1, p2) + MessageEnd;
+            // current language
+            string key = CurrentLang + "." + errorCode.ToString();
+            if (TableErrorMsg.TryGetValue(key, out string msg))
+            {
+                // replace msg params
+                return string.Format(msg, dataName, p1, p2) + MessageEnd;
+            }
+            // sometimes failed in multi-thread env, so try again
+            if (TableErrorMsg.TryGetValue(key, out msg))
+            {
+                // replace msg params
+                return string.Format(msg, dataName, p1, p2) + MessageEnd;
+            }
         }
         // return the default error message if the specific error code is not found in the error message table
         return string.Format(DefaultErrorMessage, errorCode.ToString()) + MessageEnd;

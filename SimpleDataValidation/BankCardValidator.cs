@@ -1,6 +1,7 @@
 ﻿using SimpleDataValidation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,92 @@ namespace SimpleDataValidation;
 
 /// <summary>
 /// To check debit, prepaid card numbers.
+/// prefixes are used to find the bank of the card number
 /// </summary>
 public class BankCardValidator
 {
+    static PrefixToBankMapper prefixToBankMapper = new PrefixToBankMapper();
+
+    static BankCardValidator()
+    {
+        //--HiperCard: 
+        prefixToBankMapper.AddStart("384100", BankCardBank.HiperCard, 19, true);
+        prefixToBankMapper.AddStart("384140", BankCardBank.HiperCard, 19, true);
+        prefixToBankMapper.AddStart("384160", BankCardBank.HiperCard, 19, true);
+
+        prefixToBankMapper.AddStart("606282", BankCardBank.HiperCard, 16, true);
+        prefixToBankMapper.AddStart("637095", BankCardBank.HiperCard, 16, true);
+        prefixToBankMapper.AddStart("637568", BankCardBank.HiperCard, 16, true);
+        prefixToBankMapper.AddStart("637599", BankCardBank.HiperCard, 16, true);
+        prefixToBankMapper.AddStart("637600", BankCardBank.HiperCard, 16, true);
+        prefixToBankMapper.AddStart("637609", BankCardBank.HiperCard, 16, true);
+        prefixToBankMapper.AddStart("637612", BankCardBank.HiperCard, 16, true);
+
+        //--RuPay:  60,82, 353, 356 are below
+        prefixToBankMapper.AddStart("345678", BankCardBank.RuPay, 16, true);        
+        prefixToBankMapper.AddStart("5028", BankCardBank.RuPay, 16, true);        
+        prefixToBankMapper.AddStart("5029", BankCardBank.RuPay, 16, true);        
+        prefixToBankMapper.AddStart("5040", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("5054", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("5085", BankCardBank.RuPay, 16, true);        
+        prefixToBankMapper.AddStart("5086", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("5087", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("5088", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("5089", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("6068", "6089", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("6521", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("6522", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("6527", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("6529", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("8172", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("8173", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("818", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("819", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("820", BankCardBank.RuPay, 16, true);
+
+        //--Visa/Dankord, Dankord
+        prefixToBankMapper.AddStart("4571", BankCardBank.VisaDankort, 16, true);
+        prefixToBankMapper.AddStart("5019", BankCardBank.DankortPure, 16, true);
+
+        // cobranding: RuPay-JCB  353 et 356 (to place before JCB)
+        prefixToBankMapper.AddStart("353", BankCardBank.JCBRuPay, 16, true);
+        prefixToBankMapper.AddStart("356", BankCardBank.JCBRuPay, 16, true);
+
+        //--JCB: begins with 35, specifically from 3528 through 3589
+        prefixToBankMapper.AddStart("3528", "3589", BankCardBank.JCB, 16, 19, true);
+
+
+        //--Dinners club, begins with 300 to 305, or 36 or 38. length: 14 
+        prefixToBankMapper.AddStart("300", "305", BankCardBank.DinersClub, 14, true);
+        prefixToBankMapper.AddStart("36", BankCardBank.DinersClub, 14, true);
+        prefixToBankMapper.AddStart("38", BankCardBank.DinersClub, 14, true);
+
+        //--Discover: Begins with 6011, 644 to 649, or 65 (but 6521 and 6522 are RuPay). length: 16 digits
+        prefixToBankMapper.AddStart("6011", BankCardBank.Discover, 16, true);
+        prefixToBankMapper.AddStart("65", BankCardBank.Discover, 16, true);
+        prefixToBankMapper.AddStart("644", "649", BankCardBank.Discover, 19, true);
+
+        //--Mastercard: Start with 51 to 55, 2221–2720
+        prefixToBankMapper.AddStart("51", "55", BankCardBank.Mastercard, 16, true);
+        prefixToBankMapper.AddStart("2221", "2720", BankCardBank.Mastercard, 16, true);
+
+        //--American Express: Start with 34 or 37. length: 15
+        prefixToBankMapper.AddStart("34", BankCardBank.AmericanExpress, 15, true);
+        prefixToBankMapper.AddStart("37", BankCardBank.AmericanExpress, 15, true);
+
+        // ChinaUnionPay: begins with 62 or 81, length: 16 - 19
+        prefixToBankMapper.AddStart("62", BankCardBank.ChinaUnionPay, 16,19, true);
+        prefixToBankMapper.AddStart("81", BankCardBank.ChinaUnionPay, 16,19, true);
+
+        //--RuPay
+        prefixToBankMapper.AddStart("60", BankCardBank.RuPay, 16, true);
+        prefixToBankMapper.AddStart("82", BankCardBank.RuPay, 16, true);
+
+        //--Visa
+        prefixToBankMapper.AddStart("4", BankCardBank.Visa, 16, true);
+    }
+
+
     /// <summary>
     /// Check that the card number match the bank and also that the number is correct.
     /// return an int value:
@@ -45,203 +129,125 @@ public class BankCardValidator
         BankCardBank cardBankRes = new BankCardBank();
 
         //--find the bank
-        if(!FindBank(cardStr, out cardBankRes))
+        PrefixToBankItem item = prefixToBankMapper.GetItem(cardStr);
+        if (item == null)
             // 5: Unable to get the bank from the number
             return 5;
 
+        if (!item.LengthCheckResult)
+            // 3: wrong length
+            return 3;
+
+        if(item.AppyLuhnCheck)
+            if (!LuhnValidation(cardStr)) return 4;
+
         // final check: length and Luhn calculation
-        return FinalCheckLengthAndLuhnCalc(cardStr, cardBanks, cardBankRes);
+        return FinalCheckLengthAndLuhnCalc(cardStr, cardBanks, item.Bank, item.AppyLuhnCheck);
     }
-
-    /// <summary>
-    /// Find the bank based on first chars.
-    /// </summary>
-    /// <param name="cardStr"></param>
-    /// <param name="cardBankRes"></param>
-    /// <returns></returns>
-    static bool FindBank(string cardStr, out BankCardBank cardBankRes)
-    {
-        //--visa
-        if (cardStr.StartsWith("4"))
-        {
-            cardBankRes = BankCardBank.Visa;
-            return true;
-        }
-
-        //--American Express
-        if (cardStr.StartsWith("34") || cardStr.StartsWith("37"))
-        {
-            cardBankRes = BankCardBank.AmericanExpress;
-            return true;
-        }
-
-        //--Mastercard: Start with 51 to 55.
-        if (cardStr.StartsWith("51") || cardStr.StartsWith("52") || cardStr.StartsWith("53") || cardStr.StartsWith("54") || cardStr.StartsWith("55"))
-        {
-            cardBankRes = BankCardBank.Mastercard;
-            return true;
-        }
-
-        //--Mastercard BIN2, Start with 2.  2221 à 2720
-        if(cardStr.StartsWith("2"))
-        {
-            string prefix = cardStr.Substring(0, 4);
-            if(int.TryParse(prefix, out int prefixInt))
-            {
-                if(prefixInt >= 2221 && prefixInt <= 2720)
-                {
-                    cardBankRes = BankCardBank.Mastercard;
-                    return true;
-                }
-            }
-        }
-
-        //--Discover: Begins with 6011, 644 to 649, or 65.
-        // length: 16 digits
-        if(cardStr.StartsWith("6011") || cardStr.StartsWith("65"))
-        {
-            cardBankRes = BankCardBank.Discover;
-            return true;
-        }
-        if (cardStr.StartsWith("64"))
-        {
-            string prefix = cardStr.Substring(0, 3);
-            if (int.TryParse(prefix, out int prefixInt))
-            {
-                if (prefixInt >= 644 && prefixInt <= 649)
-                {
-                    cardBankRes = BankCardBank.Discover;
-                    return true;
-                }
-            }
-        }
-
-        //--Dinners club
-        // begins with 300 to 305, or 36 or 38.
-        //length: 14
-        if (cardStr.StartsWith("36") || cardStr.StartsWith("38"))
-        {
-            cardBankRes = BankCardBank.DinersClub;
-            return true;
-        }
-        if (cardStr.StartsWith("30"))
-        {
-            string prefix = cardStr.Substring(0, 3);
-            if (int.TryParse(prefix, out int prefixInt))
-            {
-                if (prefixInt >= 300 && prefixInt <= 305)
-                {
-                    cardBankRes = BankCardBank.DinersClub;
-                    return true;
-                }
-            }
-        }
-
-        //--China UnionPay:
-        // begins with 62 or 81
-        // length: 16 - 19
-        if(cardStr.StartsWith("62") || cardStr.StartsWith("81"))
-        {
-            cardBankRes = BankCardBank.ChinaUnionPay;
-            return true;
-        }
-
-        // JCB: begins with 35, specifically from 3528 through 3589
-        if(cardStr.StartsWith("35"))
-        {
-            string prefix = cardStr.Substring(0, 4);
-            if (int.TryParse(prefix, out int prefixInt))
-            {
-                if (prefixInt >= 3528 && prefixInt <= 3589)
-                {
-                    cardBankRes = BankCardBank.JCB;
-                    return true;
-                }
-            }
-
-        }
-
-        //--other banks: 
-
-        cardBankRes = new BankCardBank();
-        return false;
-
-    }
-
 
     /// <summary>
     /// Final checks: length and Luhn calculation
     /// </summary>
     /// <param name="cardStr"></param>
     /// <param name="cardBanks"></param>
-    /// <param name="cardBankRes"></param>
+    /// <param name="cardBankToCheck"></param>
     /// <returns></returns>
-    static int FinalCheckLengthAndLuhnCalc(string cardStr, BankCardBank cardBanks, BankCardBank cardBankRes)
+    static int FinalCheckLengthAndLuhnCalc(string cardStr, BankCardBank cardBanks, BankCardBank cardBankToCheck, bool checkLuhn)
     {
-        //--is it a Visa card?
-        if (CheckCardBank(BankCardBank.Visa, cardBanks, cardBankRes))
+        //--is it a pure Dankord card?
+        if (CheckCardBank(BankCardBank.DankortPure, cardBanks, cardBankToCheck))
         {
-            if (cardStr.Length != 16) return 3;
-            if (!LuhnValidation(cardStr)) return 4;
-            // card number is good
+            return 0;
+        }
+
+        //--is it a Visa/Dankord card?
+        if (cardBanks.HasFlag(BankCardBank.Dankort) && cardBankToCheck.HasFlag(BankCardBank.VisaDankort))
+        {
+            return 0;
+        }
+
+        //--is it a Visa card?
+        if (CheckCardBank(BankCardBank.Visa, cardBanks, cardBankToCheck))
+        {
+            return 0;
+        }
+
+        //--is it a Visa/Dankord card?
+        if(cardBanks.HasFlag(BankCardBank.Visa) && cardBankToCheck.HasFlag(BankCardBank.VisaDankort))
+        {
+            return 0;
+        }
+
+        if (CheckCardBank(BankCardBank.VisaDankort, cardBanks, cardBankToCheck))
+        {
             return 0;
         }
 
         //--is it an American Express?
-        if (CheckCardBank(BankCardBank.AmericanExpress, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.AmericanExpress, cardBanks, cardBankToCheck))
         {
-            if (cardStr.Length != 15) return 3;
-            if (!LuhnValidation(cardStr)) return 4;
-            // card number is good
             return 0;
         }
 
         //--is it a Mastercard?
-        if (CheckCardBank(BankCardBank.Mastercard, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.Mastercard, cardBanks, cardBankToCheck))
         {
-            if (cardStr.Length != 16) return 3;
-            if (!LuhnValidation(cardStr)) return 4;
-            // card number is good
             return 0;
         }
 
         //--is it a Discover?
-        if (CheckCardBank(BankCardBank.Discover, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.Discover, cardBanks, cardBankToCheck))
         {
-            if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
-            if (!LuhnValidation(cardStr)) return 4;
-            // card number is good
             return 0;
         }
 
         //--is it a DinnersClub?
-        if (CheckCardBank(BankCardBank.DinersClub, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.DinersClub, cardBanks, cardBankToCheck))
         {
-            if (cardStr.Length != 14) return 3;
-            if (!LuhnValidation(cardStr)) return 4;
-            // card number is good
             return 0;
         }
 
         //--is it a China UnionPay?
-        if (CheckCardBank(BankCardBank.ChinaUnionPay, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.ChinaUnionPay, cardBanks, cardBankToCheck))
         {
-            if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
-            if (!LuhnValidation(cardStr)) return 4;
-            // card number is good
+            return 0;
+        }
+
+        //--is it a JCB-RUPay?
+        if (CheckCardBank(BankCardBank.JCBRuPay, cardBanks, cardBankToCheck))
+        {
             return 0;
         }
 
         //--is it a JCB?
-        if (CheckCardBank(BankCardBank.JCB, cardBanks, cardBankRes))
+        if (CheckCardBank(BankCardBank.JCB, cardBanks, cardBankToCheck))
         {
-            if (cardStr.Length < 16 || cardStr.Length > 19) return 3;
-            if (!LuhnValidation(cardStr)) return 4;
-            // card number is good
             return 0;
         }
 
-        // 5: The number dones't match the bank
+        if (cardBanks.HasFlag(BankCardBank.JCB) && cardBankToCheck.HasFlag(BankCardBank.JCBRuPay))
+        {
+            return 0;
+        }
+
+        //--is it a RuPay?
+        if (CheckCardBank(BankCardBank.RuPay, cardBanks, cardBankToCheck))
+        {
+            return 0;
+        }
+
+        if (cardBanks.HasFlag(BankCardBank.RuPay) && cardBankToCheck.HasFlag(BankCardBank.JCBRuPay))
+        {
+            return 0;
+        }
+
+        //--is it an HiperCard?
+        if (CheckCardBank(BankCardBank.HiperCard, cardBanks, cardBankToCheck))
+        {
+            return 0;
+        }
+
+        // 5: The number doesn't match the bank
         return 5;
     }
 

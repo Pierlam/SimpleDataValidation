@@ -20,6 +20,18 @@ public enum BankCardBank
     DinersClub = 16,
 
     ChinaUnionPay=32,
-
     JCB=64,
+
+    Dankort = 128,
+
+    DankortPure= 256,
+
+    VisaDankort = 512,
+
+    HiperCard = 1024,
+
+    RuPay = 2048,
+
+    JCBRuPay= 4096
 }
+

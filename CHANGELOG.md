@@ -1,4 +1,25 @@
-﻿## 0.3.0 Release (2026-11-03)
+﻿## 0.4.0 Release (2026-11-11)
+
+-New validation available:
+True                       Check that the bool value is true.
+False                      Check that the bool value is false.
+
+-New chain validation available:
+AddTrue, AddFalse
+
+-Improvements:
+	-library now targets both net8.0 and net10.0
+	-Possible to create VInst instance in place of using V static class.
+    -Added Dankort, HiperCard and RuPay banks.
+	
+-Languages:
+Added new language for error messages:  English-American, Danish. 
+
+
+-78 unit tests.
+
+
+## 0.3.0 Release (2026-11-03)
 
 -New validation available:
 Null                       Check that the object value is null.

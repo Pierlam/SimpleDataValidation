@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public class Test_V_RuleCardNumber
+public class Test_V_RuleBankCardNumber
 {
     [TestMethod]
     public void NotNullCardNumber()

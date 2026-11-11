@@ -16,11 +16,17 @@ namespace SimpleDataValidation;
 /// <summary>
 /// The RuleValidator class provides static methods for validating data against various rules. It uses the ErrorMessageMgr to retrieve error messages based on the current language and error code. The class includes methods for validating null values, string lengths, email formats, and integer types, returning appropriate error messages when validation fails.
 /// </summary>
-public class RuleValidator : RuleValidatorBase
+public partial class RuleValidator 
 {
     public static string Validate(ErrorMessageMgr errorMessageMgr, RuleBase rule, string dataName, object value)
     {
         if(rule == null) throw new ArgumentNullException(nameof(rule));
+
+        if (rule is RuleTrue)
+            return True(errorMessageMgr, dataName, (bool)value);
+
+        if (rule is RuleFalse)
+            return False(errorMessageMgr, dataName, (bool)value);
 
         if (rule is RuleNull)
             return Null(errorMessageMgr, dataName, value?.ToString());

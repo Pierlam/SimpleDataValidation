@@ -24,6 +24,11 @@ internal class ErrorMessagesTableBuilder
             return Build_en_gb();
         }
 
+        if (lang.Equals("en-us", StringComparison.OrdinalIgnoreCase))
+        {
+            return Build_en_us();
+        }
+
         // french
         if (lang.Equals("fr-fr", StringComparison.OrdinalIgnoreCase))
         {
@@ -72,7 +77,13 @@ internal class ErrorMessagesTableBuilder
             return Build_pt_br();
         }
 
-        throw new NotImplementedException("Language not implemented: " + lang);
+        // danish
+        if (lang.Equals("da-dk", StringComparison.OrdinalIgnoreCase))
+        {
+            return Build_da_dk();
+        }
+
+        throw new NotImplementedException("Language '"+lang+"' not found in the error message table");
     }
 
     static Dictionary<string, string> Build_en_gb()
@@ -80,6 +91,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "en-gb.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} must be true" },
+            { lang + ErrorCode.False, "{0} must be false" },
             { lang + ErrorCode.Null, "{0} must be null" },
             { lang + ErrorCode.NotNull, "{0} is required" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} is required" },
@@ -117,11 +130,55 @@ internal class ErrorMessagesTableBuilder
         return tableErrorMsg;
     }
 
+    static Dictionary<string, string> Build_en_us()
+    {
+        string lang = "en-us.";
+        Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
+        {
+            { lang + ErrorCode.True, "{0} must be true" },
+            { lang + ErrorCode.False, "{0} must be false" },
+            { lang + ErrorCode.Null, "{0} must be null" },
+            { lang + ErrorCode.NotNull, "{0} is required" },
+            { lang + ErrorCode.NotNullOrEmpty, "{0} is required" },
+            { lang + ErrorCode.NotNullOrWhiteSpace, "{0} is required" },
+
+            { lang + ErrorCode.Letters, "{0} must contain only letters" },
+            { lang + ErrorCode.Digits, "{0} must contain only digits" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} must contain only letters, digits, or underscores" },
+
+            { lang + ErrorCode.StartsWith, "{0} must start with: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} must end with: {1}" },
+            { lang + ErrorCode.Contains, "{0} must contain: {1}" },
+            { lang + ErrorCode.NotContains, "{0} must not contain: {1}" },
+            { lang + ErrorCode.FirstCharIn, "{0}'s first character must be one of: {1}" },
+            { lang + ErrorCode.FirstCharNotIn, "{0}'s first character must not be one of: {1}" },
+
+            { lang + ErrorCode.BetweenLength, "{0} must be between {1} and {2} characters long" },
+            { lang + ErrorCode.MinLength, "{0} must be at least {1} characters long" },
+            { lang + ErrorCode.MaxLength, "{0} must be no more than {1} characters long" },
+            { lang + ErrorCode.ExactLength, "{0} must be exactly {1} characters long" },
+
+            { lang + ErrorCode.Bool, "{0} must be a Boolean value" },
+            { lang + ErrorCode.Int, "{0} must be an integer" },
+            { lang + ErrorCode.Number, "{0} must be a number" },
+            { lang + ErrorCode.String, "{0} must be a string" },
+            { lang + ErrorCode.FormatDate, "{0} must be a valid date" },
+
+            { lang + ErrorCode.Email, "{0} must be a valid email address" },
+            { lang + ErrorCode.BankIban, "{0} must be a valid IBAN" },
+            { lang + ErrorCode.BankCardNumber, "{0} must be a valid card number" },
+        };
+
+        return tableErrorMsg;
+    }
+
     static Dictionary<string, string> Build_it_it()
     {
         string lang = "it-it.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} deve essere true" },
+            { lang + ErrorCode.False, "{0} deve essere false" },
             { lang + ErrorCode.Null, "{0} deve essere null" },
             { lang + ErrorCode.NotNull, "{0} è obbligatorio" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} è obbligatorio" },
@@ -165,6 +222,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "de-de.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} muss wahr sein" },
+            { lang + ErrorCode.False, "{0} muss falsch sein" },
             { lang + ErrorCode.Null, "{0} muss null sein" },
             { lang + ErrorCode.NotNull, "{0} ist erforderlich" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} ist erforderlich" },
@@ -249,6 +308,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "fr-fr.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} doit être vrai" },
+            { lang + ErrorCode.False, "{0} doit être faux" },
             { lang + ErrorCode.Null, "{0} doit être null" },
             { lang + ErrorCode.NotNull, "{0} est requis" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} est requis" },
@@ -291,6 +352,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "zh-cn.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} 必须为 true" },
+            { lang + ErrorCode.False, "{0} 必须为 false" },
             { lang + ErrorCode.Null, "{0} 必须为 null" },
             { lang + ErrorCode.NotNull, "{0} 为必填项" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} 为必填项" },
@@ -371,6 +434,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "pt-pt.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} deve ser verdadeiro" },
+            { lang + ErrorCode.False, "{0} deve ser falso" },
             { lang + ErrorCode.Null, "{0} deve ser nulo" },
             { lang + ErrorCode.NotNull, "{0} é obrigatório" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} é obrigatório" },
@@ -411,6 +476,8 @@ internal class ErrorMessagesTableBuilder
         string lang = "pt-br.";
         Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
         {
+            { lang + ErrorCode.True, "{0} deve ser verdadeiro" },
+            { lang + ErrorCode.False, "{0} deve ser falso" },
             { lang + ErrorCode.Null, "{0} deve ser nulo" },
             { lang + ErrorCode.NotNull, "{0} é obrigatório" },
             { lang + ErrorCode.NotNullOrEmpty, "{0} é obrigatório" },
@@ -441,6 +508,50 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Email, "{0} deve ser um endereço de e-mail válido" },
             { lang + ErrorCode.BankIban, "{0} deve ser um IBAN válido" },
             { lang + ErrorCode.BankCardNumber, "{0} deve ser um número de cartão válido" },
+        };
+
+        return tableErrorMsg;
+    }
+
+    static Dictionary<string, string> Build_da_dk()
+    {
+        string lang = "da-dk.";
+        Dictionary<string, string> tableErrorMsg = new Dictionary<string, string>
+        {
+            { lang + ErrorCode.True, "{0} skal være sand" },
+            { lang + ErrorCode.False, "{0} skal være falsk" },
+            { lang + ErrorCode.Null, "{0} skal være null" },
+            { lang + ErrorCode.NotNull, "{0} er påkrævet" },
+            { lang + ErrorCode.NotNullOrEmpty, "{0} er påkrævet" },
+            { lang + ErrorCode.NotNullOrWhiteSpace, "{0} er påkrævet" },
+
+            { lang + ErrorCode.Letters, "{0} må kun indeholde bogstaver" },
+            { lang + ErrorCode.Digits, "{0} må kun indeholde cifre" },
+            { lang + ErrorCode.LettersDigitsUnderscore, "{0} må kun indeholde bogstaver, cifre eller understreg" },
+
+            { lang + ErrorCode.StartsWith, "{0} skal starte med: {1}" },
+            { lang + ErrorCode.EndsWith, "{0} skal slutte med: {1}" },
+            { lang + ErrorCode.FirstCharIn, "{0} skal have som første tegn et af følgende: {1}" },
+            { lang + ErrorCode.FirstCharNotIn, "{0} må ikke have som første tegn et af følgende: {1}" },
+            { lang + ErrorCode.Contains, "{0} skal indeholde: {1}" },
+            { lang + ErrorCode.NotContains, "{0} må ikke indeholde: {1}" },
+
+            { lang + ErrorCode.BetweenLength, "{0} skal have mellem {1} og {2} tegn" },
+            { lang + ErrorCode.MinLength, "{0} skal have mindst {1} tegn" },
+            { lang + ErrorCode.MaxLength, "{0} må ikke have mere end {1} tegn" },
+            { lang + ErrorCode.ExactLength, "{0} skal have præcis {1} tegn" },
+
+            { lang + ErrorCode.Bool, "{0} skal være en boolesk værdi" },
+            { lang + ErrorCode.Int, "{0} skal være et heltal" },
+            { lang + ErrorCode.Number, "{0} skal være et tal" },
+            { lang + ErrorCode.String, "{0} skal være en tekststreng" },
+
+            { lang + ErrorCode.FormatDate, "{0} skal være en gyldig dato" },
+
+            { lang + ErrorCode.Email, "{0} skal være en gyldig e-mailadresse" },
+
+            { lang + ErrorCode.BankIban, "{0} skal være en gyldig IBAN" },
+            { lang + ErrorCode.BankCardNumber, "{0} skal være et gyldigt kortnummer" },
         };
 
         return tableErrorMsg;
