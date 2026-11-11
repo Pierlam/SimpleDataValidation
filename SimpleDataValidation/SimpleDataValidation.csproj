@@ -9,12 +9,13 @@
     <Title>SimpleDataValidation is an open-source .NET library for validating data in a simple and intuitive way.</Title>
     <Company>Pierlam Project</Company>
     <Description>
-		An open-source .NET library for validating data in a simple and intuitive way. There are many available functions, more than 30, to validate data, by type, by length, by format and more like: NotNull, Length, StartsWith, Email, Iban, Card Number,...</Description>
+		SimpleDataValidation is an open-source .NET library designed to validate data in a simple and intuitive way. It provides more than 30 built-in validation functions to check data types, lengths, formats, and much more. These include NotNull, Length, StartsWith, Email, IBAN, and CreditCardNumber.
+	</Description>
     <PackageProjectUrl>https://github.com/Pierlam/SimpleDataValidation</PackageProjectUrl>
     <PackageIcon>logo_V_128_basic.jpg</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/Pierlam/SimpleDataValidation</RepositoryUrl>
-    <PackageTags>csharp;validation;datavalidation;validator;validate;check;verification;input;email;mail;bank;iban;luhn;mod10;credit;card;creditcard;cardnumber;visa;mastercard;discover;amex;americanexpress;jcb;chinaunionpay;diners;dinersclub;hiper;hipercard;RuPay</PackageTags>
+    <PackageTags>csharp;validation;datavalidation;validator;validate;check;verification;input;email;mail;bank;iban;luhn;mod10;credit;card;creditcard;cardnumber;visa;mastercard;discover;amex;americanexpress;jcb;chinaunionpay;diners;dinersclub;dankort;hiper;hipercard;RuPay</PackageTags>
     <Authors>Pierlam</Authors>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
   </PropertyGroup>

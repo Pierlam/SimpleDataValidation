@@ -22,11 +22,11 @@ public enum BankCardBank
     ChinaUnionPay=32,
     JCB=64,
 
-    Dankord = 128,
+    Dankort = 128,
 
-    DankordPure= 256,
+    DankortPure= 256,
 
-    VisaDankord = 512,
+    VisaDankort = 512,
 
     HiperCard = 1024,
 

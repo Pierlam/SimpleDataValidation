@@ -56,7 +56,7 @@ public class TestBankCardValidator
     [TestMethod]
     public void CardVisaDankord()
     {
-        int res = BankCardValidator.CheckCardNumber(BankCardBank.DankordPure, "5019 5555 4444 5555");
+        int res = BankCardValidator.CheckCardNumber(BankCardBank.DankortPure, "5019 5555 4444 5555");
         Assert.AreEqual(0, res);
 
         // eror
@@ -68,11 +68,11 @@ public class TestBankCardValidator
         Assert.AreEqual(0, res);
 
         // Visa/Dankord 
-        res = BankCardValidator.CheckCardNumber(BankCardBank.VisaDankord, "4571 0000 0000 0001");
+        res = BankCardValidator.CheckCardNumber(BankCardBank.VisaDankort, "4571 0000 0000 0001");
         Assert.AreEqual(0, res);
 
         // cobranded with Visa, but accepted as Dankord
-        res = BankCardValidator.CheckCardNumber(BankCardBank.Dankord, "4571 0000 0000 0001");
+        res = BankCardValidator.CheckCardNumber(BankCardBank.Dankort, "4571 0000 0000 0001");
         Assert.AreEqual(0, res);
     }
 

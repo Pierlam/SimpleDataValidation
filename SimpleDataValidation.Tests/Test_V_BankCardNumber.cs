@@ -32,33 +32,33 @@ public class Test_V_BankCardNumber
     /// Visa/Dankort: Co-branded cards typically start with the Visa prefix 4571
     /// </summary>
     [TestMethod]
-    public void BankCardNumberDankordAndVisa()
+    public void BankCardNumberDankortAndVisa()
     {
         string errMsg;
 
-        // only Dankord, not Visa/Dankord
-        errMsg = V.BankCardNumber("field", "5019 5555 4444 5555", BankCardBank.DankordPure);
+        // only Dankort, not Visa/Dankort
+        errMsg = V.BankCardNumber("field", "5019 5555 4444 5555", BankCardBank.DankortPure);
         Assert.AreEqual(string.Empty, errMsg);
 
         errMsg = V.BankCardNumber("field", "5019 5555 4444 5555", BankCardBank.Visa);
         Assert.AreEqual("field must be a valid Card Number", errMsg);
 
-        // Dankord cobranded with Visa, so it's also Visa
+        // Dankort cobranded with Visa, so it's also Visa
         errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Visa);
         Assert.AreEqual(string.Empty, errMsg);
 
-        // Visa/Dankord 
-        errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.VisaDankord);
+        // Visa/Dankort 
+        errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.VisaDankort);
         Assert.AreEqual(string.Empty, errMsg);
 
-        // cobranded with Visa, but accepted as Dankord
-        errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Dankord);
+        // cobranded with Visa, but accepted as Dankort
+        errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Dankort);
         Assert.AreEqual(string.Empty, errMsg);
 
         errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Visa | BankCardBank.Mastercard);
         Assert.AreEqual(string.Empty, errMsg);
 
-        errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Visa | BankCardBank.Dankord);
+        errMsg = V.BankCardNumber("field", "4571 0000 0000 0001", BankCardBank.Visa | BankCardBank.Dankort);
         Assert.AreEqual(string.Empty, errMsg);
     }
 

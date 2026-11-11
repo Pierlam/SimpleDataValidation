@@ -384,8 +384,8 @@ public partial class V
     {
         // all banks
         BankCardBank cardbank = BankCardBank.Visa | BankCardBank.Mastercard | BankCardBank.AmericanExpress 
-            | BankCardBank.Discover | BankCardBank.DinersClub | BankCardBank.JCB | BankCardBank.ChinaUnionPay | BankCardBank.Dankord 
-            | BankCardBank.DankordPure | BankCardBank.VisaDankord | BankCardBank.HiperCard | BankCardBank.JCBRuPay | BankCardBank.RuPay;
+            | BankCardBank.Discover | BankCardBank.DinersClub | BankCardBank.JCB | BankCardBank.ChinaUnionPay | BankCardBank.Dankort 
+            | BankCardBank.DankortPure | BankCardBank.VisaDankort | BankCardBank.HiperCard | BankCardBank.JCBRuPay | BankCardBank.RuPay;
 
         return _defaultInst.BankCardNumber(dataName, value, cardbank);
     }

@@ -56,8 +56,8 @@ public class BankCardValidator
         prefixToBankMapper.AddStart("820", BankCardBank.RuPay, 16, true);
 
         //--Visa/Dankord, Dankord
-        prefixToBankMapper.AddStart("4571", BankCardBank.VisaDankord, 16, true);
-        prefixToBankMapper.AddStart("5019", BankCardBank.DankordPure, 16, true);
+        prefixToBankMapper.AddStart("4571", BankCardBank.VisaDankort, 16, true);
+        prefixToBankMapper.AddStart("5019", BankCardBank.DankortPure, 16, true);
 
         // cobranding: RuPay-JCB  353 et 356 (to place before JCB)
         prefixToBankMapper.AddStart("353", BankCardBank.JCBRuPay, 16, true);
@@ -155,13 +155,13 @@ public class BankCardValidator
     static int FinalCheckLengthAndLuhnCalc(string cardStr, BankCardBank cardBanks, BankCardBank cardBankToCheck, bool checkLuhn)
     {
         //--is it a pure Dankord card?
-        if (CheckCardBank(BankCardBank.DankordPure, cardBanks, cardBankToCheck))
+        if (CheckCardBank(BankCardBank.DankortPure, cardBanks, cardBankToCheck))
         {
             return 0;
         }
 
         //--is it a Visa/Dankord card?
-        if (cardBanks.HasFlag(BankCardBank.Dankord) && cardBankToCheck.HasFlag(BankCardBank.VisaDankord))
+        if (cardBanks.HasFlag(BankCardBank.Dankort) && cardBankToCheck.HasFlag(BankCardBank.VisaDankort))
         {
             return 0;
         }
@@ -173,12 +173,12 @@ public class BankCardValidator
         }
 
         //--is it a Visa/Dankord card?
-        if(cardBanks.HasFlag(BankCardBank.Visa) && cardBankToCheck.HasFlag(BankCardBank.VisaDankord))
+        if(cardBanks.HasFlag(BankCardBank.Visa) && cardBankToCheck.HasFlag(BankCardBank.VisaDankort))
         {
             return 0;
         }
 
-        if (CheckCardBank(BankCardBank.VisaDankord, cardBanks, cardBankToCheck))
+        if (CheckCardBank(BankCardBank.VisaDankort, cardBanks, cardBankToCheck))
         {
             return 0;
         }

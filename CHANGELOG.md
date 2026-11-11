@@ -10,13 +10,13 @@ AddTrue, AddFalse
 -Improvements:
 	-library publish now in net8.0 and net10.0
 	-Possible to create a VInst object in a specific language.
-    -Added Dankord, HiperCard and RuPay banks.
+    -Added Dankort, HiperCard and RuPay banks.
 	
 -Languages:
 Added new language for error messages:  English-American, Danish. 
 
 
--73 unit tests, all are green.
+-78 unit tests.
 
 
 ## 0.3.0 Release (2026-11-03)
