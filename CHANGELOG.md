@@ -1,4 +1,19 @@
-﻿## 0.4.0 Release (2026-11-11)
+﻿## 0.5.0 Release (2026-xx-x)
+
+-New validation available:
+
+-New chain validation available:
+
+-Improvements:
+	
+-Languages:
+Added new language for error messages:   
+
+
+-78 unit tests.
+
+
+## 0.4.0 Release (2026-11-11)
 
 -New validation available:
 True                       Check that the bool value is true.
@@ -17,7 +32,6 @@ Added new language for error messages:  English-American, Danish.
 
 
 -78 unit tests.
-
 
 ## 0.3.0 Release (2026-11-03)
 

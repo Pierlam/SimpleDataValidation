@@ -39,7 +39,7 @@ The following examples show some common scenarios:
 ```
 using SimpleDataValidation;
 
-//--Validate that the string value contains a text, it is not null, not empty and without any whitespace.
+//--Validate that the string value contains a text, it is not null, not empty and not only whitespaces
 errMsg = V.Text("Name", "John");
 
 if(V.Error(errMsg))
