@@ -90,7 +90,7 @@ The library provides a wide range of validation methods to check data types, len
 
 ## Available validation methods
 
-List of Available Direct Validation Methods:
+List of Available Direct Validation Functions:
 
 ```
 True                       Check that the bool value is true.
@@ -141,7 +141,7 @@ BankCardNumber             Check that the string is a valid bank card number.
 ```
 
 
-List of available Chained validation Methods:
+List of available Chained validation Functions:
 
 ```
 AddTrue
