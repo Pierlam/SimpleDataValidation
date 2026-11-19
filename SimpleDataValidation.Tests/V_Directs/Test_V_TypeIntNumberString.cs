@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests.V_Directs;
 
 [TestClass]
-public class Test_V_IntNumberString
+public class Test_V_TypeIntNumberString
 {
     [TestMethod]
     public void Bool()
