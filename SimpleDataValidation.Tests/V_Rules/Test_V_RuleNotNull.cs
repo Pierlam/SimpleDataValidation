@@ -65,8 +65,12 @@ public class Test_V_RuleNotNull
         Assert.AreEqual("field must be at least 10 characters long", errMsg);
 
         // special case
+        errMsg = V.Define("field", "").AddNotNull().AddMinLength(10).Validate();
+        Assert.AreEqual("field must be at least 10 characters long", errMsg);
+
+        // special case
         errMsg = V.Define("field", null).AddNotNull().AddMinLength(10).Validate();
-        Assert.AreEqual("field is required - field must be at least 10 characters long", errMsg);
+        Assert.AreEqual("field is required - field must be a string", errMsg);
     }
 
 }

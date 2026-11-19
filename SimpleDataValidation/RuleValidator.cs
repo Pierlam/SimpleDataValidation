@@ -23,20 +23,33 @@ public partial class RuleValidator
         if(rule == null) throw new ArgumentNullException(nameof(rule));
 
         if (rule is RuleStringEquals ruleStringEquals)
-                return StringEquals(errorMessageMgr, dataName, value?.ToString(), ruleStringEquals.ExpectedValue);
-
+        {
+            return StringEquals(errorMessageMgr, dataName, value?.ToString(), ruleStringEquals.ExpectedValue);
+        }
         if (rule is RuleDateTimeEquals ruleDateEquals)
         {
             if(value == null)
+                return errorMessageMgr.GetMessage(ErrorCode.FormatDate, dataName);
+            if(value is not DateTime)
                 return errorMessageMgr.GetMessage(ErrorCode.FormatDate, dataName);
             return DateTimeEquals(errorMessageMgr, dataName, (DateTime)value, ruleDateEquals.ExpectedValue);
         }
 
         if (rule is RuleTrue)
+        { 
+            if(value is not bool)
+                return errorMessageMgr.GetMessage(ErrorCode.Bool, dataName);
+
             return True(errorMessageMgr, dataName, (bool)value);
+        }
 
         if (rule is RuleFalse)
+        { 
+            if(value is not bool)
+                return errorMessageMgr.GetMessage(ErrorCode.Bool, dataName);
+
             return False(errorMessageMgr, dataName, (bool)value);
+        }
 
         if (rule is RuleNull)
             return Null(errorMessageMgr, dataName, value?.ToString());
@@ -45,58 +58,130 @@ public partial class RuleValidator
             return NotNull(errorMessageMgr, dataName, value?.ToString());
 
         if (rule is RuleNotNullOrEmpty)
+        { 
+            //if(value is not string)
+            //    return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return NotNullOrEmpty(errorMessageMgr, dataName, value?.ToString());
+        }
 
         if(rule is RuleNotNullOrWhiteSpace)
+        {
+            //if(value is not string)
+            //    return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return NotNullOrWhiteSpace(errorMessageMgr, dataName, value?.ToString());
+        }
 
         if (rule is RuleStartsWith ruleStartsWith)
+        {
+            if(value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return StartsWith(errorMessageMgr, dataName, value?.ToString(), ruleStartsWith.Start);
-
+        }
         if(rule is RuleStartsWithCaseInsensitive ruleStartsWithCaseInsensitive)
+        {
+            if(value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return StartsWithCaseInsensitive(errorMessageMgr, dataName, value?.ToString(), ruleStartsWithCaseInsensitive.Start);
+        }
 
         if (rule is RuleEndsWith ruleEndsWith)
+        {
+            if(value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return EndsWith(errorMessageMgr, dataName, value?.ToString(), ruleEndsWith.End);
+        }
 
         if (rule is RuleEndsWithCaseInsensitive ruleEndsWithCaseInsensitive)
+        {
+            if(value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return EndsWithCaseInsensitive(errorMessageMgr, dataName, value?.ToString(), ruleEndsWithCaseInsensitive.End);
+        }
 
         if(rule is RuleContains ruleContains)
+        {
+            if(value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return Contains(errorMessageMgr, dataName, value?.ToString(), ruleContains.Contains);
+        }
 
         if (rule is RuleContainsCaseInsensitive ruleContainsCaseInsensitive)
+        {
+            if(value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return ContainsCaseInsensitive(errorMessageMgr, dataName, value?.ToString(), ruleContainsCaseInsensitive.Contains);
+        }
 
         if (rule is RuleNotContains ruleNotContains)
+        {
+            if(value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return NotContains(errorMessageMgr, dataName, value?.ToString(), ruleNotContains.NotContains);
+        }
 
         if (rule is RuleNotContainsCaseInsensitive ruleNotContainsCaseInsensitive)
+        {
+            if(value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return NotContainsCaseInsensitive(errorMessageMgr, dataName, value?.ToString(), ruleNotContainsCaseInsensitive.NotContains);
+        }
 
         if (rule is RuleFirstCharIn ruleFirstCharIn)
+        {
+            if (value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
+
             return FirstCharIn(errorMessageMgr, dataName, value?.ToString(), ruleFirstCharIn.Chars);
+        }
 
         if (rule is RuleFirstCharNotIn ruleFirstCharNotIn)
+        {
+            if (value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return FirstCharNotIn(errorMessageMgr, dataName, value?.ToString(), ruleFirstCharNotIn.Chars);
+        }
 
         if (rule is RuleFirstCharLetter)
+        {
+            if (value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return FirstCharLetter(errorMessageMgr, dataName, value?.ToString());
+        }
 
         if (rule is RuleBetweenLength ruleBetweenLength)
+        { 
+            if (value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return BetweenLength(errorMessageMgr, dataName, value?.ToString(), ruleBetweenLength.MinLength, ruleBetweenLength.MaxLength);
+        }
 
         if (rule is RuleMinLength ruleMinLength)
+        {
+            if (value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return MinLength(errorMessageMgr, dataName, value?.ToString(), ruleMinLength.MinLength);
+        }
 
         if(rule is RuleMaxLength ruleMaxLength)
+        {
+            if (value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return MaxLength(errorMessageMgr, dataName, value?.ToString(), ruleMaxLength.MaxLength);
+        }
 
         if (rule is RuleExactLength ruleExactLength)
+        {
+            if (value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return ExactLength(errorMessageMgr, dataName, value?.ToString(), ruleExactLength.Length);
+        }
 
         if (rule is RuleBankCardNumber bankCardNumber)
+        {
+            if (value is not string)
+                return errorMessageMgr.GetMessage(ErrorCode.String, dataName);
             return BankCardNumber(errorMessageMgr, dataName, value?.ToString(), bankCardNumber.CardBank);
+        }
 
         throw new NotImplementedException(nameof(rule));
     }

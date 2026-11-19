@@ -19,8 +19,11 @@ public class Test_V_RuleStartsWithEndsWith
         errMsg = V.Define("field", "john").AddStartsWith("abc").Validate();
         Assert.AreEqual("field must starts with: abc", errMsg);
 
-        errMsg = V.Define("field", null).AddStartsWith("jo").Validate();
+        errMsg = V.Define("field", "").AddStartsWith("jo").Validate();
         Assert.AreEqual("field must starts with: jo", errMsg);
+
+        errMsg = V.Define("field", null).AddStartsWith("jo").Validate();
+        Assert.AreEqual("field must be a string", errMsg);
     }
 
     [TestMethod]
@@ -40,7 +43,7 @@ public class Test_V_RuleStartsWithEndsWith
         Assert.AreEqual("field must starts with: abc", errMsg);
 
         errMsg = V.Define("field", null).AddStartsWithCaseInsensitive("jo").Validate();
-        Assert.AreEqual("field must starts with: jo", errMsg);
+        Assert.AreEqual("field must be a string", errMsg);
     }
 
     [TestMethod]
@@ -54,7 +57,7 @@ public class Test_V_RuleStartsWithEndsWith
         Assert.AreEqual("field must ends with: abc", errMsg);
 
         errMsg = V.Define("field", null).AddEndsWith("jo").Validate();
-        Assert.AreEqual("field must ends with: jo", errMsg);
+        Assert.AreEqual("field must be a string", errMsg);
     }
 
     [TestMethod]
@@ -74,6 +77,6 @@ public class Test_V_RuleStartsWithEndsWith
         Assert.AreEqual("field must ends with: abc", errMsg);
 
         errMsg = V.Define("field", null).AddEndsWithCaseInsensitive("jo").Validate();
-        Assert.AreEqual("field must ends with: jo", errMsg);
+        Assert.AreEqual("field must be a string", errMsg);
     }
 }

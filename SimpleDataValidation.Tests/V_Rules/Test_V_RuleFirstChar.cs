@@ -20,7 +20,7 @@ public class Test_V_RuleFirstChar
         Assert.AreEqual("field first char must be in: abc", errMsg);
 
         errMsg = V.Define("field", null).AddFirstCharIn("jo").Validate();
-        Assert.AreEqual("field first char must be in: jo", errMsg);
+        Assert.AreEqual("field must be a string", errMsg);
     }
 
     [TestMethod]
@@ -34,7 +34,7 @@ public class Test_V_RuleFirstChar
         Assert.AreEqual("field first char must be not in: js", errMsg);
 
         errMsg = V.Define("field", null).AddFirstCharNotIn("jo").Validate();
-        Assert.AreEqual("field first char must be not in: jo", errMsg);
+        Assert.AreEqual("field must be a string", errMsg);
     }
 
     [TestMethod]
@@ -48,7 +48,7 @@ public class Test_V_RuleFirstChar
         Assert.AreEqual("field first char must be a letter", errMsg);
 
         errMsg = V.Define("field", null).AddFirstCharLetter().Validate();
-        Assert.AreEqual("field first char must be a letter", errMsg);
+        Assert.AreEqual("field must be a string", errMsg);
     }
 
 }

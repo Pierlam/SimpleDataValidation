@@ -19,8 +19,11 @@ public class Test_V_RuleContainsAndNot
         errMsg = V.Define("field", "john").AddContains("abc").Validate();
         Assert.AreEqual("field must contain: abc", errMsg);
 
-        errMsg = V.Define("field", null).AddContains("jo").Validate();
+        errMsg = V.Define("field", "").AddContains("jo").Validate();
         Assert.AreEqual("field must contain: jo", errMsg);
+
+        errMsg = V.Define("field", null).AddContains("jo").Validate();
+        Assert.AreEqual("field must be a string", errMsg);
     }
 
     [TestMethod]
@@ -33,8 +36,11 @@ public class Test_V_RuleContainsAndNot
         errMsg = V.Define("field", "john").AddContainsCaseInsensitive("ABC").Validate();
         Assert.AreEqual("field must contain: ABC", errMsg);
 
-        errMsg = V.Define("field", null).AddContainsCaseInsensitive("JO").Validate();
+        errMsg = V.Define("field", "").AddContainsCaseInsensitive("JO").Validate();
         Assert.AreEqual("field must contain: JO", errMsg);
+
+        errMsg = V.Define("field", null).AddContainsCaseInsensitive("JO").Validate();
+        Assert.AreEqual("field must be a string", errMsg);
     }
 
     [TestMethod]
@@ -48,7 +54,7 @@ public class Test_V_RuleContainsAndNot
         Assert.AreEqual("field must not contain: oh", errMsg);
 
         errMsg = V.Define("field", null).AddNotContains("jo").Validate();
-        Assert.AreEqual(string.Empty, errMsg);
+        Assert.AreEqual("field must be a string", errMsg);
     }
 
     [TestMethod]
@@ -62,7 +68,7 @@ public class Test_V_RuleContainsAndNot
         Assert.AreEqual("field must not contain: OH", errMsg);
 
         errMsg = V.Define("field", null).AddNotContainsCaseInsensitive("JO").Validate();
-        Assert.AreEqual(string.Empty, errMsg);
+        Assert.AreEqual("field must be a string", errMsg);
     }
 
 }

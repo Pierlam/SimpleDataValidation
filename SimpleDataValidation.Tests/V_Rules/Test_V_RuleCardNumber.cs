@@ -20,7 +20,7 @@ public class Test_V_RuleBankCardNumber
         Assert.AreEqual("field must be a valid Card Number", errMsg);
 
         errMsg = V.Define("field", null).AddNotNull().AddBankCardNumber(BankCardBank.Visa).Validate();
-        Assert.AreEqual("field is required - field must be a valid Card Number", errMsg);
+        Assert.AreEqual("field is required - field must be a string", errMsg);
     }
 
 }
