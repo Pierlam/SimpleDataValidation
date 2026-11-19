@@ -325,6 +325,26 @@ public partial class VInst
         return RuleValidator.NotContainsCaseInsensitive(_errorMessageMgr, dataName, value, start);
     }
 
+    public string Equals(string dataName, string value, string expectedValue)
+    {
+        return RuleValidator.Equals(_errorMessageMgr, dataName, value, expectedValue);
+    }
+
+    public string Equals(string dataName, string value, string expectedValue, string errorMessage)
+    {
+        return RuleValidator.Equals(dataName, value, expectedValue, errorMessage);
+    }
+
+    public string Equals(string dataName, DateTime value, DateTime expectedValue)
+    {
+        return RuleValidator.Equals(_errorMessageMgr, dataName, value, expectedValue);
+    }
+
+    public string Equals(string dataName, DateTime value, DateTime expectedValue, string errorMessage)
+    {
+        return RuleValidator.Equals(dataName, value, expectedValue, errorMessage);
+    }
+
 
     public string FirstCharIn(string dataName, string value, string chars)
     {

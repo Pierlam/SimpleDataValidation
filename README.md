@@ -132,6 +132,8 @@ Int                        Check that the object value is an integer.
 Number                     Check that the object value is a number: integer, double, float or BigInteger.
 String                     Check that the object value is a string.
 
+Equals                     Check that a string or date value equals the specified value.
+
 FormatDate                 Check that the string match the provided (one or more) date format.
 
 BankIban                   Check that the string value is a valid bank IBAN number.
@@ -149,6 +151,7 @@ AddNotNull
 AddNotNullOrEmpty
 AddNotNullOrWhiteSpace
 AddText
+AddEquals
 
 AddStartsWith
 AddStartsWithCaseInsensitive

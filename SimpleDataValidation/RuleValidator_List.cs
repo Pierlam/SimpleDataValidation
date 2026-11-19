@@ -325,6 +325,29 @@ public partial class RuleValidator
         return errorMessage;
     }
 
+    //Equals
+    public static string Equals(ErrorMessageMgr errorMessageMgr, string dataName, string value, string expectedValue)
+    {
+        return Equals(dataName, value, expectedValue, errorMessageMgr.GetMessage(ErrorCode.EqualsString, dataName, expectedValue));
+    }
+
+    public static string Equals(string dataName, string value, string expectedValue, string errorMessage)
+    {
+        if (string.Equals(value, expectedValue, StringComparison.Ordinal)) return string.Empty;
+        return errorMessage;
+    }
+
+    public static string Equals(ErrorMessageMgr errorMessageMgr, string dataName, DateTime value, DateTime expectedValue)
+    {
+        return Equals(dataName, value, expectedValue, errorMessageMgr.GetMessage(ErrorCode.EqualsDate, dataName, value.ToShortDateString()));
+    }
+
+    public static string Equals(string dataName, DateTime value, DateTime expectedValue, string errorMessage)
+    {
+        if (value.Equals(expectedValue)) return string.Empty;
+        return errorMessage;
+    }
+
     //FirstCharIn
     public static string FirstCharIn(ErrorMessageMgr errorMessageMgr, string dataName, string value, string chars)
     {

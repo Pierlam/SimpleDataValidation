@@ -120,6 +120,9 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Number, "{0} must be a number" },
             { lang + ErrorCode.String, "{0} must be a string" },
 
+            { lang + ErrorCode.EqualsString, "{0} must be equal to: {1}" },
+            { lang + ErrorCode.EqualsDate, "{0} must be equal to the specified date: {1}" },
+
             { lang + ErrorCode.FormatDate, "{0} must be a valid date" },
 
             { lang + ErrorCode.Email, "{0} must be a valid email address" },
@@ -163,6 +166,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} must be an integer" },
             { lang + ErrorCode.Number, "{0} must be a number" },
             { lang + ErrorCode.String, "{0} must be a string" },
+            { lang + ErrorCode.EqualsString, "{0} must be equal to: {1}" },
+            { lang + ErrorCode.EqualsDate, "{0} must be equal to the specified date: {1}" },
             { lang + ErrorCode.FormatDate, "{0} must be a valid date" },
 
             { lang + ErrorCode.Email, "{0} must be a valid email address" },
@@ -205,6 +210,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} deve essere un numero intero" },
             { lang + ErrorCode.Number, "{0} deve essere un numero" },
             { lang + ErrorCode.String, "{0} deve essere una stringa" },
+            { lang + ErrorCode.EqualsString, "{0} deve essere uguale a: {1}" },
+            { lang + ErrorCode.EqualsDate, "{0} deve essere uguale alla data specificata: {1}" },
 
             { lang + ErrorCode.FormatDate, "{0} deve essere una data valida" },
 
@@ -250,6 +257,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} muss eine ganze Zahl sein" },
             { lang + ErrorCode.Number, "{0} muss eine Zahl sein" },
             { lang + ErrorCode.String, "{0} muss eine Zeichenkette sein" },
+            { lang + ErrorCode.EqualsString, "{0} muss gleich sein mit: {1}" },
+            { lang + ErrorCode.EqualsDate, "{0} muss gleich dem angegebenen Datum sein: {1}" },
 
             { lang + ErrorCode.FormatDate, "{0} muss ein gültiges Datum sein" },
 
@@ -292,6 +301,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} debe ser un número entero" },
             { lang + ErrorCode.Number, "{0} debe ser un número" },
             { lang + ErrorCode.String, "{0} debe ser una cadena de texto" },
+            { lang + ErrorCode.EqualsString, "{0} debe ser igual a: {1}" },
+            { lang + ErrorCode.EqualsDate, "{0} debe ser igual a la fecha especificada: {1}" },
 
             { lang + ErrorCode.FormatDate, "{0} debe ser una fecha válida" },
 
@@ -335,6 +346,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} doit être un entier" },
             { lang + ErrorCode.Number, "{0} doit être un nombre" },
             { lang + ErrorCode.String, "{0} doit être une chaîne de caractères" },
+            { lang + ErrorCode.EqualsString, "{0} doit être égal à : {1}" },
+            { lang + ErrorCode.EqualsDate, "{0} doit être égal à la date spécifiée : {1}" },
 
             { lang + ErrorCode.FormatDate, "{0} doit être une date valide" },
 
@@ -380,6 +393,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} 必须是整数" },
             { lang + ErrorCode.Number, "{0} 必须是数字" },
             { lang + ErrorCode.String, "{0} 必须是字符串" },
+            { lang + ErrorCode.EqualsString, "{0} 必须等于：{1}" },
+            { lang + ErrorCode.EqualsDate, "{0} 必须等于指定日期：{1}" },
             { lang + ErrorCode.FormatDate, "{0} 必须是有效的日期" },
 
             { lang + ErrorCode.Email, "{0} 必须是有效的电子邮件地址" },
@@ -420,6 +435,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} एक पूर्णांक होना चाहिए" },
             { lang + ErrorCode.Number, "{0} एक संख्या होनी चाहिए" },
             { lang + ErrorCode.String, "{0} एक स्ट्रिंग होनी चाहिए" },
+            { lang + ErrorCode.EqualsString, "{0} इसके बराबर होना चाहिए: {1}" },
+            { lang + ErrorCode.EqualsDate, "{0} निर्दिष्ट दिनांक के बराबर होना चाहिए: {1}" },
             { lang + ErrorCode.FormatDate, "{0} एक मान्य दिनांक होनी चाहिए" },
 
             { lang + ErrorCode.Email, "{0} एक मान्य ई-मेल पता होना चाहिए" },
@@ -462,6 +479,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} deve ser um número inteiro" },
             { lang + ErrorCode.Number, "{0} deve ser um número" },
             { lang + ErrorCode.String, "{0} deve ser uma cadeia de caracteres" },
+            { lang + ErrorCode.EqualsString, "{0} deve ser igual a: {1}" },
+            { lang + ErrorCode.EqualsDate, "{0} deve ser igual à data especificada: {1}" },
             { lang + ErrorCode.FormatDate, "{0} deve ser uma data válida" },
 
             { lang + ErrorCode.Email, "{0} deve ser um endereço de e-mail válido" },
@@ -504,6 +523,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} deve ser um número inteiro" },
             { lang + ErrorCode.Number, "{0} deve ser um número" },
             { lang + ErrorCode.String, "{0} deve ser uma string" },
+            { lang + ErrorCode.EqualsString, "{0} deve ser igual a: {1}" },
+            { lang + ErrorCode.EqualsDate, "{0} deve ser igual à data especificada: {1}" },
             { lang + ErrorCode.FormatDate, "{0} deve ser uma data válida" },
 
             { lang + ErrorCode.Email, "{0} deve ser um endereço de e-mail válido" },
@@ -546,6 +567,8 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.Int, "{0} skal være et heltal" },
             { lang + ErrorCode.Number, "{0} skal være et tal" },
             { lang + ErrorCode.String, "{0} skal være en tekststreng" },
+            { lang + ErrorCode.EqualsString, "{0} skal være lig med: {1}" },
+            { lang + ErrorCode.EqualsDate, "{0} skal være lig med den angivne dato: {1}" },
 
             { lang + ErrorCode.FormatDate, "{0} skal være en gyldig dato" },
 

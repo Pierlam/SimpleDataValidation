@@ -154,6 +154,14 @@ public partial class V
 
     public static string NotContainsCaseInsensitive(string dataName, string value, string start)=> _defaultInst.NotContainsCaseInsensitive(dataName, value, start);
 
+    public static string Equals(string dataName, string value, string expectedValue) => _defaultInst.Equals(dataName, value, expectedValue);
+
+    public static string Equals(string dataName, string value, string expectedValue, string errorMessage) => _defaultInst.Equals(dataName, value, expectedValue, errorMessage);
+
+    public static string Equals(string dataName, DateTime value, DateTime expectedValue) => _defaultInst.Equals(dataName, value, expectedValue);
+
+    public static string Equals(string dataName, DateTime value, DateTime expectedValue, string errorMessage) => _defaultInst.Equals(dataName, value, expectedValue, errorMessage);
+
     public static string FirstCharIn(string dataName, string value, string chars)=> _defaultInst.FirstCharIn(dataName, value, chars);
 
     /// <summary>

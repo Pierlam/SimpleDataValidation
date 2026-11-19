@@ -53,6 +53,9 @@ public enum ErrorCode
 
     String,
 
+    EqualsString,
+    EqualsDate,
+
     FormatDate,
 
     BankIban,

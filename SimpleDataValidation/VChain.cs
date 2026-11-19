@@ -78,6 +78,12 @@ public partial class VChain
         return this;
     }
 
+    public VChain AddEquals(string expectedValue)
+    {
+        _ruleBases.Add(new RuleStringEquals(expectedValue));
+        return this;
+    }
+
     public VChain AddStartsWith(string start)
     {
         _ruleBases.Add(new RuleStartsWith(start));
