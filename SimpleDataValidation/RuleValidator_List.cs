@@ -326,23 +326,23 @@ public partial class RuleValidator
     }
 
     //Equals
-    public static string Equals(ErrorMessageMgr errorMessageMgr, string dataName, string value, string expectedValue)
+    public static string StringEquals(ErrorMessageMgr errorMessageMgr, string dataName, string value, string expectedValue)
     {
-        return Equals(dataName, value, expectedValue, errorMessageMgr.GetMessage(ErrorCode.EqualsString, dataName, expectedValue));
+        return StringEquals(dataName, value, expectedValue, errorMessageMgr.GetMessage(ErrorCode.EqualsString, dataName, expectedValue));
     }
 
-    public static string Equals(string dataName, string value, string expectedValue, string errorMessage)
+    public static string StringEquals(string dataName, string value, string expectedValue, string errorMessage)
     {
         if (string.Equals(value, expectedValue, StringComparison.Ordinal)) return string.Empty;
         return errorMessage;
     }
 
-    public static string Equals(ErrorMessageMgr errorMessageMgr, string dataName, DateTime value, DateTime expectedValue)
+    public static string DateTimeEquals(ErrorMessageMgr errorMessageMgr, string dataName, DateTime value, DateTime expectedValue)
     {
-        return Equals(dataName, value, expectedValue, errorMessageMgr.GetMessage(ErrorCode.EqualsDate, dataName, value.ToShortDateString()));
+        return DateTimeEquals(dataName, value, expectedValue, errorMessageMgr.GetMessage(ErrorCode.EqualsDate, dataName, expectedValue.ToShortDateString()));
     }
 
-    public static string Equals(string dataName, DateTime value, DateTime expectedValue, string errorMessage)
+    public static string DateTimeEquals(string dataName, DateTime value, DateTime expectedValue, string errorMessage)
     {
         if (value.Equals(expectedValue)) return string.Empty;
         return errorMessage;

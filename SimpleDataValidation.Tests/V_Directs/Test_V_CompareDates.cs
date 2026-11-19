@@ -10,7 +10,7 @@ namespace SimpleDataValidation.Tests.V_Directs;
 public class Test_V_CompareDates
 {
     [TestMethod]
-    public void DatesEquals()
+    public void DateTimeEquals()
     {
         string errMsg;
         var dt= new DateTime(2024, 1, 1);
@@ -21,6 +21,6 @@ public class Test_V_CompareDates
         Assert.AreEqual(string.Empty, errMsg);
 
         errMsg = V.Equals("field", dt, dt3);
-        Assert.AreEqual("field must be equal to the specified date: " + dt.ToShortDateString(), errMsg);
+        Assert.AreEqual("field must be equal to the specified date: " + dt3.ToShortDateString(), errMsg);
     }
 }

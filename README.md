@@ -132,7 +132,7 @@ Int                        Check that the object value is an integer.
 Number                     Check that the object value is a number: integer, double, float or BigInteger.
 String                     Check that the object value is a string.
 
-Equals                     Check that a string or date value equals the specified value.
+Equals                     Check that a string or dateTime value equals the specified value.
 
 FormatDate                 Check that the string match the provided (one or more) date format.
 
@@ -151,7 +151,7 @@ AddNotNull
 AddNotNullOrEmpty
 AddNotNullOrWhiteSpace
 AddText
-AddEquals
+AddEquals                For string ad dateTime types.
 
 AddStartsWith
 AddStartsWithCaseInsensitive

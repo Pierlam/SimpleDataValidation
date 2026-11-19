@@ -23,8 +23,15 @@ public partial class RuleValidator
         if(rule == null) throw new ArgumentNullException(nameof(rule));
 
         if (rule is RuleStringEquals ruleStringEquals)
-                return Equals(errorMessageMgr, dataName, value?.ToString(), ruleStringEquals.ExpectedValue);
- 
+                return StringEquals(errorMessageMgr, dataName, value?.ToString(), ruleStringEquals.ExpectedValue);
+
+        if (rule is RuleDateTimeEquals ruleDateEquals)
+        {
+            if(value == null)
+                return errorMessageMgr.GetMessage(ErrorCode.FormatDate, dataName);
+            return DateTimeEquals(errorMessageMgr, dataName, (DateTime)value, ruleDateEquals.ExpectedValue);
+        }
+
         if (rule is RuleTrue)
             return True(errorMessageMgr, dataName, (bool)value);
 

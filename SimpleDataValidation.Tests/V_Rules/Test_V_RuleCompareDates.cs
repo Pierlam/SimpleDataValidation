@@ -10,17 +10,23 @@ namespace SimpleDataValidation.Tests.V_Rules;
 public class Test_V_RuleCompareDates
 {
     [TestMethod]
-    public void DatesEquals()
+    public void DateTimeEquals()
     {
         string errMsg;
-        errMsg = V.Define("field", new DateTime(2024, 1, 1)).AddText().AddEquals(new DateTime(2024, 1, 1)).Validate();
+
+        errMsg = V.Define("field", new DateTime(2024, 5, 1)).AddEquals(new DateTime(2024, 5, 1)).Validate();
         Assert.AreEqual(string.Empty, errMsg);
 
-        errMsg = V.Define("field", new DateTime(2024, 1, 1)).AddText().AddEquals(new DateTime(2024, 1, 2)).Validate();
-        Assert.AreEqual("field must be equal to the specified date: 1/2/2024", errMsg);
+        errMsg = V.Define("field", new DateTime(2024, 5, 1)).AddText().AddEquals(new DateTime(2024, 5, 1)).Validate();
+        Assert.AreEqual(string.Empty, errMsg);
 
-        errMsg = V.Define("field", null).AddText().AddEquals(new DateTime(2024, 1, 2)).Validate();
+        errMsg = V.Define("field", new DateTime(2024, 5, 1)).AddText().AddEquals(new DateTime(2026, 9, 13)).Validate();
+        Assert.AreEqual("field must be equal to the specified date: " + new DateTime(2026, 9, 13).ToShortDateString(), errMsg);
+
+        errMsg = V.Define("field", null).AddEquals(new DateTime(2026, 9, 13)).Validate();
+        Assert.AreEqual("field must be a valid date", errMsg);
+
+        errMsg = V.Define("field", null).AddText().AddEquals(new DateTime(2026, 9, 13)).Validate();
         Assert.AreEqual("field is required - field must be a valid date", errMsg);
     }
-
 }

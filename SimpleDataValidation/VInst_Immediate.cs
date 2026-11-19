@@ -327,22 +327,22 @@ public partial class VInst
 
     public string Equals(string dataName, string value, string expectedValue)
     {
-        return RuleValidator.Equals(_errorMessageMgr, dataName, value, expectedValue);
+        return RuleValidator.StringEquals(_errorMessageMgr, dataName, value, expectedValue);
     }
 
     public string Equals(string dataName, string value, string expectedValue, string errorMessage)
     {
-        return RuleValidator.Equals(dataName, value, expectedValue, errorMessage);
+        return RuleValidator.StringEquals(dataName, value, expectedValue, errorMessage);
     }
 
     public string Equals(string dataName, DateTime value, DateTime expectedValue)
     {
-        return RuleValidator.Equals(_errorMessageMgr, dataName, value, expectedValue);
+        return RuleValidator.DateTimeEquals(_errorMessageMgr, dataName, value, expectedValue);
     }
 
     public string Equals(string dataName, DateTime value, DateTime expectedValue, string errorMessage)
     {
-        return RuleValidator.Equals(dataName, value, expectedValue, errorMessage);
+        return RuleValidator.DateTimeEquals(dataName, value, expectedValue, errorMessage);
     }
 
 

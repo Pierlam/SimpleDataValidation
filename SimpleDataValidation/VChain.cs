@@ -84,6 +84,12 @@ public partial class VChain
         return this;
     }
 
+    public VChain AddEquals(DateTime expectedValue)
+    {
+        _ruleBases.Add(new RuleDateTimeEquals(expectedValue));
+        return this;
+    }
+
     public VChain AddStartsWith(string start)
     {
         _ruleBases.Add(new RuleStartsWith(start));
