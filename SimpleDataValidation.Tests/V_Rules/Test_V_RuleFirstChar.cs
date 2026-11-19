@@ -36,4 +36,19 @@ public class Test_V_RuleFirstChar
         errMsg = V.Define("field", null).AddFirstCharNotIn("jo").Validate();
         Assert.AreEqual("field first char must be not in: jo", errMsg);
     }
+
+    [TestMethod]
+    public void FirstCharLetter()
+    {
+        string errMsg;
+        errMsg = V.Define("field", "john").AddFirstCharLetter().Validate();
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.Define("field", "123").AddFirstCharLetter().Validate();
+        Assert.AreEqual("field first char must be a letter", errMsg);
+
+        errMsg = V.Define("field", null).AddFirstCharLetter().Validate();
+        Assert.AreEqual("field first char must be a letter", errMsg);
+    }
+
 }

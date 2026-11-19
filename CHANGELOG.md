@@ -1,8 +1,10 @@
 ﻿## 0.5.0 Release (2026-xx-x)
 
 -New validation available:
+FirstCharLetter	           Check that the first char of the string is a letter, upper or lower.
 
 -New chain validation available:
+AddFirstCharLetter
 
 -Improvements:
 	

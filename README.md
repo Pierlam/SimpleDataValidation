@@ -116,6 +116,7 @@ NotContainsCaseInsensitive Check that the string does not contain the provided s
 
 FirstCharIn                Check that the first char of the string is one of provided chars.
 FirstCharNotIn             Check that the first char of the string is not one of provided chars.
+FirstCharLetter	           Check that the first char of the string is a letter, upper or lower.
 
 MinLength                  Check that the string value has a minimum length.
 MaxLength                  Check that the string value has a maximum length.
@@ -160,6 +161,7 @@ AddNotContainsCaseInsensitive
 
 AddFirstCharIn
 AddFirstCharNotIn
+AddFirstCharLetter
 
 AddMinLength
 AddMaxLength
