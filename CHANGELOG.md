@@ -7,12 +7,13 @@ FirstCharLetter	           Check that the first char of the string is a letter, 
 AddFirstCharLetter
 
 -Improvements:
+	ValidateMinOne()       If one rule at least is ok, no error, return an empty message.
 	
 -Languages:
 Added new language for error messages:   
 
 
--80 unit tests.
+-89 unit tests.
 
 
 ## 0.4.0 Release (2026-11-11)

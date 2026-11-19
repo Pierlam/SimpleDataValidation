@@ -6,7 +6,7 @@ It provides more than 30 built-in validation functions to check data types, leng
 
 The library is written in C# and developed using Visual Studio 2026. It targets both .NET 8 and .NET 10.
 
-The codebase is covered by 80 unit tests to ensure reliability and prevent regressions as new features and improvements are introduced.
+The codebase is covered by 89 unit tests to ensure reliability and prevent regressions as new features and improvements are introduced.
 
 # A quick example
 
@@ -171,6 +171,26 @@ AddMaxLength
 AddBetweenLength
 AddExactLength
 AddBankCardNumber
+```
+
+List of Validate Functions:
+
+Placed at the end of a chain rules validation.
+
+```
+Validate():
+  All rules have to be validated:
+  Will concatenate all occuring error messages
+
+
+Validate(ValidOptions.StopOnFirstError):
+  Stop the chain validation on the first error.
+  Will return all concatenated error messages.
+
+ValidateMinOne():
+  Only one rule have to be validated.
+  It's like an OR boolean operator between every rules.
+  
 ```
 
 ## Error Messages

@@ -192,40 +192,4 @@ public partial class VChain
         return this;
     }
 
-    /// <summary>
-    /// Apply the defined validation rules to the value and return an error message if any rule fails. If all rules pass, return an empty string.
-    /// </summary>
-    /// <returns></returns>
-    public string Validate()
-    {
-        return Validate(ValidOptions.ContinueOnAllErrors);
-    }
-
-    /// <summary>
-    /// Apply the defined validation rules to the value and return an error message if any rule fails. If all rules pass, return an empty string.
-    /// </summary>
-    /// <param name="options"></param>
-    /// <returns></returns>
-    public string Validate(ValidOptions options)
-    {
-        string finalErrMsg = string.Empty;
-        foreach (var rule in _ruleBases)
-        {
-            string errMsg = RuleValidator.Validate(_errorMessageMgr, rule, _dataName, _value);
-            if (!string.IsNullOrEmpty(errMsg))
-            {
-                if (!string.IsNullOrEmpty(finalErrMsg))
-                {
-                    finalErrMsg += _errorMessageMgr.BetweenMsg;
-                }
-                finalErrMsg += errMsg;
-            }
-            if (options == ValidOptions.StopOnFirstError && !string.IsNullOrEmpty(finalErrMsg))
-            {
-                break;
-            }
-        }
-        return finalErrMsg.Trim();
-    }
-
 }
