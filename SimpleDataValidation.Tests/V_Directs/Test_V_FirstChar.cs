@@ -36,4 +36,19 @@ public class Test_V_FirstChar
         errMsg = V.FirstCharNotIn("field", "john", "jo", "Custom error message");
         Assert.AreEqual("Custom error message", errMsg);
     }
+
+    [TestMethod]
+    public void FirstCharLetter()
+    {
+        string errMsg;
+        errMsg = V.FirstCharLetter("field", "john");
+        Assert.AreEqual(string.Empty, errMsg);
+
+        errMsg = V.FirstCharLetter("field", "9jane");
+        Assert.AreEqual("field first char must be a letter", errMsg);
+
+        errMsg = V.FirstCharLetter("field", "4john", "Custom error message");
+        Assert.AreEqual("Custom error message", errMsg);
+    }
+
 }

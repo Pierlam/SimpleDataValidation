@@ -138,6 +138,12 @@ public partial class VChain
         return this;
     }
 
+    public VChain AddFirstCharLetter()
+    {
+        _ruleBases.Add(new RuleFirstCharLetter());
+        return this;
+    }
+
     public VChain AddMinLength(int length)
     {
         _ruleBases.Add(new RuleMinLength(length));

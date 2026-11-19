@@ -106,6 +106,7 @@ internal class ErrorMessagesTableBuilder
             { lang + ErrorCode.EndsWith, "{0} must ends with: {1}" },
             { lang + ErrorCode.FirstCharIn, "{0} first char must be in: {1}" },
             { lang + ErrorCode.FirstCharNotIn, "{0} first char must be not in: {1}" },
+            { lang + ErrorCode.FirstCharLetter, "{0} first char must be a letter" },
             { lang + ErrorCode.Contains, "{0} must contain: {1}" },
             { lang + ErrorCode.NotContains, "{0} must not contain: {1}" },
 

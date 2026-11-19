@@ -70,6 +70,9 @@ public partial class RuleValidator
         if (rule is RuleFirstCharNotIn ruleFirstCharNotIn)
             return FirstCharNotIn(errorMessageMgr, dataName, value?.ToString(), ruleFirstCharNotIn.Chars);
 
+        if (rule is RuleFirstCharLetter)
+            return FirstCharLetter(errorMessageMgr, dataName, value?.ToString());
+
         if (rule is RuleBetweenLength ruleBetweenLength)
             return BetweenLength(errorMessageMgr, dataName, value?.ToString(), ruleBetweenLength.MinLength, ruleBetweenLength.MaxLength);
 

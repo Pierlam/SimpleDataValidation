@@ -356,6 +356,16 @@ public partial class VInst
         return RuleValidator.FirstCharNotIn(dataName, value, chars, errorMessage);
     }
 
+    public string FirstCharLetter(string dataName, string value)
+    {
+        return RuleValidator.FirstCharLetter(_errorMessageMgr, dataName, value);
+    }
+
+    public string FirstCharLetter(string dataName, string value, string errorMessage)
+    {
+        return RuleValidator.FirstCharLetter(dataName, value, errorMessage);
+    }
+
     /// <summary>
     /// Check that the length of string is between a min (included) and a max (included) value.
     /// </summary>

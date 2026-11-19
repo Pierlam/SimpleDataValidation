@@ -172,6 +172,10 @@ public partial class V
     /// <returns></returns>
     public static string FirstCharNotIn(string dataName, string value, string chars, string errorMessage) => _defaultInst.FirstCharNotIn(dataName, value, chars, errorMessage);
 
+    public static string FirstCharLetter(string dataName, string value) => _defaultInst.FirstCharLetter(dataName, value);
+
+    public static string FirstCharLetter(string dataName, string value, string errorMessage) => _defaultInst.FirstCharLetter(dataName, value, errorMessage);
+
     /// <summary>
     /// Check that the length of string is between a min (included) and a max (included) value.
     /// </summary>

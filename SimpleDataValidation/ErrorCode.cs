@@ -32,6 +32,8 @@ public enum ErrorCode
 
     FirstCharNotIn,
 
+    FirstCharLetter,
+
     BetweenLength,
 
     MinLength,

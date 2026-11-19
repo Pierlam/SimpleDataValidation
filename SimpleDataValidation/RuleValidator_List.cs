@@ -357,6 +357,20 @@ public partial class RuleValidator
         return errorMessage;
     }
 
+    //FirstCharLetter
+    public static string FirstCharLetter(ErrorMessageMgr errorMessageMgr, string dataName, string value)
+    {
+        return FirstCharLetter(dataName, value, errorMessageMgr.GetMessage(ErrorCode.FirstCharLetter, dataName));
+    }
+
+    public static string FirstCharLetter(string dataName, string value, string errorMessage)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return errorMessage;
+        if (char.IsLetter(value[0])) return string.Empty;
+
+        return errorMessage;
+    }
+
     /// <summary>
     /// The value should be not null or empty. If it is, return an error message; otherwise, return an empty string.
     /// </summary>
