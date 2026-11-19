@@ -181,12 +181,12 @@ You can also customize error messages for each validation method by passing your
 
 The default language for error messages is English (en-en).
 ```
-string nameValue = null;
-errMsg = V.NotNull("Name",nameValue, "The name is mandatory!");
+string value = null;
+errMsg = V.NotNull("Name", value, "The name value is mandatory!");
 Console.WriteLine($"-> errorMessage: {errMsg}");
 
 // will display the following error message:
--> errorMessage: The name is mandatory!
+-> errorMessage: The name is required
 ```
 
 You can change the language used for error messages by calling the SetLanguage method of the V class and passing the desired language code as a parameter.
