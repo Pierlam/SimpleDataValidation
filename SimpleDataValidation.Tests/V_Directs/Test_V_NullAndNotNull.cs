@@ -1,4 +1,4 @@
-﻿namespace SimpleDataValidation.Tests;
+﻿namespace SimpleDataValidation.Tests.V_Directs;
 
 [TestClass]
 public sealed class Test_V_NullAndNotNull

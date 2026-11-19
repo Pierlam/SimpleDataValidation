@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleDataValidation.Tests;
+namespace SimpleDataValidation.Tests.VInst_Directs;
 
 [TestClass]
 public class Test_VInst_ChangeLang

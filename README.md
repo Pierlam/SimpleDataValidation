@@ -6,7 +6,7 @@ It provides more than 30 built-in validation functions to check data types, leng
 
 The library is written in C# and developed using Visual Studio 2026. It targets both .NET 8 and .NET 10.
 
-The codebase is covered by 78 unit tests to ensure reliability and prevent regressions as new features and improvements are introduced.
+The codebase is covered by 80 unit tests to ensure reliability and prevent regressions as new features and improvements are introduced.
 
 # A quick example
 
@@ -60,6 +60,10 @@ The Name value is correct!
 -> errorMessage: Name must be at least 8 characters long
 ```
 
+
+In multithreaded environments, it is stronlgy recommanded to use VInst in place of V.
+See the end of this document for instructions on how to use it. 
+ 
 # Another way to validate data
 
 You can also chain validation methods to perform multiple checks on the same data value.
@@ -382,7 +386,7 @@ https://github.com/Pierlam/SimpleDataValidation/
 
 Have any comments or questions? Would you like to request a new feature?
 
-The error messages were generated using AI, so some of them may be incorrect or unclear. If you notice any issues, please let me know so I can fix them.
+It is possible that some error messages may be incorrect or unclear. If you notice any issues, please let me know so I can fix them.
 
 Feel free to send me an email at:
 

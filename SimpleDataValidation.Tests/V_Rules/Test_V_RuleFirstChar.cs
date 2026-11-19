@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SimpleDataValidation.Tests;
 
 [TestClass]
-public class Test_V_FirstChar
+public class Test_V_RuleFirstChar
 {
     [TestMethod]
     public void FirstCharIn()
@@ -36,5 +36,4 @@ public class Test_V_FirstChar
         errMsg = V.Define("field", null).AddFirstCharNotIn("jo").Validate();
         Assert.AreEqual("field first char must be not in: jo", errMsg);
     }
-
 }

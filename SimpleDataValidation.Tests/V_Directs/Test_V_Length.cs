@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleDataValidation.Tests;
+namespace SimpleDataValidation.Tests.V_Directs;
 
 [TestClass]
 public class Test_V_Length

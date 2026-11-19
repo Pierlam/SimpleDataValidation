@@ -10,7 +10,7 @@
 Added new language for error messages:   
 
 
--78 unit tests.
+-80 unit tests.
 
 
 ## 0.4.0 Release (2026-11-11)
